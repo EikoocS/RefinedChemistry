@@ -1,0 +1,40 @@
+pipette_name,移液枪
+pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（1–10 ml）。
+pipette_flavor,上层区化学家偏爱的化学器械，好用，很贵。
+pipette_capacity,容量：{0} ml · 液量：{1:0.###} ml
+beaker_name,定量烧杯
+beaker_desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
+beaker_flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
+beaker_capacity,容量：{0} ml · 液量：{1:0.###} ml\n距满还差：{2:0.###} ml
+imitation_pipette_name,仿制移液枪
+imitation_pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（1–10 ml）。\n每次成功排液消耗 1 点耐久。
+imitation_pipette_flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。
+flask_name,烧瓶
+flask_desc,初始容量 750 ml，最高可扩容至 9000 ml。\n使用化学用品或空烧瓶扩容 750 ml；化学用品(管制)扩容 1500 ml。\n使用[切换]变更外观。
+flask_flavor,多样的形状和清晰的内容物使其适合承装化学品的容器。\n自动重命名自身为内容物。
+diluter_name,自动稀释机
+diluter_desc,将原液中的选定物质稀释至 1–1000 μL/mL。\n每次输出最少大于 1 ml。\n输出容器为空时才可运作
+diluter_inputs,输入
+diluter_source,溶质容器
+diluter_solvent,溶剂容器
+diluter_output,输出容器
+diluter_control,稀释设置
+diluter_substance,选择物质
+diluter_target,目标浓度（μL/mL）
+diluter_confirm,确认稀释
+diluter_preview,原液：{0:0.###} ml\n溶剂：{1:0.###} ml\n输出：{2:0.###} ml
+diluter_actual,实际输出浓度：{0} μL/mL
+diluter_nearest,实际输出浓度（最近可达）：{0} μL/mL
+diluter_approximate,警告：不是完美稀释
+diluter_confirm_approximate,确认近似稀释
+diluter_range,请输入 1–1000 的整数
+diluter_select,请选择溶质中的物质
+diluter_source_empty,请放入含液体的溶质容器
+diluter_output_missing,请放入空输出容器
+diluter_output_not_empty,输出容器必须为空
+diluter_output_filter,请先移除输出容器中的滤芯
+diluter_concentrate,目标浓度高于原液，无法稀释
+diluter_solvent_empty,请放入含液体的溶剂容器
+diluter_solvent_concentration,溶剂中该物质的浓度必须低于目标浓度
+diluter_precision,当前无法稀释到目标浓度
+diluter_minimum_volume,原料或输出容量不足

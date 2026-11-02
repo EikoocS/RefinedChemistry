@@ -1,0 +1,40 @@
+pipette_name,Pipette
+pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (1–10 ml).
+pipette_flavor,A favorite tool of chemists in the upper district. Works well. Costs a lot.
+pipette_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml
+beaker_name,Measuring Beaker
+beaker_desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
+beaker_flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
+beaker_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
+imitation_pipette_name,Imitation Pipette
+imitation_pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (1–10 ml).\nEach successful dispense uses 1 durability point.
+imitation_pipette_flavor,A knockoff made by chemists in the middle district. Keeping impurities out took all they had. Not much to look at and not built to last.
+flask_name,Flask
+flask_desc,Starts with a capacity of 750 ml. Expandable up to 9000 ml.\nUse common chemical supplies or an empty flask to add 750 ml; restricted chemical supplies add 1500 ml.\nUse [Toggle] to change its appearance.
+flask_flavor,Varied shapes and a clear view of the contents make this flask well suited for storing chemicals.\nAutomatically names itself after its contents.
+diluter_name,Automatic Diluter
+diluter_desc,Dilutes a selected substance in the stock solution to 1–1000 μL/mL.\nEach batch must exceed 1 ml.\nRequires an empty output container.
+diluter_inputs,Inputs
+diluter_source,Stock container
+diluter_solvent,Solvent container
+diluter_output,Output container
+diluter_control,Dilution settings
+diluter_substance,Select substance
+diluter_target,Target concentration (μL/mL)
+diluter_confirm,Confirm dilution
+diluter_preview,Stock: {0:0.###} ml\nSolvent: {1:0.###} ml\nOutput: {2:0.###} ml
+diluter_actual,Actual output concentration: {0} μL/mL
+diluter_nearest,Actual output concentration (closest achievable): {0} μL/mL
+diluter_approximate,Warning: Dilution is not exact
+diluter_confirm_approximate,Confirm approximate dilution
+diluter_range,Enter an integer from 1 to 1000
+diluter_select,Select a substance in the stock solution
+diluter_source_empty,Insert a stock container with liquid
+diluter_output_missing,Insert an empty output container
+diluter_output_not_empty,The output container must be empty
+diluter_output_filter,Remove the filter from the output container first
+diluter_concentrate,Cannot dilute to a concentration higher than the stock solution
+diluter_solvent_empty,Insert a solvent container with liquid
+diluter_solvent_concentration,The concentration of this substance in the solvent must be below the target
+diluter_precision,Cannot dilute to the target concentration
+diluter_minimum_volume,Insufficient liquid or output capacity
