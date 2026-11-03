@@ -1,5 +1,5 @@
 pipette_name,Pipette
-pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (1–10 ml).
+pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.
 pipette_flavor,A favorite tool of chemists in the upper district. Works well. Costs a lot.
 pipette_capacity,Capacity: {0} {1} · Liquid: {2:0.###} {3}
 beaker_name,Measuring Beaker
@@ -7,13 +7,13 @@ beaker_desc,A container with precisely adjustable capacity.\nUse the mouse wheel
 beaker_flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
 beaker_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
 imitation_pipette_name,Imitation Pipette
-imitation_pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (1–10 ml).\nEach successful dispense uses 1 durability point.
+imitation_pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.\nEach successful dispense uses 1 durability point.
 imitation_pipette_flavor,A knockoff made by chemists in the middle district. Keeping impurities out took all they had. Not much to look at and not built to last.
 flask_name,Flask
 flask_desc,Starts with a capacity of 750 ml. Expandable up to 9000 ml.\nUse common chemical supplies or an empty flask to add 750 ml; restricted chemical supplies add 1500 ml.\nUse [Toggle] to change its appearance.
 flask_flavor,Varied shapes and a clear view of the contents make this flask well suited for storing chemicals.\nAutomatically names itself after its contents.
 diluter_name,Automatic Diluter
-diluter_desc,Dilutes a selected substance in the stock solution to 1–1000 μL/mL.\nEach batch must exceed 1 ml.\nRequires an empty output container.
+diluter_desc,Has not met expectations and will be removed in a few versions.\nDilutes a selected substance in the stock solution to 1–1000 μL/mL.\nEach batch must exceed 1 ml.\nRequires an empty output container.
 diluter_inputs,Inputs
 diluter_source,Stock container
 diluter_solvent,Solvent container
