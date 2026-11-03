@@ -47,7 +47,11 @@
   <ItemGroup>
     <Compile Remove="_analysis\**\*.cs;_analysis2\**\*.cs" />
     <ModFile Include="manifest.xml;preview.png;Textures\**;Sounds\**;Localization\**;LootTables\**;Books\**" />
-    <None Remove="Textures\**;Sounds\**;Localization\**;LootTables\**;Books\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Books\" />
+    <Folder Include="LootTables\" />
+    <Folder Include="Sounds\" />
   </ItemGroup>
 
   <!-- After every build, install the mod into <game>\Mods\RefinedChemistry\ so the game picks it up. -->

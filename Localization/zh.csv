@@ -1,11 +1,11 @@
 pipette_name,移液枪
 pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（1–10 ml）。
 pipette_flavor,上层区化学家偏爱的化学器械，好用，很贵。
-pipette_capacity,容量：{0} ml · 液量：{1:0.###} ml
+pipette_capacity,容量：{0} {1} · 液量：{2:0.###} {3}
 beaker_name,定量烧杯
 beaker_desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
 beaker_flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
-beaker_capacity,容量：{0} ml · 液量：{1:0.###} ml\n距满还差：{2:0.###} ml
+beaker_capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
 imitation_pipette_name,仿制移液枪
 imitation_pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（1–10 ml）。\n每次成功排液消耗 1 点耐久。
 imitation_pipette_flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。

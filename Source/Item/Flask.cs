@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace RefinedChemistry.Item
 {
+    [WaterContainer(ItemId)]
     internal static class Flask
     {
         internal const string ItemId = "flask";
@@ -11,11 +12,11 @@ namespace RefinedChemistry.Item
 
         internal static GameItem Create()
         {
-            var item = LiquidContainerItemHelper.Create(ItemId, "round_flask", InitialCapacity, 50);
-            item.SetShape(new GridShapeBuilder().SetData([ 1, 1, 1, 1 ], 2));
+            var item = ItemHelper.Create(ItemId, "round_flask");
+            WaterHelper.InitLiquidContainerItem(item, InitialCapacity, 50, isGraduated: true);
             AudioHelper.InitGlass(item);
             item.getItemSpriteModifierForItemFunc = GetLiquidSprites;
-            ToggleAppearanceHelper.MakeSpriteCyclable(item, ModEntry.Instance.Manifest.ID,
+            ToggleAppearanceHelper.MakeSpriteCyclable(item, RefinedChemistry.Instance.Manifest.ID,
                 "round_flask", "square_flask", "triangular_flask");
             item.onToggleSlotItemFunc += (toggled, _, _) =>
                 ((GameItemElement)toggled).HandleInnateModSprite();
@@ -109,7 +110,9 @@ namespace RefinedChemistry.Item
             {
                 return;
             }
-            LiquidContainerItemHelper.AdjustCapacity(flask, increase, InitialCapacity, MaxCapacity);
+            int capacity = WaterHelper.GetTotalCapacityML(flask);
+            int next = Mathf.Clamp(capacity + increase, InitialCapacity, MaxCapacity);
+            flask.ModifyTag(WaterHelper.LIQUID_CONTAINER_CAPACITY, state => state.SetInt(next * 1000));
             if (material.unitCount > 1)
             {
                 material.SetUnitCount(material.unitCount - 1);
@@ -133,12 +136,11 @@ namespace RefinedChemistry.Item
                 volume * 4 <= capacity * 3 ? 75 : 100;
             string color = WaterHelper.GetLiquidContainerColor(item);
             string prefix = item.spritePath;
-            var sprites = ModLoader.Mods.Find(m => m.Manifest.ID == ModEntry.Instance.Manifest.ID).Sprites;
             return new List<ItemSpriteModifier>
             {
-                new ItemSpriteModifier(sprites[prefix + "_" + Liquid.GetColorBase(color) + "_" + level],
+                new ItemSpriteModifier(RefinedChemistry.GetSprite(prefix + "_" + Liquid.GetColorBase(color) + "_" + level),
                     Vector2.zero, color: MetaHelper.HexToColor(color)),
-                new ItemSpriteModifier(sprites[prefix + "_hl_" + level], Vector2.zero, priority: 1)
+                new ItemSpriteModifier(RefinedChemistry.GetSprite(prefix + "_hl_" + level), Vector2.zero, priority: 1)
             };
         }
     }

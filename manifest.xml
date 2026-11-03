@@ -3,7 +3,7 @@
   <ID>refined_chemistry</ID>
   <Name>RefinedChemistry</Name>
   <Author>EikoocSun</Author>
-  <ModVersion>0.1.0</ModVersion>
+  <ModVersion>0.1.1</ModVersion>
   <Description>A chemical extension module adds features such as pipettes and high-purity chemicals to enhance quality of life.</Description>
   <GameVersions>
     <Version>0.46</Version>
@@ -16,5 +16,7 @@
   <!-- What your code does beyond the game's API: files, network, process, dynamic-code, native, reflection-external.
        Most mods need none. The game scans your DLL when a player activates the mod; an undeclared capability
        refuses the activation. Check with the console command: mod-scan refined_chemistry   (see ModdingGuide.md) -->
-  <Capabilities />
+  <Capabilities>
+    <Capability>reflection-external</Capability>
+  </Capabilities>
 </Manifest>

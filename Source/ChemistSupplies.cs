@@ -9,7 +9,7 @@ namespace RefinedChemistry
     {
         private static readonly string[] StarterItemIds =
         {
-            Flask.ItemId, Flask.ItemId, Pipette.ImitationItemId, Beaker.ItemId
+            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, Beaker.ItemId
         };
 
         private static void Prefix(PlayerStore __instance, ref string identifier)
@@ -26,7 +26,7 @@ namespace RefinedChemistry
                     break;
                 case "1ml_dropper":
                     if (RNG.Roll(75))
-                        identifier = Pipette.ImitationItemId;
+                        identifier = ImitationPipette.ItemId;
                     break;
                 case "5ml_dropper":
                     if (RNG.Roll(10))

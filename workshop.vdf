@@ -1,43 +1,7 @@
 "workshopitem"
 {
-    "appid"             "4348910"
-    "publishedfileid"   "0"
-    "contentfolder"     "E:\\Steam\\steamapps\\common\\Probably Stolen\\Mods\\RefinedChemistry"
-    "previewfile"       "E:\\Steam\\steamapps\\common\\Probably Stolen\\Modding\\RefinedChemistry\\preview.png"
-    "visibility"        "2"
-    "title"             "RefinedChemistry"
-    "description"       "为 Probably Stolen 添加更方便的化学器具与定量稀释功能。
-
-[h2]主要内容[/h2]
-[list]
-[*]移液枪：使用鼠标滚轮调节容量，范围为 1–10 ml。
-[*]仿制移液枪：同样支持 1–10 ml 调节，具有 100 点耐久，每次成功排液消耗 1 点。
-[*]定量烧杯：使用鼠标滚轮调节容量，范围为 10–100 ml，显示当前液量与剩余容量。
-[*]烧瓶：初始容量 750 ml，可使用化学用品或空烧瓶扩容，最高 9000 ml。支持三种外观，并根据内容物自动显示名称与主要成分占比。
-[*]自动稀释机：选择原液中的目标物质，设定 1–1000 μL/mL 的目标浓度，预览原液、溶剂用量和输出量。无法精确达到目标时会提示最近可达浓度，并要求确认近似稀释。需要空的、未装滤芯的输出容器。
-[*]化学扫描结果显示主要成分及其百分比。
-[/list]
-
-[h2]获取方式[/h2]
-新增器具已加入相应战利品表，也有机会出现在退休化学家的商品中。解锁退休化学家时会获得两只烧瓶、一支仿制移液枪和一只定量烧杯。
-
-[h2]版本与语言[/h2]
-模组版本：0.1.0
-适配游戏版本：0.46
-支持简体中文与英语，无前置模组。
-
-[h2]English[/h2]
-Chemical tools and measured dilution for Probably Stolen.
-[list]
-[*]Pipette and Imitation Pipette: adjustable from 1 to 10 ml using the mouse wheel. The imitation has 100 durability and loses 1 per successful dispense.
-[*]Measuring Beaker: adjustable from 10 to 100 ml, with liquid volume and remaining capacity displayed.
-[*]Flask: starts at 750 ml and expands up to 9000 ml using chemical supplies or empty flasks. Three appearances, with automatic naming based on the contents and the main component's percentage.
-[*]Automatic Diluter: select a substance and set a target concentration of 1–1000 μL/mL. Preview stock, solvent and output volumes. Approximate dilution requires confirmation. Requires an empty output container without a filter.
-[*]Chemical scans display the main component and its percentage.
-[/list]
-Tools can be found in loot and in the retired chemist's stock. Unlocking the retired chemist grants two flasks, an imitation pipette and a measuring beaker.
-
-Mod version: 0.1.0. Game version: 0.46.
-Simplified Chinese and English. No prerequisite mods."
-    "changenote"        "Initial release: 0.1.0."
+	"appid"		"4348910"
+	"publishedfileid"		"3832237098"
+	"contentfolder"		"E:\\Steam\\steamapps\\common\\Probably Stolen\\Mods\\RefinedChemistry"
+	"changenote"		""
 }

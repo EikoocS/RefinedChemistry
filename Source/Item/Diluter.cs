@@ -47,7 +47,7 @@ namespace RefinedChemistry.Item
                 new MachineryPanel(Text("control"), controls, "control"),
                 MachineHelper.Panel(Text("output"), output, "output"));
             machine = ItemDirectory.CreateEmptyItem(ItemId)
-                .SetSpriteAndShapeFromMod(ModEntry.Instance.Manifest.ID, ItemId)
+                .SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, ItemId)
                 .SetContentWindow(window);
             machine.name = Text("name");
             machine.shortDescription = Text("desc");

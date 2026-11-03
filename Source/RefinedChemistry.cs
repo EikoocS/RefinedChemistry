@@ -1,10 +1,11 @@
 using RefinedChemistry.Item;
+using UnityEngine;
 
 namespace RefinedChemistry
 {
-    public class ModEntry : IMod
+    public class RefinedChemistry : IMod
     {
-        public static ModEntry Instance { get; private set; }
+        public static RefinedChemistry Instance { get; private set; }
         public ModManifest Manifest { get; private set; }
         public ModLog Log { get; private set; }
 
@@ -28,10 +29,20 @@ namespace RefinedChemistry
             ModHook.OnNetworkUpgradeUnlocked -= ChemistSupplies.OnUpgradeUnlocked;
         }
 
+        public static LoadedMod getLoadedMod()
+        {
+            return ModLoader.Mods.Find(m => m.Manifest.ID == Instance.Manifest.ID);
+        }
+
+        public static Sprite GetSprite(string key)
+        {
+            return getLoadedMod().Sprites[key];
+        }
+
         private void RegisterItems(ModItemDirectory directory)
         {
-            directory.Add(Pipette.ItemId, Pipette.Create);
-            directory.Add(Pipette.ImitationItemId, Pipette.CreateImitation);
+            directory.Add(Pipette.ItemId, new Pipette().Create);
+            directory.Add(ImitationPipette.ItemId, new ImitationPipette().Create);
             directory.Add(Beaker.ItemId, Beaker.Create);
             directory.Add(Flask.ItemId, Flask.Create);
             directory.Add(Diluter.ItemId, Diluter.Create);

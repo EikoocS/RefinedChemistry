@@ -8,7 +8,7 @@ namespace RefinedChemistry
     {
         public static string Format(string key, params object[] args)
         {
-            return ModHelper.GetLocalized(ModEntry.Instance.Manifest.ID, key, args);
+            return ModHelper.GetLocalized(RefinedChemistry.Instance.Manifest.ID, key, args);
         }
     }
 }

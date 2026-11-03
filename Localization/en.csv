@@ -1,7 +1,7 @@
 pipette_name,Pipette
 pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (1–10 ml).
 pipette_flavor,A favorite tool of chemists in the upper district. Works well. Costs a lot.
-pipette_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml
+pipette_capacity,Capacity: {0} {1} · Liquid: {2:0.###} {3}
 beaker_name,Measuring Beaker
 beaker_desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
 beaker_flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
