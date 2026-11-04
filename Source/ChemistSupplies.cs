@@ -9,14 +9,14 @@ namespace RefinedChemistry
     {
         private static readonly string[] StarterItemIds =
         {
-            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, Beaker.ItemId
+            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, AutoCylinder.ItemId
         };
 
-        private static void Prefix(PlayerStore __instance, ref string identifier)
+        private static bool Prefix(PlayerStore __instance, ref string identifier)
         {
             if (__instance.currentClientInstance?.GetClientBlueprint().identifier != "retired_chemist")
             {
-                return;
+                return true;
             }
             switch (identifier)
             {
@@ -24,23 +24,30 @@ namespace RefinedChemistry
                     if (RNG.Roll(25))
                         identifier = Diluter.ItemId;
                     break;
+                case "chem_finisher":
+                    identifier = ChemFactory.ItemId;
+                    break;
                 case "1ml_dropper":
-                    if (RNG.Roll(75))
-                        identifier = ImitationPipette.ItemId;
+                    identifier = ImitationPipette.ItemId;
                     break;
                 case "5ml_dropper":
-                    if (RNG.Roll(10))
-                        identifier = Pipette.ItemId;
+                    identifier = Pipette.ItemId;
                     break;
                 case "25ml_cylinder":
-                    if (RNG.Roll(75))
-                        identifier = Beaker.ItemId;
-                    break;
                 case "50ml_cylinder":
                 case "100ml_cylinder":
-                    if (RNG.Roll(50))
-                        identifier = Flask.ItemId;
-                    break;
+                    return false;
+            }
+            return true;
+        }
+
+        private static void Postfix(PlayerStore __instance, string identifier)
+        {
+            if (__instance.currentClientInstance?.GetClientBlueprint().identifier == "retired_chemist" &&
+                identifier == ChemFactory.ItemId)
+            {
+                __instance.AddDirectSellingItemToTable(AutoCylinder.ItemId);
+                __instance.AddDirectSellingItemToTable(LabelerFactory.ItemId);
             }
         }
 

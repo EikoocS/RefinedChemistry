@@ -21,12 +21,16 @@ namespace RefinedChemistry
         {
             ModHook.OnModItemDirectoryInit += RegisterItems;
             ModHook.OnNetworkUpgradeUnlocked += ChemistSupplies.OnUpgradeUnlocked;
+            ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
+            ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
         }
 
         public void OnDisable()
         {
             ModHook.OnModItemDirectoryInit -= RegisterItems;
             ModHook.OnNetworkUpgradeUnlocked -= ChemistSupplies.OnUpgradeUnlocked;
+            ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
+            ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
         }
 
         public static LoadedMod getLoadedMod()
@@ -43,9 +47,11 @@ namespace RefinedChemistry
         {
             directory.Add(Pipette.ItemId, new Pipette().Create);
             directory.Add(ImitationPipette.ItemId, new ImitationPipette().Create);
-            directory.Add(Beaker.ItemId, Beaker.Create);
+            directory.Add(AutoCylinder.ItemId, AutoCylinder.Create);
             directory.Add(Flask.ItemId, Flask.Create);
             directory.Add(Diluter.ItemId, Diluter.Create);
+            directory.Add(ChemFactory.ItemId, ChemFactory.Create);
+            directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
             Flask.RegisterUpgradeMaterials(directory);
         }
     }

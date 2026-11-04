@@ -2,10 +2,10 @@ pipette_name,Pipette
 pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.
 pipette_flavor,A favorite tool of chemists in the upper district. Works well. Costs a lot.
 pipette_capacity,Capacity: {0} {1} · Liquid: {2:0.###} {3}
-beaker_name,Measuring Beaker
-beaker_desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
-beaker_flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
-beaker_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
+auto_cylinder_name,Measuring Beaker
+auto_cylinder_desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
+auto_cylinder_flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
+auto_cylinder_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
 imitation_pipette_name,Imitation Pipette
 imitation_pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.\nEach successful dispense uses 1 durability point.
 imitation_pipette_flavor,A knockoff made by chemists in the middle district. Keeping impurities out took all they had. Not much to look at and not built to last.
@@ -38,3 +38,16 @@ diluter_solvent_empty,Insert a solvent container with liquid
 diluter_solvent_concentration,The concentration of this substance in the solvent must be below the target
 diluter_precision,Cannot dilute to the target concentration
 diluter_minimum_volume,Insufficient liquid or output capacity
+chem_factory_name,Chemical Forming Factory
+chem_factory_desc,Produces chemical formulations in batches.
+chem_factory_inputs,Ingredients
+chem_factory_source,Primary
+chem_factory_auxiliary,Auxiliary
+chem_factory_purity,Purity
+chem_factory_quantity,Quantity
+chem_factory_purity_value,{0}% · {1}
+chem_factory_consumption,Primary {0:0.###} ml\nAuxiliary {1:0.###} ml
+labeler_factory_name,Label Printing Factory
+labeler_factory_desc,Use [Toggle] to select a chemical grade label.\nHold the mouse button and drag across chemicals to apply labels continuously.
+labeler_factory_grade,Printing label: {0}
+labeler_factory_same_label,Label matches the selected grade

@@ -5,16 +5,16 @@ namespace RefinedChemistry.Item
 {
     [WaterContainer(ItemId)]
     [ScrollAble(ItemId, nameof(OnScroll), nameof(GetCapacityText))]
-    internal static class Beaker
+    internal static class AutoCylinder
     {
-        internal const string ItemId = "beaker";
+        internal const string ItemId = "auto_cylinder";
 
         internal const int maxCapacity = 100 * 1000;
         internal const int minCapacity = 10 * 1000;
 
         internal static GameItem Create()
         {
-            var item = ItemHelper.Create(ItemId);
+            var item = ItemHelper.Create(ItemId, "beaker");
             WaterHelper.InitLiquidContainerItem(item, maxCapacity / 1000, 150, isGraduated: true);
             item.getItemSpriteModifierForItemFunc = GetLiquidSprites;
             item.SetShape(new GridShapeBuilder().SetData([ 1, 1, 1, 1 ], 2));
@@ -27,7 +27,7 @@ namespace RefinedChemistry.Item
             float capacityMl = WaterHelper.GetTotalCapacity(item) / 1000f;
             float totalMl = WaterHelper.GetTotalVolume(item) / 1000f;
             float freeMl = Mathf.Max(0, WaterHelper.GetFreeCapacity(item)) / 1000f;
-            string text = LocalizationHelper.Format("beaker_capacity", capacityMl, totalMl, freeMl);
+            string text = LocalizationHelper.Format("auto_cylinder_capacity", capacityMl, totalMl, freeMl);
             return text;
         }
 
@@ -51,7 +51,7 @@ namespace RefinedChemistry.Item
             }
 
             string color = WaterHelper.GetLiquidContainerColor(item);
-            string spriteKey = ItemId + "_" + Liquid.GetColorBase(color);
+            string spriteKey = "beaker_" + Liquid.GetColorBase(color);
             if (volume < WaterHelper.GetTotalCapacity(item))
             {
                 spriteKey += "_half";

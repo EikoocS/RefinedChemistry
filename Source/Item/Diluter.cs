@@ -20,8 +20,8 @@ namespace RefinedChemistry.Item
         private readonly MachineryText warning = new MachineryText(uppercase: false)
             .SetColor(new Color(1f, 0.75f, 0.25f));
         private readonly MachineryButton confirm = new MachineryButton(Text("confirm"));
-        private readonly DiluterControl selection;
-        private readonly DiluterControl amount;
+        private readonly MachineryControl selection;
+        private readonly MachineryControl amount;
         private readonly GameItem machine;
         private readonly PixelWindow window;
         private DilutionRecipe displayedRecipe;
@@ -30,8 +30,8 @@ namespace RefinedChemistry.Item
 
         private Diluter()
         {
-            selection = new DiluterControl(CustomUIManager.ElementKind.Dropdown);
-            amount = new DiluterControl(CustomUIManager.ElementKind.Input);
+            selection = new MachineryControl(CustomUIManager.ElementKind.Dropdown);
+            amount = new MachineryControl(CustomUIManager.ElementKind.Input);
             amount.input.contentType = TMP_InputField.ContentType.IntegerNumber;
             amount.input.characterLimit = 4;
             amount.input.SetTextWithoutNotify("1");
@@ -74,7 +74,7 @@ namespace RefinedChemistry.Item
                 slot.onSlotAddItemEndFunc += (_, _, _) => Refresh();
                 slot.onSlotRemoveItemEndFunc += (_, _, _) => Refresh();
             }
-            window.handler.gameObject.AddComponent<DiluterRefresh>().refresh = Refresh;
+            window.handler.gameObject.AddComponent<MachineryRefresh>().refresh = Refresh;
             Refresh();
         }
 
@@ -164,7 +164,9 @@ namespace RefinedChemistry.Item
                 return "output_filter";
             string selected = machine.GetTagReadonly(SelectedTag).GetString();
             int index = Liquid.Liquids.FindIndex(liquid => liquid.identifier == selected);
-            return DilutionRecipe.Calculate(Parts(source.childItem), Parts(solvent.childItem), index,
+            int[] solventParts = solvent.childItem == null ? new int[Liquid.Liquids.Count] :
+                WaterHelper.GetLiquidParts(solvent.childItem);
+            return DilutionRecipe.Calculate(WaterHelper.GetLiquidParts(source.childItem), solventParts, index,
                 target, WaterHelper.GetFreeCapacity(output.childItem), WaterHelper.SplitProportionally, out recipe);
         }
 
@@ -206,15 +208,6 @@ namespace RefinedChemistry.Item
             WaterHelper.UpdateWaterBottleSound(to);
         }
 
-        private static int[] Parts(GameItem container)
-        {
-            var parts = new int[Liquid.Liquids.Count];
-            if (container != null)
-                for (int i = 0; i < parts.Length; i++)
-                    parts[i] = container.GetTagReadonly(Liquid.Liquids[i].currentPart).GetInt();
-            return parts;
-        }
-
         private static GameSlotInventory CreateSlot()
         {
             var slot = new GameSlotInventory();
@@ -226,21 +219,5 @@ namespace RefinedChemistry.Item
 
         private static string Text(string key, params object[] args) =>
             LocalizationHelper.Format("diluter_" + key, args);
-    }
-
-    internal sealed class DiluterRefresh : MonoBehaviour
-    {
-        internal Action refresh;
-        private float nextRefresh;
-
-        private void OnEnable() => refresh?.Invoke();
-
-        private void Update()
-        {
-            if (Time.unscaledTime < nextRefresh)
-                return;
-            nextRefresh = Time.unscaledTime + 0.25f;
-            refresh?.Invoke();
-        }
     }
 }

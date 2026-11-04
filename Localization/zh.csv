@@ -2,10 +2,10 @@ pipette_name,移液枪
 pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。
 pipette_flavor,上层区化学家偏爱的化学器械，好用，很贵。
 pipette_capacity,容量：{0} {1} · 液量：{2:0.###} {3}
-beaker_name,定量烧杯
-beaker_desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
-beaker_flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
-beaker_capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
+auto_cylinder_name,定量烧杯
+auto_cylinder_desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
+auto_cylinder_flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
+auto_cylinder_capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
 imitation_pipette_name,仿制移液枪
 imitation_pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。\n每次成功排液消耗 1 点耐久。
 imitation_pipette_flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。
@@ -38,3 +38,16 @@ diluter_solvent_empty,请放入含液体的溶剂容器
 diluter_solvent_concentration,溶剂中该物质的浓度必须低于目标浓度
 diluter_precision,当前无法稀释到目标浓度
 diluter_minimum_volume,原料或输出容量不足
+chem_factory_name,化学制剂成型工厂
+chem_factory_desc,批量制作化学制剂。
+chem_factory_inputs,原料
+chem_factory_source,主料
+chem_factory_auxiliary,辅料
+chem_factory_purity,纯度
+chem_factory_quantity,数量
+chem_factory_purity_value,{0}% · {1}
+chem_factory_consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
+labeler_factory_name,标签打印工厂
+labeler_factory_desc,使用[切换]选择化学品品质标签。\n使用时按住鼠标拖过化学品可连续贴标。
+labeler_factory_grade,打印标签：{0}
+labeler_factory_same_label,标签与打印目标一致

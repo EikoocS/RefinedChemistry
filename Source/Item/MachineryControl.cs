@@ -3,20 +3,21 @@ using UnityEngine;
 
 namespace RefinedChemistry.Item
 {
-    internal sealed class DiluterControl : PixelElement
+    internal sealed class MachineryControl : PixelElement
     {
         internal TMP_InputField input { get; }
         internal TMP_Dropdown dropdown { get; }
         public bool canResize => false;
-        public int widthPixels => 130;
+        public int widthPixels { get; }
         public int heightPixels => 18;
         public TreeNodeRender handler { get; }
         public RectTransform rectTransform => handler.rectTransform;
         public TreeNodeRender inner => handler;
 
-        internal DiluterControl(CustomUIManager.ElementKind kind)
+        internal MachineryControl(CustomUIManager.ElementKind kind, int width = 130)
         {
-            handler = TreeNodeRender.Instantiate(this, "DiluterControl");
+            widthPixels = width;
+            handler = TreeNodeRender.Instantiate(this, "MachineryControl");
             handler.image.enabled = false;
             var root = CustomUIManager.Instance.SpawnElement(kind, handler.transform, null, kind.ToString());
             CustomUIMachineryStyle.Reskin(root);
