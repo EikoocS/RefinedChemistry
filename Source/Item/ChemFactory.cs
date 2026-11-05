@@ -13,16 +13,26 @@ namespace RefinedChemistry.Item
         internal const string ItemId = "chem_factory";
         private const string PurityTag = "CHEM_FACTORY_PURITY";
         private const string QuantityTag = "CHEM_FACTORY_QUANTITY";
+        private static readonly int[] GradePurities =
+        [
+            ChemicalProductHelper.PURE_GRADE,
+            ChemicalProductHelper.PHARMA_GRADE,
+            ChemicalProductHelper.NEAR_PHARMA_GRADE,
+            ChemicalProductHelper.STREET_STANDARD_GRADE,
+            ChemicalProductHelper.CUT_PRODUCT_GRADE,
+            ChemicalProductHelper.JUNK_GRADE,
+            ChemicalProductHelper.STARCH_GRADE
+        ];
 
         private readonly GameGridInventory modules = new(6, 6);
         private readonly GameSlotInventory source = CreateSlot();
         private readonly GameSlotInventory auxiliary = CreateSlot();
         private readonly GameGridInventory output = new(10, 10);
-        private readonly MachineryControl purity = new(CustomUIManager.ElementKind.Input, 42);
+        private readonly MachineryControl purity = new(CustomUIManager.ElementKind.Dropdown);
+        private readonly List<int> purityOptions = new();
         private readonly MachineryControl quantity = new(CustomUIManager.ElementKind.Input, 28);
         private readonly MachineryText fixedPurity = Label();
         private readonly MachineryText recipeLabel = Label();
-        private readonly MachineryText purityPreview = Label();
         private readonly MachineryText consumption = Label();
         private readonly MachineryText maximumPurity = Label();
         private readonly MachineryText maximumQuantity = Label();
@@ -31,14 +41,13 @@ namespace RefinedChemistry.Item
         private readonly GameItem machine;
         private readonly PixelWindow window;
         private ChemFactoryPlan plan;
-        private (string Inputs, double Target, int Quantity) planKey;
+        private (string Inputs, double? Target, int Quantity) planKey;
         private string shapeRecipe;
         private GridShape productShape;
         private int outputCapacity = -1;
         private bool executing;
         private bool hadContents;
         private bool editablePurity;
-        private bool purityFocused;
         private bool refreshLock;
         private bool displayDirty = true;
 
@@ -56,9 +65,6 @@ namespace RefinedChemistry.Item
 
         private ChemFactory()
         {
-            purity.input.contentType = TMP_InputField.ContentType.DecimalNumber;
-            purity.input.characterLimit = 7;
-            ((TMP_Text)purity.input.placeholder).fontStyle = FontStyles.Normal;
             quantity.input.contentType = TMP_InputField.ContentType.IntegerNumber;
             quantity.input.characterLimit = 3;
             quantity.input.SetTextWithoutNotify("1");
@@ -67,7 +73,7 @@ namespace RefinedChemistry.Item
             var quantityRow = MachineryStack.Horizontal(Label(Text("quantity")),
                 quantity, Label("/"), maximumQuantity);
             var controls = MachineryStack.Vertical(configure, recipeLabel,
-                purityRow, purityPreview, quantityRow, consumption, produce);
+                purityRow, quantityRow, consumption, produce);
             window = MachineHelper.CreateMachineryWindow(true,
                 MachineHelper.Panel(NativeText("label_module"), modules, "module"),
                 new MachineryPanel(Text("inputs"), MachineryStack.Vertical(
@@ -92,8 +98,11 @@ namespace RefinedChemistry.Item
             output.mayInventoryAddItemFunc = ContainerHelper.CanContainerStoredItem;
             configure.SetCallback(() => ChemFinisherUIManager.Instance.OpenUI(machine));
             produce.SetCallback(Execute);
-            purity.input.onValueChanged.AddListener(value => EditPurity(value, false));
-            purity.input.onEndEdit.AddListener(value => EditPurity(value, true));
+            purity.dropdown.onValueChanged.AddListener(index =>
+            {
+                SavePurity(GradePurities[purityOptions[index]]);
+                RefreshDisplay();
+            });
             quantity.input.onValueChanged.AddListener(value => EditQuantity(value, false));
             quantity.input.onEndEdit.AddListener(value => EditQuantity(value, true));
             foreach (GameInventory inventory in new GameInventory[] { modules, source, auxiliary, output })
@@ -109,22 +118,30 @@ namespace RefinedChemistry.Item
         private ChemFinisherRecipe Recipe => ChemFinisherRecipe.GetRecipeById(
             machine.GetTagReadonly(MachineChemFinisher.SELECTED_CHEM_ID_TAG).GetString());
 
-        private void EditPurity(string value, bool finished)
+        private double UpdatePurityOptions(double maximum)
         {
-            bool valid = TryPurity(value, out double target);
-            if (finished)
+            var available = new List<int>();
+            for (int i = 0; i < GradePurities.Length; i++)
+                if (GradePurities[i] <= maximum)
+                    available.Add(i);
+            if (!purityOptions.SequenceEqual(available))
             {
-                if (!valid)
-                {
-                    SavePurity(0);
-                    purity.input.SetTextWithoutNotify("");
-                }
+                purity.dropdown.Hide();
+                purityOptions.Clear();
+                purityOptions.AddRange(available);
+                purity.dropdown.ClearOptions();
+                purity.dropdown.AddOptions(available.Select(index =>
+                    ItemConditionList.conditionChemicalPurity[index].display + " (" + GradePurities[index] + "%)").ToList());
             }
-            else if (valid)
-                SavePurity(target);
-            RefreshDisplay();
-            if (!finished && valid && plan?.TargetPurity == 0)
-                purity.input.SetTextWithoutNotify(Percent(plan.MaximumPurity));
+            double target = machine.GetTagReadonly(PurityTag).GetDouble();
+            int selected = machine.IsTag(PurityTag) ? available.FindIndex(index => GradePurities[index] == target) : -1;
+            if (selected < 0)
+                selected = 0;
+            target = GradePurities[available[selected]];
+            SavePurity(target);
+            purity.dropdown.SetValueWithoutNotify(selected);
+            purity.dropdown.RefreshShownValue();
+            return target;
         }
 
         private void EditQuantity(string value, bool finished)
@@ -141,7 +158,7 @@ namespace RefinedChemistry.Item
 
         private void SavePurity(double target)
         {
-            if (machine.GetTagReadonly(PurityTag).GetDouble() != target)
+            if (!machine.IsTag(PurityTag) || machine.GetTagReadonly(PurityTag).GetDouble() != target)
                 machine.ModifyTag(PurityTag, state => state.Enable().SetDouble(target));
         }
 
@@ -165,11 +182,6 @@ namespace RefinedChemistry.Item
             try
             {
                 UpdateContents();
-                bool canEdit = auxiliary.childItem != null && !WaterHelper.IsEmpty(auxiliary.childItem);
-                displayDirty |= editablePurity != canEdit;
-                editablePurity = canEdit;
-                displayDirty |= purityFocused != purity.input.isFocused;
-                purityFocused = purity.input.isFocused;
                 var recipe = Recipe;
                 displayDirty |= UpdatePlan(recipe);
                 if (!displayDirty)
@@ -202,12 +214,7 @@ namespace RefinedChemistry.Item
             purity.handler.gameObject.SetActive(editablePurity);
             fixedPurity.handler.gameObject.SetActive(!editablePurity);
             layoutChanged |= SetText(recipeLabel, recipe?.displayName ?? NativeText("no_target"));
-            double target = editablePurity ? machine.GetTagReadonly(PurityTag).GetDouble() : 0;
-            if (!purity.input.isFocused)
-                purity.input.SetTextWithoutNotify(target == 0 ? "" : Percent(target));
             string maxText = plan == null ? "—" : Percent(plan.MaximumPurity);
-            ((TMP_Text)purity.input.placeholder).text = maxText;
-            purity.input.placeholder.gameObject.SetActive(!purity.input.isFocused);
             layoutChanged |= SetText(fixedPurity, maxText);
             layoutChanged |= SetText(maximumPurity, maxText + "%");
 
@@ -219,30 +226,15 @@ namespace RefinedChemistry.Item
 
             if (count > 0)
             {
-                var minimum = plan.Products[0];
-                double maximum = minimum.Purity;
-                for (int i = 1; i < count; i++)
-                {
-                    var product = plan.Products[i];
-                    if (product.Purity < minimum.Purity)
-                        minimum = product;
-                    maximum = Math.Max(maximum, product.Purity);
-                }
-                string value = minimum.Purity == maximum ? Percent(minimum.Purity) :
-                    Percent(minimum.Purity) + "–" + Percent(maximum);
-                layoutChanged |= SetText(purityPreview, Text("purity_value", value, minimum.Grade));
                 layoutChanged |= SetText(consumption, Text("consumption",
                     plan.SourceVolume / 1000.0, plan.AuxiliaryVolume / 1000.0));
             }
             else
             {
-                layoutChanged |= SetText(purityPreview, "");
                 layoutChanged |= SetText(consumption, "");
             }
             bool validQuantity = int.TryParse(quantity.input.text, out int requested) && requested > 0 && requested <= maxCount;
-            bool validPurity = !editablePurity || string.IsNullOrWhiteSpace(purity.input.text) ||
-                TryPurity(purity.input.text, out _);
-            produce.SetDisabled(!validQuantity || !validPurity || count == 0);
+            produce.SetDisabled(!validQuantity || count == 0);
             if (layoutChanged)
                 window.Validate();
         }
@@ -261,36 +253,39 @@ namespace RefinedChemistry.Item
             {
                 bool changed = plan != null || planKey.Inputs != recipe?.identifier;
                 plan = null;
+                editablePurity = false;
                 planKey = (recipe?.identifier, 0, 0);
                 return changed;
             }
             int[] sourceParts = WaterHelper.GetLiquidParts(source.childItem);
             int[] auxiliaryParts = auxiliary.childItem == null ? new int[Liquid.Liquids.Count] :
                 WaterHelper.GetLiquidParts(auxiliary.childItem);
-            double target = editablePurity ? machine.GetTagReadonly(PurityTag).GetDouble() : 0;
             int loss = MachineChemFinisher.GetLoss(machine);
             int capacity = OutputCapacity(recipe);
             bool auxiliaryWet = recipe.isRequireDry && auxiliary.childItem != null && WaterHelper.IsWet(auxiliary.childItem);
             if (auxiliaryWet)
                 Array.Clear(auxiliaryParts, 0, auxiliaryParts.Length);
+            bool canEdit = auxiliaryParts.Sum() > 0;
+            displayDirty |= editablePurity != canEdit;
+            editablePurity = canEdit;
+            int active = Liquid.Liquids.FindIndex(liquid => liquid.identifier == recipe.activeIngredientId);
+            double? target = editablePurity ? UpdatePurityOptions(
+                ChemFactoryPlan.GetMaximumPurity(sourceParts, recipe.requiredVolume, active, loss)) : null;
             int quantity = machine.IsTag(QuantityTag) ? Math.Max(1, machine.GetTagReadonly(QuantityTag).GetInt()) : 1;
             var key = (Inputs: recipe.identifier + ":" + loss + ":" + capacity + ":" + auxiliaryWet +
                 ":" + string.Join(",", sourceParts) + ":" + string.Join(",", auxiliaryParts), Target: target, Quantity: quantity);
             if (key == planKey)
                 return false;
-            var preview = new ChemicalPreview(recipe.activeIngredientId);
             plan = ChemFactoryPlan.Calculate(sourceParts, auxiliaryParts, recipe.requiredVolume,
-                Liquid.Liquids.FindIndex(liquid => liquid.identifier == recipe.activeIngredientId),
+                active,
                 Liquid.Liquids.FindIndex(liquid => liquid.identifier == "physical_contaminant"),
-                loss, target, capacity, quantity, preview.Evaluate);
-            if (target != plan.TargetPurity)
-                SavePurity(plan.TargetPurity);
+                loss, target, capacity, quantity);
             if (plan.MaximumCount > 0)
             {
                 quantity = plan.Products.Count;
                 SaveQuantity(quantity);
             }
-            planKey = (key.Inputs, plan.TargetPurity, quantity);
+            planKey = (key.Inputs, target, quantity);
             return true;
         }
 
@@ -304,7 +299,7 @@ namespace RefinedChemistry.Item
             executing = true;
             configure.SetDisabled(true);
             produce.SetDisabled(true);
-            purity.input.interactable = quantity.input.interactable = false;
+            purity.dropdown.interactable = quantity.input.interactable = false;
             source.LockInv();
             auxiliary.LockInv();
             modules.LockInv();
@@ -329,7 +324,7 @@ namespace RefinedChemistry.Item
                         yield break;
                     var product = DirectoryMaster.Item(recipeId);
                     products.Add(product);
-                    SetComposition(product, portion.Parts);
+                    SetComposition(product, portion);
                     ChemicalProductHelper.GradeProduct(product);
                     if (Time.realtimeSinceStartupAsDouble >= deadline)
                     {
@@ -368,7 +363,7 @@ namespace RefinedChemistry.Item
                 if (!((GameItemElement)machine).IsDestroyed())
                 {
                     configure.SetDisabled(false);
-                    purity.input.interactable = quantity.input.interactable = true;
+                    purity.dropdown.interactable = quantity.input.interactable = true;
                     Refresh();
                 }
             }
@@ -429,12 +424,6 @@ namespace RefinedChemistry.Item
             slot.slotPriorityFunc = (_, _, _) => 5;
             slot.SetBackgroundFadeSprite("Items/water_container4", "xl");
             return slot;
-        }
-
-        private static bool TryPurity(string text, out double target)
-        {
-            target = 0;
-            return double.TryParse(text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out target) && target > 0;
         }
 
         private static string Percent(double value) =>

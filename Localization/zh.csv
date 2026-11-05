@@ -45,7 +45,6 @@ chem_factory_source,主料
 chem_factory_auxiliary,辅料
 chem_factory_purity,纯度
 chem_factory_quantity,数量
-chem_factory_purity_value,{0}% · {1}
 chem_factory_consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
 labeler_factory_name,标签打印工厂
 labeler_factory_desc,使用[切换]选择化学品品质标签。\n使用时按住鼠标拖过化学品可连续贴标。

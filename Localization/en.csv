@@ -45,7 +45,6 @@ chem_factory_source,Primary
 chem_factory_auxiliary,Auxiliary
 chem_factory_purity,Purity
 chem_factory_quantity,Quantity
-chem_factory_purity_value,{0}% · {1}
 chem_factory_consumption,Primary {0:0.###} ml\nAuxiliary {1:0.###} ml
 labeler_factory_name,Label Printing Factory
 labeler_factory_desc,Use [Toggle] to select a chemical grade label.\nHold the mouse button and drag across chemicals to apply labels continuously.
