@@ -6,47 +6,36 @@ namespace RefinedChemistry
 {
     internal sealed class ChemFactoryPlan
     {
-        internal sealed class Product
-        {
-            internal int[] Parts;
-            internal double Purity;
-            internal string Grade;
-        }
-
-        internal readonly List<Product> Products = new();
+        internal readonly List<int[]> Products = new();
         internal int[] SourceParts;
         internal int[] AuxiliaryParts;
         internal double MaximumPurity;
-        internal double TargetPurity;
         internal int MaximumCount;
         internal int SourceVolume;
         internal int AuxiliaryVolume;
 
         internal static ChemFactoryPlan Calculate(int[] source, int[] auxiliary, int volume,
-            int active, int contaminant, int loss, double target, int capacity, int quantity,
-            Func<int[], (double Purity, string Grade)> evaluate)
+            int active, int contaminant, int loss, double? target, int capacity, int quantity)
         {
             var plan = new ChemFactoryPlan();
             int sourceTotal = source.Sum();
             if (sourceTotal == 0)
                 return plan;
 
-            int maximumActive = (int)((long)volume * source[active] * (100 - loss) / (sourceTotal * 100L));
-            plan.MaximumPurity = (double)maximumActive / volume * 100;
-            plan.TargetPurity = target >= plan.MaximumPurity ? 0 : target;
+            plan.MaximumPurity = GetMaximumPurity(source, volume, active, loss);
             int auxiliaryTotal = auxiliary.Sum();
             int sourceVolume = volume;
-            if (plan.TargetPurity > 0)
+            if (target.HasValue && target.Value < plan.MaximumPurity)
             {
                 if (auxiliaryTotal == 0)
                     return plan;
                 decimal concentrationDifference = (decimal)source[active] * auxiliaryTotal -
                     (decimal)auxiliary[active] * sourceTotal;
                 if (concentrationDifference <= 0 ||
-                    (decimal)plan.TargetPurity * auxiliaryTotal < (decimal)auxiliary[active] * (100 - loss))
+                    (decimal)target.Value * auxiliaryTotal < (decimal)auxiliary[active] * (100 - loss))
                     return plan;
-                decimal requiredActive = Math.Ceiling(volume * (decimal)plan.TargetPurity / 100);
-                if ((double)requiredActive / volume * 100 < plan.TargetPurity)
+                decimal requiredActive = Math.Ceiling(volume * (decimal)target.Value / 100);
+                if ((double)requiredActive / volume * 100 < target.Value)
                     requiredActive++;
                 decimal beforePollution = Math.Ceiling(requiredActive * 100 / (100 - loss));
                 sourceVolume = (int)Math.Clamp(Math.Ceiling(
@@ -82,10 +71,15 @@ namespace RefinedChemistry
                 for (int j = 0; j < parts.Length; j++)
                     finished[j] -= parts[j];
                 parts[active] = activeAmount;
-                var result = evaluate(parts);
-                plan.Products.Add(new Product { Parts = parts, Purity = result.Purity, Grade = result.Grade });
+                plan.Products.Add(parts);
             }
             return plan;
+        }
+
+        internal static double GetMaximumPurity(int[] source, int volume, int active, int loss)
+        {
+            int maximumActive = (int)((long)volume * source[active] * (100 - loss) / (source.Sum() * 100L));
+            return (double)maximumActive / volume * 100;
         }
 
         private static int[] Split(int[] parts, int volume, int active, bool roundUp)
