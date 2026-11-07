@@ -1,7 +1,7 @@
 item.adjustable_cylinder.capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
-item.adjustable_cylinder.desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
+item.adjustable_cylinder.desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–200 ml）
 item.adjustable_cylinder.flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
-item.adjustable_cylinder.name,定量烧杯
+item.adjustable_cylinder.name,可变量筒
 item.chem_factory.auxiliary,辅料
 item.chem_factory.consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
 item.chem_factory.desc,批量制作化学制剂。

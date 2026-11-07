@@ -11,15 +11,14 @@ namespace RefinedChemistry.Item
     {
         internal const string ItemId = "adjustable_cylinder";
 
-        internal const int maxCapacity = 100 * 1000;
+        internal const int maxCapacity = 200 * 1000;
         internal const int minCapacity = 10 * 1000;
 
         internal static GameItem Create()
         {
-            var item = ItemHelper.Create(ItemId, "beaker");
+            var item = ItemHelper.Create(ItemId);
             WaterHelper.InitLiquidContainerItem(item, maxCapacity / 1000, 150, isGraduated: true);
             item.getItemSpriteModifierForItemFunc = GetLiquidSprites;
-            item.SetShape(new GridShapeBuilder().SetData([ 1, 1, 1, 1 ], 2));
             AudioHelper.InitGlass(item);
             return item;
         }
@@ -41,6 +40,7 @@ namespace RefinedChemistry.Item
             {
                 item.ModifyTag(WaterHelper.LIQUID_CONTAINER_CAPACITY,
                     state => state.SetInt(targetCapacity));
+                SpriteHelper.UpdateWaterContainerSprite(item);
             }
         }
 
@@ -52,16 +52,17 @@ namespace RefinedChemistry.Item
                 return null;
             }
 
+            float fill = (float)volume / WaterHelper.GetTotalCapacity(item);
+            int level = fill <= 0.1f ? 10 : fill <= 0.25f ? 25 : fill <= 0.5f ? 50 :
+                fill <= 0.75f ? 75 : fill <= 0.9f ? 90 : 100;
             string color = WaterHelper.GetLiquidContainerColor(item);
-            string spriteKey = "beaker_" + Liquid.GetColorBase(color);
-            if (volume < WaterHelper.GetTotalCapacity(item))
-            {
-                spriteKey += "_half";
-            }
+            string spriteKey = ItemId + "_" + Liquid.GetColorBase(color) + "_" + level;
             return new List<ItemSpriteModifier>
             {
                 new ItemSpriteModifier(RefinedChemistry.GetSprite(spriteKey), Vector2.zero,
-                    color: MetaHelper.HexToColor(color))
+                    color: MetaHelper.HexToColor(color)),
+                new ItemSpriteModifier(RefinedChemistry.GetSprite(ItemId + "_hl_" + level),
+                    Vector2.zero, priority: 1)
             };
         }
     }

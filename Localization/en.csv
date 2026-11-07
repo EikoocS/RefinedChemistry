@@ -1,5 +1,5 @@
 item.adjustable_cylinder.capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
-item.adjustable_cylinder.desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
+item.adjustable_cylinder.desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–200 ml).
 item.adjustable_cylinder.flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
 item.adjustable_cylinder.name,Measuring Beaker
 item.chem_factory.auxiliary,Auxiliary
