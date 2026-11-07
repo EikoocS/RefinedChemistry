@@ -19,16 +19,33 @@ namespace RefinedChemistry
 
         public void OnEnable()
         {
+            DrLiang.Enable();
+            DrLiangPhone.Enable();
+            ModHelper.AddDebugFunction(Manifest.ID, CustomUIDebugPanel.CATEGORY_SPECIAL,
+                "RefinedChemistry", DebugMenu.Open, tall: true);
             ModHook.OnModItemDirectoryInit += RegisterItems;
             ModHook.OnNetworkUpgradeUnlocked += ChemistSupplies.OnUpgradeUnlocked;
+            ModHook.OnNetworkUpgradeUnlocked += DrLiang.OnUpgradeUnlocked;
+            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueFirstVisitIfEligible;
+            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueNameRevealVisitIfEligible;
+            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueWeeklyBuyerIfEligible;
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
         }
 
         public void OnDisable()
         {
+            DrLiangPhone.Disable();
+            DrLiang.Disable();
+            ModHelper.RemoveDebugFunctions(Manifest.ID);
+            CustomUIManager.Instance?.CloseWindow(DebugMenu.WindowId);
+            CustomUIManager.Instance?.CloseWindow(SaveDataDebugMenu.WindowId);
             ModHook.OnModItemDirectoryInit -= RegisterItems;
             ModHook.OnNetworkUpgradeUnlocked -= ChemistSupplies.OnUpgradeUnlocked;
+            ModHook.OnNetworkUpgradeUnlocked -= DrLiang.OnUpgradeUnlocked;
+            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueFirstVisitIfEligible;
+            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueNameRevealVisitIfEligible;
+            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueWeeklyBuyerIfEligible;
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
         }
@@ -52,6 +69,7 @@ namespace RefinedChemistry
             directory.Add(Diluter.ItemId, Diluter.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
+            directory.Add(DrLiangCard.ItemId, DrLiangCard.Create);
             directory.Add(ExperimentalChemical.ItemId, ExperimentalChemical.Create);
             MedicalTechItems.Register(directory);
             Flask.RegisterUpgradeMaterials(directory);

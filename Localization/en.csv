@@ -50,6 +50,54 @@ labeler_factory_name,Label Printing Factory
 labeler_factory_desc,Use [Toggle] to select a chemical grade label.\nHold the mouse button and drag across chemicals to apply labels continuously.
 labeler_factory_grade,Printing label: {0}
 labeler_factory_same_label,Label matches the selected grade
+dr_liang_name_unknow,Lower District Doctor?
+dr_liang_name,Dr. Liang
+dr_liang_name_reveal_dialogue,[Placeholder: introduces himself as {0}]
+dr_liang_name_reveal_gift_dialogue,[Placeholder: gives a locked unknown medical crate and a disposable keycard before leaving]
+dr_liang_first_visit_dialogue,I hear you have experience making chemicals.\nPerhaps we could work together.\nPlease accept this small gift.\nCall this number if you need chemical tools or raw materials.
+dr_liang_card_name,Plain Paper Business Card
+dr_liang_card_desc,2324
+dr_liang_card_flavor,This barely qualifies as a business card. It's just a torn scrap of white paper.
+dr_liang_phone_greeting,Hello?
+dr_liang_phone_tools,I need chemical tools.
+dr_liang_phone_materials,I need chemical raw materials.
+dr_liang_phone_visit_reply,I'll visit tomorrow.
+dr_liang_sell_dialogue,I brought what you need.
+dr_liang_buy_dialogue,I need medical supplies.\nIncluding the ones you have "trouble selling".\nBut you'll need to show some "goodwill" too.\nIt's better for both of us.
+dr_liang_buy_deal_accepted_dialogue,All right. We have a deal.
+dr_liang_buy_done_dialogue,A pleasure doing business.
+dr_liang_buy_right_item_dialogue,Yes.
+dr_liang_buy_wrong_item_dialogue,No.
+dr_liang_buy_expose_chemical_dialogue,Don't try any tricks. I know this game better than you do.
+dr_liang_sincerity,“Goodwill”
+dr_liang_channel_markup,Channel Markup
+dr_liang_deal_accepted_dialogue,All right.
+dr_liang_bargain_accept_grateful_dialogue,You're a good person. Thank you.
+dr_liang_bargain_accept_very_grateful_dialogue,Are you serious? This is practically charity!
+dr_liang_bargain_accept_reluctant_dialogue,Fine.
+dr_liang_bargain_accept_very_reluctant_dialogue,All right. But just this once.
+dr_liang_bargain_reject_dialogue,No.
+dr_liang_bargain_hard_reject_dialogue,Absolutely not.
+dr_liang_bargain_leave_dialogue,I don't think we can do business right now.
+dr_liang_bargain_budget_increase_dialogue,Then I can arrange for a little more.
+dr_liang_bargain_budget_decrease_dialogue,Then I'll have to prepare a little less.
+dr_liang_bargain_talk_bad_dialogue,Nothing good comes of greed.
+dr_liang_bargain_innocent_blackmail_dialogue,I won't accept that.
+dr_liang_bargain_false_threaten_dialogue,Do I look like one?
+dr_liang_out_of_budget_dialogue,I can only buy another {0} credits' worth this time.
+dr_liang_no_contraband_dialogue,No. I don't want that.
+dr_liang_all_done_dialogue,All right.
+dr_liang_all_done_followup_dialogue,A pleasure doing business.
+dr_liang_after_buying_dialogue,Anything else catch your eye?
+dr_liang_after_selling_dialogue,Have you got any more ready?
+dr_liang_shutter_down_dialogue,What are you doing?
+dr_liang_shutter_down_followup_dialogue,Is that any way to see a guest out?
+dr_liang_alarm_reaction_dialogue,...
+dr_liang_arrest_dialogue,...
+dr_liang_report_charge,Charge: Former employment at an illegal enterprise
+dr_liang_report_name,Liang
+dr_liang_gunpoint_dialogue,...
+dr_liang_gunpoint_followup_dialogue,...
 experimental_chemical_name,Chemical Supplies (Experimental)
 experimental_chemical_desc,Can be unpacked into higher-quality supplies for basic chemical crafting.\nA collection of common chemical supplies you would likely find in middle- and upper-district laboratories.
 experimental_chemical_flavor,Noticeably higher-quality chemical supplies that are hard to obtain through ordinary channels.

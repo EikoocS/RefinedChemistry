@@ -1,0 +1,20 @@
+{
+  "id": "dr_liang_card",
+  "background": "refined_chemistry:dr_liang_card",
+  "width": 200,
+  "height": 125,
+  "zoomable": false,
+  "chrome": [
+    {
+      "type": "button",
+      "action": "close",
+      "id": "close",
+      "sprite": "refined_chemistry:paper_close",
+      "x": 171,
+      "y": 13,
+      "w": 16,
+      "h": 16
+    }
+  ],
+  "pages": [ { "elements": [] } ]
+}
