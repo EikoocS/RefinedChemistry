@@ -50,3 +50,18 @@ labeler_factory_name,Label Printing Factory
 labeler_factory_desc,Use [Toggle] to select a chemical grade label.\nHold the mouse button and drag across chemicals to apply labels continuously.
 labeler_factory_grade,Printing label: {0}
 labeler_factory_same_label,Label matches the selected grade
+experimental_chemical_name,Chemical Supplies (Experimental)
+experimental_chemical_desc,Can be unpacked into higher-quality supplies for basic chemical crafting.\nA collection of common chemical supplies you would likely find in middle- and upper-district laboratories.
+experimental_chemical_flavor,Noticeably higher-quality chemical supplies that are hard to obtain through ordinary channels.
+box_medical_tech_name,Unknown Medical Crate
+box_medical_tech_desc,
+box_medical_tech_flavor,
+box_medical_tech_u_name,Unknown Medical Crate
+box_medical_tech_u_desc,
+box_medical_tech_u_flavor,
+uto_card_name,Disposable Keycard (Unknown Medical)
+uto_card_desc,
+uto_card_flavor,
+uto_module_name,Crypto Desequencer Chip (Unknown Medical)
+uto_module_desc,
+uto_module_flavor,
