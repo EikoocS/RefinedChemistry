@@ -1,3 +1,4 @@
+using RefinedChemistry.Attributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -5,19 +6,20 @@ using HarmonyLib;
 
 namespace RefinedChemistry
 {
-    internal static class DrLiangDialogue
+    [LocalizableAttributes("npc", "dr_liang")]
+    internal static partial class DrLiangDialogue
     {
         private static bool IsCurrentClientLiang => PlayerStore.HasInstance &&
             DrLiang.IsLiang(PlayerStore.Instance.currentClientInstance?.GetClientBlueprint());
 
         private static void SetText(Dialogue dialogue, string key, params object[] args)
         {
-            dialogue.SetText(dialogue.title, LocalizationHelper.Format("dr_liang_" + key, args));
+            dialogue.SetText(dialogue.title, Localize(key, args));
         }
 
         internal static Dialogue SetLines(Dialogue dialogue, string title, string key, params object[] args)
         {
-            string[] lines = LocalizationHelper.Format(key, args).Split('\n');
+            string[] lines = Localize(key, args).Split('\n');
             Dialogue last = dialogue.SetText(title, lines[0]);
             foreach (string line in lines.Skip(1))
                 last = last.NextDialogue().SetText(title, line);
@@ -37,13 +39,13 @@ namespace RefinedChemistry
 
         internal static void ConfigureBuyer(StoreClient client)
         {
-            SetLines(client.mainDialogue, client.displayName, "dr_liang_buy_dialogue", client.GetBudget());
+            SetLines(client.mainDialogue, client.displayName, "buy_dialogue", client.GetBudget());
             SetText(client.acceptDealDialogue, "buy_deal_accepted_dialogue");
             SetText(client.allDoneDialogue, "buy_done_dialogue");
             client.placeRightItemWhenSellingToDialogue = new Dialogue().SetText(client.displayName,
-                LocalizationHelper.Format("dr_liang_buy_right_item_dialogue"));
+                Localize("buy_right_item_dialogue"));
             client.placedWrongItemWhenSellingToDialogue = new Dialogue().SetText(client.displayName,
-                LocalizationHelper.Format("dr_liang_buy_wrong_item_dialogue"));
+                Localize("buy_wrong_item_dialogue"));
         }
 
         [HarmonyPatch(typeof(ItemFeature), nameof(ItemFeature.GetClientExposeDialog))]

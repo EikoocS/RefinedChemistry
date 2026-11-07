@@ -9,7 +9,7 @@ namespace RefinedChemistry
     {
         private static readonly string[] StarterItemIds =
         {
-            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, AutoCylinder.ItemId
+            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, AdjustableCylinder.ItemId
         };
 
         private static bool Prefix(PlayerStore __instance, ref string identifier)
@@ -20,10 +20,6 @@ namespace RefinedChemistry
             }
             switch (identifier)
             {
-                case "blender":
-                    if (RNG.Roll(25))
-                        identifier = Diluter.ItemId;
-                    break;
                 case "chem_finisher":
                     identifier = ChemFactory.ItemId;
                     break;
@@ -46,7 +42,7 @@ namespace RefinedChemistry
             if (__instance.currentClientInstance?.GetClientBlueprint().identifier == "retired_chemist" &&
                 identifier == ChemFactory.ItemId)
             {
-                __instance.AddDirectSellingItemToTable(AutoCylinder.ItemId);
+                __instance.AddDirectSellingItemToTable(AdjustableCylinder.ItemId);
                 __instance.AddDirectSellingItemToTable(LabelerFactory.ItemId);
             }
         }

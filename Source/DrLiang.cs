@@ -1,10 +1,12 @@
+using RefinedChemistry.Attributes;
 using System.Linq;
 using RefinedChemistry.Item;
 using UnityEngine;
 
 namespace RefinedChemistry
 {
-    internal static class DrLiang
+    [LocalizableAttributes("npc", "dr_liang")]
+    internal static partial class DrLiang
     {
         private const string FirstVisitClientId = "dr_liang_first_visit";
         internal const string ToolsVisitClientId = "dr_liang_tools_visit";
@@ -15,13 +17,13 @@ namespace RefinedChemistry
         private const string ChannelMarkupId = "refined_chemistry__channel_markup";
         private static readonly string[] ToolsStock =
         {
-            ImitationPipette.ItemId, AutoCylinder.ItemId, Flask.ItemId, Flask.ItemId,
+            ImitationPipette.ItemId, AdjustableCylinder.ItemId, Flask.ItemId, Flask.ItemId,
             "chem_module", "chem_module", "evaporator"
         };
         private static readonly string[] MaterialsStock = { "common_chemical", ExperimentalChemical.ItemId };
         private static Sprite portrait;
 
-        internal static string NameKey => ModSaveData.DrLiangNameKnown ? "dr_liang_name" : "dr_liang_name_unknow";
+        internal static string NameKey => ModSaveData.DrLiangNameKnown ? "npc.dr_liang.name" : "npc.dr_liang.name_unknown";
         internal static string DisplayName => LocalizationHelper.Format(NameKey);
 
         internal static void Enable()
@@ -142,7 +144,7 @@ namespace RefinedChemistry
             client.clientIntent = StoreClient.ClientIntent.DIALOGUE;
             client.dismissable = false;
             Dialogue last = DrLiangDialogue.SetLines(client.mainDialogue, client.displayName,
-                "dr_liang_first_visit_dialogue");
+                "first_visit_dialogue");
 
             last.SetEndAction(() =>
             {
@@ -166,18 +168,18 @@ namespace RefinedChemistry
             client.clientIntent = StoreClient.ClientIntent.DIALOGUE;
             client.dismissable = false;
             Dialogue introduction = DrLiangDialogue.SetLines(client.mainDialogue, "CLIENT",
-                "dr_liang_name_reveal_dialogue", LocalizationHelper.Format("dr_liang_name"));
+                "name_reveal_dialogue", Localize("name"));
             Dialogue gift = introduction.NextDialogue();
             gift.SetStartAction(() =>
             {
                 ModSaveData.DrLiangNameKnown = true;
                 RefreshDisplayNames();
             });
-            DrLiangDialogue.SetLines(gift, "CLIENT", "dr_liang_name_reveal_gift_dialogue")
+            DrLiangDialogue.SetLines(gift, "CLIENT", "name_reveal_gift_dialogue")
                 .SetEndAction(() =>
                 {
-                    PlayerStore.Instance.AddDirectSellingItemToTable(MedicalTechItems.BoxId, isOwend: true);
-                    PlayerStore.Instance.AddDirectSellingItemToTable(MedicalTechItems.CardId, isOwend: true);
+                    PlayerStore.Instance.AddDirectSellingItemToTable(UtoMedicalBox.ItemId, isOwend: true);
+                    PlayerStore.Instance.AddDirectSellingItemToTable(UtoMedicalCard.ItemId, isOwend: true);
                     PlayerStore.Instance.DismissCurrentClient(callNextWhenPossible: false);
                     ModSaveData.DrLiangTrustLimit = 40;
                 });
@@ -213,7 +215,7 @@ namespace RefinedChemistry
             StoreClient client = CreateClient(identifier);
             client.clientIntent = StoreClient.ClientIntent.SELL;
             client.clientItemFeatureBuying.Add(markupId);
-            client.mainDialogue.SetText(client.displayName, LocalizationHelper.Format("dr_liang_sell_dialogue"))
+            client.mainDialogue.SetText(client.displayName, Localize("sell_dialogue"))
                 .SetEndAction(() =>
                 {
                     foreach (string itemId in stock)
@@ -230,7 +232,7 @@ namespace RefinedChemistry
             ItemFeature feature = ItemFeatureList.PremiumBuy15();
             feature.identifier = ChannelMarkupId;
             feature.category = ChannelMarkupId;
-            string name = LocalizationHelper.Format("dr_liang_channel_markup");
+            string name = Localize("channel_markup");
             feature.SetPublicDisplay(name);
             feature.SetActualDisplay(name);
             feature.SetPreExposedValueMod(Mathf.RoundToInt(Difficulty.Rules.retiredSupplierMarkup * (10f / 15f)));

@@ -1,8 +1,10 @@
+using RefinedChemistry.Attributes;
 using HarmonyLib;
 
 namespace RefinedChemistry
 {
-    internal static class DrLiangBuyer
+    [LocalizableAttributes("npc", "dr_liang")]
+    internal static partial class DrLiangBuyer
     {
         private static readonly int[] Discounts = { -10, -17, -35, -50, -75 };
 
@@ -24,7 +26,7 @@ namespace RefinedChemistry
             {
                 feature.identifier = "refined_chemistry__dr_liang_sincerity";
                 feature.category = feature.identifier;
-                string name = LocalizationHelper.Format("dr_liang_sincerity");
+                string name = Localize("sincerity");
                 feature.SetPublicDisplay(name);
                 feature.SetActualDisplay(name);
             }

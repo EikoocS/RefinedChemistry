@@ -1,3 +1,5 @@
+using RefinedChemistry.Attributes;
+using RefinedChemistry.Machinery;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +10,8 @@ using UnityEngine;
 
 namespace RefinedChemistry.Item
 {
-    internal sealed class ChemFactory
+    [LocalizableAttributes("item", ItemId)]
+    internal sealed partial class ChemFactory
     {
         internal const string ItemId = "chem_factory";
         private const string PurityTag = "CHEM_FACTORY_PURITY";
@@ -68,24 +71,24 @@ namespace RefinedChemistry.Item
             quantity.input.contentType = TMP_InputField.ContentType.IntegerNumber;
             quantity.input.characterLimit = 3;
             quantity.input.SetTextWithoutNotify("1");
-            var purityRow = MachineryStack.Horizontal(Label(Text("purity")),
+            var purityRow = MachineryStack.Horizontal(Label(Localize("purity")),
                 purity, fixedPurity, Label("/"), maximumPurity);
-            var quantityRow = MachineryStack.Horizontal(Label(Text("quantity")),
+            var quantityRow = MachineryStack.Horizontal(Label(Localize("quantity")),
                 quantity, Label("/"), maximumQuantity);
             var controls = MachineryStack.Vertical(configure, recipeLabel,
                 purityRow, quantityRow, consumption, produce);
             window = MachineHelper.CreateMachineryWindow(true,
                 MachineHelper.Panel(NativeText("label_module"), modules, "module"),
-                new MachineryPanel(Text("inputs"), MachineryStack.Vertical(
-                    MachineHelper.Panel(Text("source"), source, "source"),
-                    MachineHelper.Panel(Text("auxiliary"), auxiliary, "auxiliary")), "inputs"),
+                new MachineryPanel(Localize("inputs"), MachineryStack.Vertical(
+                    MachineHelper.Panel(Localize("source"), source, "source"),
+                    MachineHelper.Panel(Localize("auxiliary"), auxiliary, "auxiliary")), "inputs"),
                 MachineHelper.Panel(NativeText("label_output"), output, "output"),
                 new MachineryPanel(NativeText("label_control"), controls, "control"));
             machine = ItemDirectory.CreateEmptyItem(ItemId)
                 .SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, ItemId + "_0")
                 .SetContentWindow(window);
-            machine.name = Text("name");
-            machine.shortDescription = Text("desc");
+            machine.name = Localize("name");
+            machine.shortDescription = Localize("desc");
             machine.unitValue = 300;
             machine.SetGameItemType("MACHINE");
             machine.EnableTag("CONTAINER_TAG");
@@ -226,7 +229,7 @@ namespace RefinedChemistry.Item
 
             if (count > 0)
             {
-                layoutChanged |= SetText(consumption, Text("consumption",
+                layoutChanged |= SetText(consumption, Localize("consumption",
                     plan.SourceVolume / 1000.0, plan.AuxiliaryVolume / 1000.0));
             }
             else
@@ -442,8 +445,5 @@ namespace RefinedChemistry.Item
 
         private static string NativeText(string key) =>
             LocHelper.GetLocalizedMechanic("mech_chem_finisher_" + key);
-
-        private static string Text(string key, params object[] args) =>
-            LocalizationHelper.Format(ItemId + "_" + key, args);
     }
 }

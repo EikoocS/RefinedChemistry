@@ -1,115 +1,84 @@
-pipette_name,Pipette
-pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.
-pipette_flavor,A favorite tool of chemists in the upper district. Works well. Costs a lot.
-pipette_capacity,Capacity: {0} {1} · Liquid: {2:0.###} {3}
-auto_cylinder_name,Measuring Beaker
-auto_cylinder_desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
-auto_cylinder_flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
-auto_cylinder_capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
-imitation_pipette_name,Imitation Pipette
-imitation_pipette_desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.\nEach successful dispense uses 1 durability point.
-imitation_pipette_flavor,A knockoff made by chemists in the middle district. Keeping impurities out took all they had. Not much to look at and not built to last.
-flask_name,Flask
-flask_desc,Starts with a capacity of 750 ml. Expandable up to 9000 ml.\nUse common chemical supplies or an empty flask to add 750 ml; restricted chemical supplies add 1500 ml.\nUse [Toggle] to change its appearance.
-flask_flavor,Varied shapes and a clear view of the contents make this flask well suited for storing chemicals.\nAutomatically names itself after its contents.
-diluter_name,Automatic Diluter
-diluter_desc,Has not met expectations and will be removed in a few versions.\nDilutes a selected substance in the stock solution to 1–1000 μL/mL.\nEach batch must exceed 1 ml.\nRequires an empty output container.
-diluter_inputs,Inputs
-diluter_source,Stock container
-diluter_solvent,Solvent container
-diluter_output,Output container
-diluter_control,Dilution settings
-diluter_substance,Select substance
-diluter_target,Target concentration (μL/mL)
-diluter_confirm,Confirm dilution
-diluter_preview,Stock: {0:0.###} ml\nSolvent: {1:0.###} ml\nOutput: {2:0.###} ml
-diluter_actual,Actual output concentration: {0} μL/mL
-diluter_nearest,Actual output concentration (closest achievable): {0} μL/mL
-diluter_approximate,Warning: Dilution is not exact
-diluter_confirm_approximate,Confirm approximate dilution
-diluter_range,Enter an integer from 1 to 1000
-diluter_select,Select a substance in the stock solution
-diluter_source_empty,Insert a stock container with liquid
-diluter_output_missing,Insert an empty output container
-diluter_output_not_empty,The output container must be empty
-diluter_output_filter,Remove the filter from the output container first
-diluter_concentrate,Cannot dilute to a concentration higher than the stock solution
-diluter_solvent_empty,Insert a solvent container with liquid
-diluter_solvent_concentration,The concentration of this substance in the solvent must be below the target
-diluter_precision,Cannot dilute to the target concentration
-diluter_minimum_volume,Insufficient liquid or output capacity
-chem_factory_name,Chemical Forming Factory
-chem_factory_desc,Produces chemical formulations in batches.
-chem_factory_inputs,Ingredients
-chem_factory_source,Primary
-chem_factory_auxiliary,Auxiliary
-chem_factory_purity,Purity
-chem_factory_quantity,Quantity
-chem_factory_consumption,Primary {0:0.###} ml\nAuxiliary {1:0.###} ml
-labeler_factory_name,Label Printing Factory
-labeler_factory_desc,Use [Toggle] to select a chemical grade label.\nHold the mouse button and drag across chemicals to apply labels continuously.
-labeler_factory_grade,Printing label: {0}
-labeler_factory_same_label,Label matches the selected grade
-dr_liang_name_unknow,Lower District Doctor?
-dr_liang_name,Dr. Liang
-dr_liang_name_reveal_dialogue,[Placeholder: introduces himself as {0}]
-dr_liang_name_reveal_gift_dialogue,[Placeholder: gives a locked unknown medical crate and a disposable keycard before leaving]
-dr_liang_first_visit_dialogue,I hear you have experience making chemicals.\nPerhaps we could work together.\nPlease accept this small gift.\nCall this number if you need chemical tools or raw materials.
-dr_liang_card_name,Plain Paper Business Card
-dr_liang_card_desc,2324
-dr_liang_card_flavor,This barely qualifies as a business card. It's just a torn scrap of white paper.
-dr_liang_phone_greeting,Hello?
-dr_liang_phone_tools,I need chemical tools.
-dr_liang_phone_materials,I need chemical raw materials.
-dr_liang_phone_visit_reply,I'll visit tomorrow.
-dr_liang_sell_dialogue,I brought what you need.
-dr_liang_buy_dialogue,I need medical supplies.\nIncluding the ones you have "trouble selling".\nBut you'll need to show some "goodwill" too.\nIt's better for both of us.
-dr_liang_buy_deal_accepted_dialogue,All right. We have a deal.
-dr_liang_buy_done_dialogue,A pleasure doing business.
-dr_liang_buy_right_item_dialogue,Yes.
-dr_liang_buy_wrong_item_dialogue,No.
-dr_liang_buy_expose_chemical_dialogue,Don't try any tricks. I know this game better than you do.
-dr_liang_sincerity,“Goodwill”
-dr_liang_channel_markup,Channel Markup
-dr_liang_deal_accepted_dialogue,All right.
-dr_liang_bargain_accept_grateful_dialogue,You're a good person. Thank you.
-dr_liang_bargain_accept_very_grateful_dialogue,Are you serious? This is practically charity!
-dr_liang_bargain_accept_reluctant_dialogue,Fine.
-dr_liang_bargain_accept_very_reluctant_dialogue,All right. But just this once.
-dr_liang_bargain_reject_dialogue,No.
-dr_liang_bargain_hard_reject_dialogue,Absolutely not.
-dr_liang_bargain_leave_dialogue,I don't think we can do business right now.
-dr_liang_bargain_budget_increase_dialogue,Then I can arrange for a little more.
-dr_liang_bargain_budget_decrease_dialogue,Then I'll have to prepare a little less.
-dr_liang_bargain_talk_bad_dialogue,Nothing good comes of greed.
-dr_liang_bargain_innocent_blackmail_dialogue,I won't accept that.
-dr_liang_bargain_false_threaten_dialogue,Do I look like one?
-dr_liang_out_of_budget_dialogue,I can only buy another {0} credits' worth this time.
-dr_liang_no_contraband_dialogue,No. I don't want that.
-dr_liang_all_done_dialogue,All right.
-dr_liang_all_done_followup_dialogue,A pleasure doing business.
-dr_liang_after_buying_dialogue,Anything else catch your eye?
-dr_liang_after_selling_dialogue,Have you got any more ready?
-dr_liang_shutter_down_dialogue,What are you doing?
-dr_liang_shutter_down_followup_dialogue,Is that any way to see a guest out?
-dr_liang_alarm_reaction_dialogue,...
-dr_liang_arrest_dialogue,...
-dr_liang_report_charge,Charge: Former employment at an illegal enterprise
-dr_liang_report_name,Liang
-dr_liang_gunpoint_dialogue,...
-dr_liang_gunpoint_followup_dialogue,...
-experimental_chemical_name,Chemical Supplies (Experimental)
-experimental_chemical_desc,Can be unpacked into higher-quality supplies for basic chemical crafting.\nA collection of common chemical supplies you would likely find in middle- and upper-district laboratories.
-experimental_chemical_flavor,Noticeably higher-quality chemical supplies that are hard to obtain through ordinary channels.
-box_medical_tech_name,Unknown Medical Crate
-box_medical_tech_desc,
-box_medical_tech_flavor,
-box_medical_tech_u_name,Unknown Medical Crate
-box_medical_tech_u_desc,
-box_medical_tech_u_flavor,
-uto_card_name,Disposable Keycard (Unknown Medical)
-uto_card_desc,
-uto_card_flavor,
-uto_module_name,Crypto Desequencer Chip (Unknown Medical)
-uto_module_desc,
-uto_module_flavor,
+item.adjustable_cylinder.capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
+item.adjustable_cylinder.desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
+item.adjustable_cylinder.flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
+item.adjustable_cylinder.name,Measuring Beaker
+item.chem_factory.auxiliary,Auxiliary
+item.chem_factory.consumption,Primary: {0:0.###} ml\nAuxiliary: {1:0.###} ml
+item.chem_factory.desc,Produces chemical formulations in batches.
+item.chem_factory.inputs,Ingredients
+item.chem_factory.name,Chemical Forming Factory
+item.chem_factory.purity,Purity
+item.chem_factory.quantity,Quantity
+item.chem_factory.source,Primary
+item.dr_liang_card.desc,2324
+item.dr_liang_card.flavor,This barely qualifies as a business card. It's just a torn scrap of white paper.
+item.dr_liang_card.name,Plain Paper Business Card
+item.experimental_chemical.desc,Unpack to obtain a batch of higher-quality basic chemical supplies.\nStandard chemical supplies commonly found in laboratories in the middle and upper districts.
+item.experimental_chemical.flavor,Higher-purity chemical supplies that are hard to obtain through ordinary channels.
+item.experimental_chemical.name,Chemical Supplies (Experimental)
+item.flask.desc,Starts with a capacity of 750 ml. Expandable up to 9000 ml.\nUse chemical supplies or an empty flask to add 750 ml; restricted chemical supplies add 1500 ml.\nUse [Toggle] to change its appearance.
+item.flask.flavor,Varied shapes and a clear view of the contents make this flask well suited for storing chemicals.\nAutomatically names itself after its contents.
+item.flask.name,Flask
+item.imitation_pipette.desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.\nEach successful dispense uses 1 durability point.
+item.imitation_pipette.flavor,A knockoff made by chemists in the middle district. Keeping impurities out took all they had. Not much to look at and not built to last.
+item.imitation_pipette.name,Imitation Pipette
+item.labeler_factory.desc,Use [Toggle] to select a chemical grade label.\nHold the mouse button and drag across chemicals to apply labels continuously.
+item.labeler_factory.grade,Printing label: {0}
+item.labeler_factory.name,Label Printing Factory
+item.labeler_factory.same_label,Label matches the selected grade
+item.pipette.capacity,Capacity: {0} {1} · Liquid: {2:0.###} {3}
+item.pipette.desc,A dropper with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (100 μL–10 ml).\nContinuous scrolling increases the adjustment step.
+item.pipette.flavor,A favorite tool of chemists in the upper district. Works well. Costs a lot.
+item.pipette.name,Pipette
+item.uto_medical_box.desc,A locked crate with its label deliberately rubbed off. Packed with supplies. Requires a keycard to open.
+item.uto_medical_box.flavor,Odd. You've never seen a crate like this on the station. Where did it come from?
+item.uto_medical_box.name,Unknown Medical Crate
+item.uto_medical_card.flavor,A disposable keycard for an unidentified entity. Unlocks Unknown Medical Crates.
+item.uto_medical_card.name,Disposable Keycard (Unknown Medical)
+item.uto_medical_module.desc,A module that lets a Crypto Desequencer write Unknown Medical access permissions to a blank keycard.
+item.uto_medical_module.name,Crypto Desequencer Chip (Unknown Medical)
+npc.dr_liang.after_buying_dialogue,Anything else catch your eye?
+npc.dr_liang.after_selling_dialogue,Have you got any more ready?
+npc.dr_liang.alarm_reaction_dialogue,...
+npc.dr_liang.all_done_dialogue,All right.
+npc.dr_liang.all_done_followup_dialogue,A pleasure doing business.
+npc.dr_liang.arrest_dialogue,...
+npc.dr_liang.bargain_accept_grateful_dialogue,You're a good person. Thank you.
+npc.dr_liang.bargain_accept_reluctant_dialogue,Fine.
+npc.dr_liang.bargain_accept_very_grateful_dialogue,Are you serious? This is practically charity!
+npc.dr_liang.bargain_accept_very_reluctant_dialogue,All right. But just this once.
+npc.dr_liang.bargain_budget_decrease_dialogue,Then I'll have to prepare a little less.
+npc.dr_liang.bargain_budget_increase_dialogue,Then I can arrange for a little more.
+npc.dr_liang.bargain_false_threaten_dialogue,Do I look like one?
+npc.dr_liang.bargain_hard_reject_dialogue,Absolutely not.
+npc.dr_liang.bargain_innocent_blackmail_dialogue,I won't accept that.
+npc.dr_liang.bargain_leave_dialogue,I don't think we can do business right now.
+npc.dr_liang.bargain_reject_dialogue,No.
+npc.dr_liang.bargain_talk_bad_dialogue,Nothing good comes of greed.
+npc.dr_liang.buy_deal_accepted_dialogue,All right. We have a deal.
+npc.dr_liang.buy_dialogue,I need medical supplies.\nIncluding the ones you have "trouble selling".\nBut you'll need to show some "goodwill" too.\nIt's better for both of us.
+npc.dr_liang.buy_done_dialogue,A pleasure doing business.
+npc.dr_liang.buy_expose_chemical_dialogue,Don't try any tricks. I know this game better than you do.
+npc.dr_liang.buy_right_item_dialogue,Yes.
+npc.dr_liang.buy_wrong_item_dialogue,No.
+npc.dr_liang.channel_markup,Channel Markup
+npc.dr_liang.deal_accepted_dialogue,All right.
+npc.dr_liang.first_visit_dialogue,I hear you have experience making chemicals.\nPerhaps we could work together.\nPlease accept this small gift.\nCall this number if you need chemical tools or raw materials.
+npc.dr_liang.gunpoint_dialogue,...
+npc.dr_liang.gunpoint_followup_dialogue,...
+npc.dr_liang.name,Dr. Liang
+npc.dr_liang.name_reveal_dialogue,[Placeholder: introduces himself as {0}]
+npc.dr_liang.name_reveal_gift_dialogue,[Placeholder: gives a locked unknown medical crate and a disposable keycard before leaving]
+npc.dr_liang.name_unknown,Lower District Doctor?
+npc.dr_liang.no_contraband_dialogue,No. I don't want that.
+npc.dr_liang.out_of_budget_dialogue,I can only buy another {0} credits' worth this time.
+npc.dr_liang.phone_greeting,Hello?
+npc.dr_liang.phone_materials,I need chemical raw materials.
+npc.dr_liang.phone_tools,I need chemical tools.
+npc.dr_liang.phone_visit_reply,I'll visit tomorrow.
+npc.dr_liang.report_charge,Charge: Former employment at an illegal enterprise
+npc.dr_liang.report_name,Liang
+npc.dr_liang.sell_dialogue,I brought what you need.
+npc.dr_liang.shutter_down_dialogue,What are you doing?
+npc.dr_liang.shutter_down_followup_dialogue,Is that any way to see a guest out?
+npc.dr_liang.sincerity,“Goodwill”

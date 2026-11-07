@@ -1,3 +1,4 @@
+using RefinedChemistry.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 

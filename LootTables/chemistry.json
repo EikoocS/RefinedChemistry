@@ -5,7 +5,7 @@
       "add": [
         { "id": "flask", "weight": 30 },
         { "id": "imitation_pipette", "weight": 20 },
-        { "id": "auto_cylinder", "weight": 10 }
+        { "id": "adjustable_cylinder", "weight": 10 }
       ]
     },
     {
@@ -18,9 +18,8 @@
       "table": "toolTable",
       "add": [
         { "id": "imitation_pipette", "weight": 20 },
-        { "id": "auto_cylinder", "weight": 15 },
-        { "id": "pipette", "weight": 5 },
-        { "id": "diluter", "weight": 1 }
+        { "id": "adjustable_cylinder", "weight": 15 },
+        { "id": "pipette", "weight": 5 }
       ]
     }
   ]

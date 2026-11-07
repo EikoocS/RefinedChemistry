@@ -1,9 +1,11 @@
+using RefinedChemistry.Attributes;
 using HarmonyLib;
 
 namespace RefinedChemistry
 {
     [HarmonyPatch(typeof(PlayerStore), nameof(PlayerStore.OnCustomerReported))]
-    internal static class DrLiangReport
+    [LocalizableAttributes("npc", "dr_liang")]
+    internal static partial class DrLiangReport
     {
         private const int Reward = 100;
         private const int SecurityReputation = 5;
@@ -31,8 +33,8 @@ namespace RefinedChemistry
 
                 GameItem slip = DirectoryMaster.Item("sec_slip");
                 string body = LocHelper.GetLocalizedMechanic("mech_report_wanted_body", Reward,
-                    LocalizationHelper.Format("dr_liang_report_name"));
-                body += "\n" + LocalizationHelper.Format("dr_liang_report_charge");
+                    Localize("report_name"));
+                body += "\n" + Localize("report_charge");
                 body += "\n\n" + LocHelper.GetLocalizedMechanic("mech_report_rep_improved");
                 if (client.reportDegradesFaction)
                     body += LocHelper.GetLocalizedMechanic("mech_report_faction_degraded",

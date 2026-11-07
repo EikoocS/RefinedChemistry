@@ -1,6 +1,9 @@
+using RefinedChemistry.Attributes;
+
 namespace RefinedChemistry.Item
 {
-    internal static class LabelerFactory
+    [LocalizableAttributes("item", ItemId)]
+    internal static partial class LabelerFactory
     {
         internal const string ItemId = "labeler_factory";
         private const string GradeTag = "LABELER_FACTORY_GRADE";
@@ -9,8 +12,8 @@ namespace RefinedChemistry.Item
         {
             var item = ItemDirectory.CreateEmptyItem(ItemId)
                 .SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, ItemId);
-            item.name = LocalizationHelper.Format(ItemId + "_name");
-            item.shortDescription = LocalizationHelper.Format(ItemId + "_desc");
+            item.name = Localize("name");
+            item.shortDescription = Localize("desc");
             item.unitValue = 50;
             item.SetGameItemType("TOOL");
             AudioHelper.InitSmallMachine(item);
@@ -32,7 +35,7 @@ namespace RefinedChemistry.Item
             ItemConditionList.conditionChemicalPurity[GetGradeIndex(item)];
 
         internal static string GetSelectionText(GameItem item) =>
-            LocalizationHelper.Format(ItemId + "_grade", GetGrade(item).display);
+            Localize("grade", GetGrade(item).display);
 
         internal static bool HasSelectedLabel(GameItem source, GameItem target)
         {

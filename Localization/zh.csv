@@ -1,115 +1,84 @@
-pipette_name,移液枪
-pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。
-pipette_flavor,上层区化学家偏爱的化学器械，好用，很贵。
-pipette_capacity,容量：{0} {1} · 液量：{2:0.###} {3}
-auto_cylinder_name,定量烧杯
-auto_cylinder_desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
-auto_cylinder_flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
-auto_cylinder_capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
-imitation_pipette_name,仿制移液枪
-imitation_pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。\n每次成功排液消耗 1 点耐久。
-imitation_pipette_flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。
-flask_name,烧瓶
-flask_desc,初始容量 750 ml，最高可扩容至 9000 ml。\n使用化学用品或空烧瓶扩容 750 ml；化学用品(管制)扩容 1500 ml。\n使用[切换]变更外观。
-flask_flavor,多样的形状和清晰的内容物使其适合承装化学品的容器。\n自动重命名自身为内容物。
-diluter_name,自动稀释机
-diluter_desc,未达到预期效果，将于若干版本后移除。\n将原液中的选定物质稀释至 1–1000 μL/mL。\n每次输出最少大于 1 ml。\n输出容器为空时才可运作
-diluter_inputs,输入
-diluter_source,溶质容器
-diluter_solvent,溶剂容器
-diluter_output,输出容器
-diluter_control,稀释设置
-diluter_substance,选择物质
-diluter_target,目标浓度（μL/mL）
-diluter_confirm,确认稀释
-diluter_preview,原液：{0:0.###} ml\n溶剂：{1:0.###} ml\n输出：{2:0.###} ml
-diluter_actual,实际输出浓度：{0} μL/mL
-diluter_nearest,实际输出浓度（最近可达）：{0} μL/mL
-diluter_approximate,警告：不是完美稀释
-diluter_confirm_approximate,确认近似稀释
-diluter_range,请输入 1–1000 的整数
-diluter_select,请选择溶质中的物质
-diluter_source_empty,请放入含液体的溶质容器
-diluter_output_missing,请放入空输出容器
-diluter_output_not_empty,输出容器必须为空
-diluter_output_filter,请先移除输出容器中的滤芯
-diluter_concentrate,目标浓度高于原液，无法稀释
-diluter_solvent_empty,请放入含液体的溶剂容器
-diluter_solvent_concentration,溶剂中该物质的浓度必须低于目标浓度
-diluter_precision,当前无法稀释到目标浓度
-diluter_minimum_volume,原料或输出容量不足
-chem_factory_name,化学制剂成型工厂
-chem_factory_desc,批量制作化学制剂。
-chem_factory_inputs,原料
-chem_factory_source,主料
-chem_factory_auxiliary,辅料
-chem_factory_purity,纯度
-chem_factory_quantity,数量
-chem_factory_consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
-labeler_factory_name,标签打印工厂
-labeler_factory_desc,使用[切换]选择化学品品质标签。\n使用时按住鼠标拖过化学品可连续贴标。
-labeler_factory_grade,打印标签：{0}
-labeler_factory_same_label,标签与打印目标一致
-dr_liang_name_unknow,下层区医生？
-dr_liang_name,梁医生
-dr_liang_name_reveal_dialogue,最近我都在我关注你。\n也许我们值得重新认识一下。\n我是一名下层区的“普通”医生，现在是。\n你可以叫我{0}。\n也许未来我们能有更多合作机会。
-dr_liang_name_reveal_gift_dialogue,收下这个吧，一点微不足道的谢礼，但也算是诚意。
-dr_liang_first_visit_dialogue,我听说你有制作化学品的经验。\n我们也许可以合作。\n收下这份薄礼吧。\n如果对化学工具或者原料有需求，打这个电话。
-dr_liang_card_name,白纸名片
-dr_liang_card_desc,2324
-dr_liang_card_flavor,这几乎算不上名片，只是一张撕下的白纸
-dr_liang_phone_greeting,喂？
-dr_liang_phone_tools,我需要化学工具
-dr_liang_phone_materials,我需要化学原料
-dr_liang_phone_visit_reply,我会在明天来访
-dr_liang_sell_dialogue,我带了你需要的东西来。
-dr_liang_buy_dialogue,我需要医疗品。\n包括你那些“不好出手”的部分。\n但你也要给出一些“诚意”。\n这对我们都好。
-dr_liang_buy_deal_accepted_dialogue,好的，交易达成。
-dr_liang_buy_done_dialogue,合作愉快。
-dr_liang_buy_right_item_dialogue,可以。
-dr_liang_buy_wrong_item_dialogue,不。
-dr_liang_buy_expose_chemical_dialogue,不要耍花招，我比你更熟悉这套。
-dr_liang_sincerity,“诚意”
-dr_liang_channel_markup,渠道加价
-dr_liang_deal_accepted_dialogue,好的
-dr_liang_bargain_accept_grateful_dialogue,你是好人，感谢。
-dr_liang_bargain_accept_very_grateful_dialogue,你是认真的吗？这几乎是在做慈善！
-dr_liang_bargain_accept_reluctant_dialogue,好吧。
-dr_liang_bargain_accept_very_reluctant_dialogue,行，但就这一次。
-dr_liang_bargain_reject_dialogue,不行。
-dr_liang_bargain_hard_reject_dialogue,这绝对不可能。
-dr_liang_bargain_leave_dialogue,我想现在没法达成合作了。
-dr_liang_bargain_budget_increase_dialogue,那我还可以再多筹备一些。
-dr_liang_bargain_budget_decrease_dialogue,那我只能少准备一部分了。
-dr_liang_bargain_talk_bad_dialogue,贪得无厌不会有好结果的。
-dr_liang_bargain_innocent_blackmail_dialogue,我不会接受的。
-dr_liang_bargain_false_threaten_dialogue,我看起来像是吗？
-dr_liang_out_of_budget_dialogue,我这次只能再买{0}信用点的东西了。
-dr_liang_no_contraband_dialogue,不，我不想要这个。
-dr_liang_all_done_dialogue,好的。
-dr_liang_all_done_followup_dialogue,合作愉快。
-dr_liang_after_buying_dialogue,还看上了什么吗？
-dr_liang_after_selling_dialogue,还有准备更多吗？
-dr_liang_shutter_down_dialogue,你在做什么？
-dr_liang_shutter_down_followup_dialogue,这是送客该有的态度吗？
-dr_liang_alarm_reaction_dialogue,。。。
-dr_liang_arrest_dialogue,。。。
-dr_liang_report_charge,罪名：曾就职于非法企业
-dr_liang_report_name,梁
-dr_liang_gunpoint_dialogue,。。。
-dr_liang_gunpoint_followup_dialogue,。。。
-experimental_chemical_name,化学用品（实验）
-experimental_chemical_desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。
-experimental_chemical_flavor,纯度更好的化学用品，在一般的渠道难以获取。
-box_medical_tech_name,未知医疗箱
-box_medical_tech_desc,
-box_medical_tech_flavor,
-box_medical_tech_u_name,未知医疗箱
-box_medical_tech_u_desc,
-box_medical_tech_u_flavor,
-uto_card_name,一次性钥匙卡（未知医疗）
-uto_card_desc,
-uto_card_flavor,
-uto_module_name,密码解序器芯片（未知医疗）
-uto_module_desc,
-uto_module_flavor,
+item.adjustable_cylinder.capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
+item.adjustable_cylinder.desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
+item.adjustable_cylinder.flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
+item.adjustable_cylinder.name,定量烧杯
+item.chem_factory.auxiliary,辅料
+item.chem_factory.consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
+item.chem_factory.desc,批量制作化学制剂。
+item.chem_factory.inputs,原料
+item.chem_factory.name,化学制剂成型工厂
+item.chem_factory.purity,纯度
+item.chem_factory.quantity,数量
+item.chem_factory.source,主料
+item.dr_liang_card.desc,2324
+item.dr_liang_card.flavor,这几乎算不上名片，只是一张撕下的白纸
+item.dr_liang_card.name,白纸名片
+item.experimental_chemical.desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。
+item.experimental_chemical.flavor,纯度更好的化学用品，在一般的渠道难以获取。
+item.experimental_chemical.name,化学用品（实验）
+item.flask.desc,初始容量 750 ml，最高可扩容至 9000 ml。\n使用化学用品或空烧瓶扩容 750 ml；化学用品(管制)扩容 1500 ml。\n使用[切换]变更外观。
+item.flask.flavor,多样的形状和清晰的内容物使其适合承装化学品的容器。\n自动重命名自身为内容物。
+item.flask.name,烧瓶
+item.imitation_pipette.desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。\n每次成功排液消耗 1 点耐久。
+item.imitation_pipette.flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。
+item.imitation_pipette.name,仿制移液枪
+item.labeler_factory.desc,使用[切换]选择化学品品质标签。\n使用时按住鼠标拖过化学品可连续贴标。
+item.labeler_factory.grade,打印标签：{0}
+item.labeler_factory.name,标签打印工厂
+item.labeler_factory.same_label,标签与打印目标一致
+item.pipette.capacity,容量：{0} {1} · 液量：{2:0.###} {3}
+item.pipette.desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。
+item.pipette.flavor,上层区化学家偏爱的化学器械，好用，很贵。
+item.pipette.name,移液枪
+item.uto_medical_box.desc,一个上锁的板条箱，标签被刻意磨掉了。里面装满了物资。需要识别卡才能打开。
+item.uto_medical_box.flavor,真是奇怪，你从未在空间站看见过类似的箱子，这是哪里来的？
+item.uto_medical_box.name,未知医疗箱
+item.uto_medical_card.flavor,供未知主体使用的一次性钥匙卡。可开启未知医疗箱的锁。
+item.uto_medical_card.name,一次性钥匙卡（未知医疗）
+item.uto_medical_module.desc,一个能让密码解序器将未知医疗权限写入空白钥匙卡的模组。
+item.uto_medical_module.name,密码解序器芯片（未知医疗）
+npc.dr_liang.after_buying_dialogue,还看上了什么吗？
+npc.dr_liang.after_selling_dialogue,还有准备更多吗？
+npc.dr_liang.alarm_reaction_dialogue,。。。
+npc.dr_liang.all_done_dialogue,好的。
+npc.dr_liang.all_done_followup_dialogue,合作愉快。
+npc.dr_liang.arrest_dialogue,。。。
+npc.dr_liang.bargain_accept_grateful_dialogue,你是好人，感谢。
+npc.dr_liang.bargain_accept_reluctant_dialogue,好吧。
+npc.dr_liang.bargain_accept_very_grateful_dialogue,你是认真的吗？这几乎是在做慈善！
+npc.dr_liang.bargain_accept_very_reluctant_dialogue,行，但就这一次。
+npc.dr_liang.bargain_budget_decrease_dialogue,那我只能少准备一部分了。
+npc.dr_liang.bargain_budget_increase_dialogue,那我还可以再多筹备一些。
+npc.dr_liang.bargain_false_threaten_dialogue,我看起来像是吗？
+npc.dr_liang.bargain_hard_reject_dialogue,这绝对不可能。
+npc.dr_liang.bargain_innocent_blackmail_dialogue,我不会接受的。
+npc.dr_liang.bargain_leave_dialogue,我想现在没法达成合作了。
+npc.dr_liang.bargain_reject_dialogue,不行。
+npc.dr_liang.bargain_talk_bad_dialogue,贪得无厌不会有好结果的。
+npc.dr_liang.buy_deal_accepted_dialogue,好的，交易达成。
+npc.dr_liang.buy_dialogue,我需要医疗品。\n包括你那些“不好出手”的部分。\n但你也要给出一些“诚意”。\n这对我们都好。
+npc.dr_liang.buy_done_dialogue,合作愉快。
+npc.dr_liang.buy_expose_chemical_dialogue,不要耍花招，我比你更熟悉这套。
+npc.dr_liang.buy_right_item_dialogue,可以。
+npc.dr_liang.buy_wrong_item_dialogue,不。
+npc.dr_liang.channel_markup,渠道加价
+npc.dr_liang.deal_accepted_dialogue,好的
+npc.dr_liang.first_visit_dialogue,我听说你有制作化学品的经验。\n我们也许可以合作。\n收下这份薄礼吧。\n如果对化学工具或者原料有需求，打这个电话。
+npc.dr_liang.gunpoint_dialogue,。。。
+npc.dr_liang.gunpoint_followup_dialogue,。。。
+npc.dr_liang.name,梁医生
+npc.dr_liang.name_reveal_dialogue,最近我都在我关注你。\n也许我们值得重新认识一下。\n我是一名下层区的“普通”医生，现在是。\n你可以叫我{0}。\n也许未来我们能有更多合作机会。
+npc.dr_liang.name_reveal_gift_dialogue,收下这个吧，一点微不足道的谢礼，但也算是诚意。
+npc.dr_liang.name_unknown,下层区医生？
+npc.dr_liang.no_contraband_dialogue,不，我不想要这个。
+npc.dr_liang.out_of_budget_dialogue,我这次只能再买{0}信用点的东西了。
+npc.dr_liang.phone_greeting,喂？
+npc.dr_liang.phone_materials,我需要化学原料
+npc.dr_liang.phone_tools,我需要化学工具
+npc.dr_liang.phone_visit_reply,我会在明天来访
+npc.dr_liang.report_charge,罪名：曾就职于非法企业
+npc.dr_liang.report_name,梁
+npc.dr_liang.sell_dialogue,我带了你需要的东西来。
+npc.dr_liang.shutter_down_dialogue,你在做什么？
+npc.dr_liang.shutter_down_followup_dialogue,这是送客该有的态度吗？
+npc.dr_liang.sincerity,“诚意”

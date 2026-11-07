@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace RefinedChemistry
+namespace RefinedChemistry.Machinery
 {
     internal static class ChemFactoryOutput
     {

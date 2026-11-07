@@ -1,4 +1,4 @@
-﻿using RefinedChemistry.Item;
+using RefinedChemistry.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -55,9 +55,9 @@ namespace RefinedChemistry
             var item = ItemDirectory
                 .CreateEmptyItem(ItemId)
                 .SetSpriteAndShapeFromMod(manifest.ID, spriteKey ?? ItemId);
-            item.name = LocalizationHelper.Format(ItemId + "_name");
-            item.shortDescription = LocalizationHelper.Format(ItemId + "_desc");
-            item.flavorText = LocalizationHelper.Format(ItemId + "_flavor");
+            item.name = LocalizationHelper.Item(ItemId, "name");
+            item.shortDescription = LocalizationHelper.Item(ItemId, "desc");
+            item.flavorText = LocalizationHelper.Item(ItemId, "flavor");
             return item;
         }
 

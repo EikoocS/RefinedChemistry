@@ -1,9 +1,11 @@
+using RefinedChemistry.Attributes;
 using HarmonyLib;
 
 namespace RefinedChemistry
 {
     [HarmonyPatch(typeof(StorePhoneClient), nameof(StorePhoneClient.GetLocalizedDisplayName))]
-    internal static class DrLiangPhone
+    [LocalizableAttributes("npc", "dr_liang")]
+    internal static partial class DrLiangPhone
     {
         private const long Number = 2324;
         private const int CooldownDays = 7;
@@ -55,12 +57,12 @@ namespace RefinedChemistry
             if (contact.phoneState == StorePhoneClient.PhoneState.Cooldown)
                 return PhoneDialogList.GenericCooldown(name);
 
-            var menu = new Dialogue().SetText(name, LocalizationHelper.Format("dr_liang_phone_greeting"));
+            var menu = new Dialogue().SetText(name, Localize("phone_greeting"));
             menu.AddChoice(DirectoryMaster.Item("$"), "", "",
-                CreateRequestDialogue(name, "dr_liang_phone_tools"),
+                CreateRequestDialogue(name, "phone_tools"),
                 () => RequestVisit(contact, DrLiang.ToolsVisitClientId));
             menu.AddChoice(DirectoryMaster.Item("$"), "", "",
-                CreateRequestDialogue(name, "dr_liang_phone_materials"),
+                CreateRequestDialogue(name, "phone_materials"),
                 () => RequestVisit(contact, DrLiang.MaterialsVisitClientId));
 
             var cancel = new Dialogue().SetText(DialoguePhoneUIManager.PLAYER,
@@ -80,9 +82,9 @@ namespace RefinedChemistry
 
         private static Dialogue CreateRequestDialogue(string name, string key)
         {
-            var choice = new Dialogue().SetText(DialoguePhoneUIManager.PLAYER, LocalizationHelper.Format(key));
+            var choice = new Dialogue().SetText(DialoguePhoneUIManager.PLAYER, Localize(key));
             choice.NextDialogue()
-                .SetText(name, LocalizationHelper.Format("dr_liang_phone_visit_reply"))
+                .SetText(name, Localize("phone_visit_reply"))
                 .SetEndAction(() => PhoneUIManager.Instance.OnPhoneDialogEnd());
             return choice;
         }
