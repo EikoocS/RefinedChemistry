@@ -10,32 +10,6 @@ item.chem_factory.name,化学制剂成型工厂
 item.chem_factory.purity,纯度
 item.chem_factory.quantity,数量
 item.chem_factory.source,主料
-item.diluter.actual,实际输出浓度：{0} μL/mL
-item.diluter.approximate,警告：不是完美稀释
-item.diluter.concentrate,目标浓度高于原液，无法稀释
-item.diluter.confirm,确认稀释
-item.diluter.confirm.approximate,确认近似稀释
-item.diluter.control,稀释设置
-item.diluter.desc,未达到预期效果，将于若干版本后移除。\n将原液中的选定物质稀释至 1–1000 μL/mL。\n每次输出最少大于 1 ml。\n输出容器为空时才可运作
-item.diluter.inputs,输入
-item.diluter.minimum_volume,原料或输出容量不足
-item.diluter.name,自动稀释机
-item.diluter.nearest,实际输出浓度（最近可达）：{0} μL/mL
-item.diluter.output,输出容器
-item.diluter.output.filter,请先移除输出容器中的滤芯
-item.diluter.output.missing,请放入空输出容器
-item.diluter.output.not_empty,输出容器必须为空
-item.diluter.precision,当前无法稀释到目标浓度
-item.diluter.preview,原液：{0:0.###} ml\n溶剂：{1:0.###} ml\n输出：{2:0.###} ml
-item.diluter.range,请输入 1–1000 的整数
-item.diluter.select,请选择溶质中的物质
-item.diluter.solvent,溶剂容器
-item.diluter.solvent.concentration,溶剂中该物质的浓度必须低于目标浓度
-item.diluter.solvent.empty,请放入含液体的溶剂容器
-item.diluter.source,溶质容器
-item.diluter.source.empty,请放入含液体的溶质容器
-item.diluter.substance,选择物质
-item.diluter.target,目标浓度（μL/mL）
 item.experimental_chemical.desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。
 item.experimental_chemical.flavor,纯度更好的化学用品，在一般的渠道难以获取。
 item.experimental_chemical.name,化学用品（实验）

@@ -19,8 +19,7 @@
       "add": [
         { "id": "imitation_pipette", "weight": 20 },
         { "id": "adjustable_cylinder", "weight": 15 },
-        { "id": "pipette", "weight": 5 },
-        { "id": "diluter", "weight": 1 }
+        { "id": "pipette", "weight": 5 }
       ]
     }
   ]
