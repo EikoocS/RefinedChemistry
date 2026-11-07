@@ -63,12 +63,12 @@ npc.dr_liang.buy_right_item_dialogue,Yes.
 npc.dr_liang.buy_wrong_item_dialogue,No.
 npc.dr_liang.channel_markup,Channel Markup
 npc.dr_liang.deal_accepted_dialogue,All right.
-npc.dr_liang.first_visit_dialogue,I hear you have experience making chemicals.\nPerhaps we could work together.\nPlease accept this small gift.\nCall this number if you need chemical tools or raw materials.
+npc.dr_liang.dialogue.trust0,I hear you have experience making chemicals.\nPerhaps we could work together.\nPlease accept this small gift.\nCall this number if you need chemical tools or raw materials.
+npc.dr_liang.dialogue.trust20,[Placeholder: introduces himself as {0}]
+npc.dr_liang.dialogue.trust20.gift,[Placeholder: gives a locked unknown medical crate and a disposable keycard before leaving]
 npc.dr_liang.gunpoint_dialogue,...
 npc.dr_liang.gunpoint_followup_dialogue,...
 npc.dr_liang.name,Dr. Liang
-npc.dr_liang.name_reveal_dialogue,[Placeholder: introduces himself as {0}]
-npc.dr_liang.name_reveal_gift_dialogue,[Placeholder: gives a locked unknown medical crate and a disposable keycard before leaving]
 npc.dr_liang.name_unknown,Lower District Doctor?
 npc.dr_liang.no_contraband_dialogue,No. I don't want that.
 npc.dr_liang.out_of_budget_dialogue,I can only buy another {0} credits' worth this time.

@@ -1,3 +1,4 @@
+using RefinedChemistry.NPC;
 using System;
 using System.Globalization;
 using UnityEngine;
@@ -16,30 +17,32 @@ namespace RefinedChemistry
             {
                 builder.AddLabel("Edits apply immediately and save with the game.");
                 builder.BeginScrollFlexible();
-                builder.AddToggle(ModSaveData.DrLiangIntroCompletedKey, ModSaveData.DrLiangIntroCompleted,
-                    value => ModSaveData.DrLiangIntroCompleted = value);
-                builder.AddToggle(ModSaveData.DrLiangRemovedKey, ModSaveData.DrLiangRemoved,
-                    value => ModSaveData.DrLiangRemoved = value);
-                builder.AddToggle(ModSaveData.DrLiangNameKnownKey, ModSaveData.DrLiangNameKnown, value =>
+                builder.AddLabel($"{DrLiangData.StateKey}: {DrLiangData.State}");
+                CustomUIElement stateDisplay = builder.Last;
+                foreach (DrLiangData.NpcState state in Enum.GetValues(typeof(DrLiangData.NpcState)))
                 {
-                    ModSaveData.DrLiangNameKnown = value;
-                    DrLiang.RefreshDisplayNames();
-                });
-                builder.AddLabel($"Effective Trust: {DrLiangTrust.Value:0.###}");
+                    builder.AddButton(state.ToString(), () =>
+                    {
+                        DrLiangData.State = state;
+                        stateDisplay.SetText($"{DrLiangData.StateKey}: {state}");
+                    });
+                }
+                builder.AddLabel($"Effective Trust: {DrLiangData.Trust:0.###}");
                 CustomUIElement effectiveTrust = builder.Last;
-                Action refresh = () => effectiveTrust.SetText($"Effective Trust: {DrLiangTrust.Value:0.###}");
-                AddNumber(builder, ModSaveData.DrLiangTrustLimitKey,
-                    () => ModSaveData.DrLiangTrustLimit,
-                    value => ModSaveData.DrLiangTrustLimit = Mathf.RoundToInt(value), refresh);
-                AddNumber(builder, ModSaveData.DrLiangTrustRawKey,
-                    () => ModSaveData.DrLiangTrustRaw,
-                    value => ModSaveData.DrLiangTrustRaw = value, refresh);
-                AddNumber(builder, ModSaveData.DrLiangNeedleGiftBonusKey,
-                    () => ModSaveData.DrLiangNeedleGiftBonus,
-                    value => ModSaveData.DrLiangNeedleGiftBonus = Mathf.RoundToInt(value), refresh);
-                AddNumber(builder, ModSaveData.DrLiangNeedleSalePenaltyKey,
-                    () => ModSaveData.DrLiangNeedleSalePenalty,
-                    value => ModSaveData.DrLiangNeedleSalePenalty = Mathf.RoundToInt(value), refresh);
+                Action refresh = () => effectiveTrust.SetText($"Effective Trust: {DrLiangData.Trust:0.###}");
+                AddNumber(builder, DrLiangData.TrustMaxKey,
+                    () => DrLiangData.TrustMax,
+                    value =>
+                    {
+                        DrLiangData.TrustMax = Mathf.RoundToInt(value);
+                        DrLiang.RefreshDisplayNames();
+                    }, refresh);
+                AddNumber(builder, DrLiangData.TrustRawKey,
+                    () => DrLiangData.TrustRaw,
+                    value => DrLiangData.TrustRaw = value, refresh);
+                AddNumber(builder, DrLiangData.ClinicVolunteerTrustCorrectionKey,
+                    () => DrLiangData.ClinicVolunteerTrustCorrection,
+                    value => DrLiangData.ClinicVolunteerTrustCorrection = Mathf.RoundToInt(value), refresh);
                 builder.End();
             }
             else

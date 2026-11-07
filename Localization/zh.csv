@@ -63,12 +63,12 @@ npc.dr_liang.buy_right_item_dialogue,可以。
 npc.dr_liang.buy_wrong_item_dialogue,不。
 npc.dr_liang.channel_markup,渠道加价
 npc.dr_liang.deal_accepted_dialogue,好的
-npc.dr_liang.first_visit_dialogue,我听说你有制作化学品的经验。\n我们也许可以合作。\n收下这份薄礼吧。\n如果对化学工具或者原料有需求，打这个电话。
+npc.dr_liang.dialogue.trust0,我听说你有制作化学品的经验。\n我们也许可以合作。\n收下这份薄礼吧。\n如果对化学工具或者原料有需求，打这个电话。
+npc.dr_liang.dialogue.trust20,最近我都在我关注你。\n也许我们值得重新认识一下。\n我是一名下层区的“普通”医生，现在是。\n你可以叫我{0}。\n也许未来我们能有更多合作机会。
+npc.dr_liang.dialogue.trust20.gift,收下这个吧，一点微不足道的谢礼，但也算是诚意。
 npc.dr_liang.gunpoint_dialogue,。。。
 npc.dr_liang.gunpoint_followup_dialogue,。。。
 npc.dr_liang.name,梁医生
-npc.dr_liang.name_reveal_dialogue,最近我都在我关注你。\n也许我们值得重新认识一下。\n我是一名下层区的“普通”医生，现在是。\n你可以叫我{0}。\n也许未来我们能有更多合作机会。
-npc.dr_liang.name_reveal_gift_dialogue,收下这个吧，一点微不足道的谢礼，但也算是诚意。
 npc.dr_liang.name_unknown,下层区医生？
 npc.dr_liang.no_contraband_dialogue,不，我不想要这个。
 npc.dr_liang.out_of_budget_dialogue,我这次只能再买{0}信用点的东西了。

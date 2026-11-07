@@ -1,11 +1,12 @@
 using RefinedChemistry.Attributes;
 using HarmonyLib;
+using RefinedChemistry.NPC;
 
 namespace RefinedChemistry
 {
     [HarmonyPatch(typeof(PlayerStore), nameof(PlayerStore.OnCustomerReported))]
     [LocalizableAttributes("npc", "dr_liang")]
-    internal static partial class DrLiangReport
+    internal static partial class DrLiangReportPatch
     {
         private const int Reward = 100;
         private const int SecurityReputation = 5;
@@ -46,10 +47,10 @@ namespace RefinedChemistry
                 NegociationUIManager.Instance.audioSourceCashRegister.Play();
                 __instance.AddDirectSellingItemToTable(slip, isOwend: true);
                 AchievementTracker.Instance.CheckModelCitizen();
-                ModSaveData.DrLiangRemoved = true;
+                DrLiangData.State = DrLiangData.NpcState.REMOVED;
                 __instance.storeClientManager.clientStack.RemoveAll(
-                    queued => queued.identifier == DrLiang.BuyerVisitClientId ||
-                        queued.identifier == DrLiang.NameRevealVisitClientId);
+                    queued => queued.identifier == DrLiangBuyer.ClientId ||
+                        queued.identifier == DrLiang.Trust20ClientId);
             };
         }
     }

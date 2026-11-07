@@ -1,3 +1,4 @@
+using RefinedChemistry.NPC;
 using RefinedChemistry.Item;
 using UnityEngine;
 
@@ -24,11 +25,9 @@ namespace RefinedChemistry
             ModHelper.AddDebugFunction(Manifest.ID, CustomUIDebugPanel.CATEGORY_SPECIAL,
                 "RefinedChemistry", DebugMenu.Open, tall: true);
             ModHook.OnModItemDirectoryInit += RegisterItems;
-            ModHook.OnNetworkUpgradeUnlocked += ChemistSupplies.OnUpgradeUnlocked;
-            ModHook.OnNetworkUpgradeUnlocked += DrLiang.OnUpgradeUnlocked;
-            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueFirstVisitIfEligible;
-            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueNameRevealVisitIfEligible;
-            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueWeeklyBuyerIfEligible;
+            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueTrust0IfEligible;
+            ModHook.OnGenerateCustomerVeryLate += DrLiang.QueueTrust20IfEligible;
+            ModHook.OnGenerateCustomerVeryLate += DrLiangBuyer.QueueIfEligible;
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
         }
@@ -41,11 +40,9 @@ namespace RefinedChemistry
             CustomUIManager.Instance?.CloseWindow(DebugMenu.WindowId);
             CustomUIManager.Instance?.CloseWindow(SaveDataDebugMenu.WindowId);
             ModHook.OnModItemDirectoryInit -= RegisterItems;
-            ModHook.OnNetworkUpgradeUnlocked -= ChemistSupplies.OnUpgradeUnlocked;
-            ModHook.OnNetworkUpgradeUnlocked -= DrLiang.OnUpgradeUnlocked;
-            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueFirstVisitIfEligible;
-            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueNameRevealVisitIfEligible;
-            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueWeeklyBuyerIfEligible;
+            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueTrust0IfEligible;
+            ModHook.OnGenerateCustomerVeryLate -= DrLiang.QueueTrust20IfEligible;
+            ModHook.OnGenerateCustomerVeryLate -= DrLiangBuyer.QueueIfEligible;
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
         }

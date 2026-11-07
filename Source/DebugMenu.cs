@@ -1,3 +1,4 @@
+using RefinedChemistry.NPC;
 using UnityEngine.UI;
 
 namespace RefinedChemistry
@@ -21,7 +22,7 @@ namespace RefinedChemistry
 
             var builder = CreateWindow(WindowId, "RefinedChemistry", CustomUIDebugPanel.WINDOW_ID);
             builder.AddButton("Queue Liang First Visit", () =>
-                DrLiang.QueueFirstVisit(PlayerStore.Instance.storeClientManager));
+                DrLiang.QueueTrust0(PlayerStore.Instance.storeClientManager));
             builder.AddButton("Save Data", SaveDataDebugMenu.Open);
             CustomUIDebugPanel.SetBackgroundAlpha(builder.Show(), 0.8f);
         }
