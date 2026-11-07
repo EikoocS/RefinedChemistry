@@ -1,3 +1,5 @@
+using RefinedChemistry.Attributes;
+using RefinedChemistry.Machinery;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,8 @@ using UnityEngine;
 
 namespace RefinedChemistry.Item
 {
-    internal sealed class Diluter
+    [LocalizableAttributes("item", ItemId)]
+    internal sealed partial class Diluter
     {
         internal const string ItemId = "diluter";
         private const string SelectedTag = "DILUTER_SELECTED_LIQUID";
@@ -19,7 +22,7 @@ namespace RefinedChemistry.Item
         private readonly MachineryText preview = new MachineryText(uppercase: false);
         private readonly MachineryText warning = new MachineryText(uppercase: false)
             .SetColor(new Color(1f, 0.75f, 0.25f));
-        private readonly MachineryButton confirm = new MachineryButton(Text("confirm"));
+        private readonly MachineryButton confirm = new MachineryButton(Localize("confirm"));
         private readonly MachineryControl selection;
         private readonly MachineryControl amount;
         private readonly GameItem machine;
@@ -37,20 +40,20 @@ namespace RefinedChemistry.Item
             amount.input.SetTextWithoutNotify("1");
 
             var inputs = MachineryStack.Vertical(
-                MachineHelper.Panel(Text("source"), source, "source"),
-                MachineHelper.Panel(Text("solvent"), solvent, "solvent"));
+                MachineHelper.Panel(Localize("source"), source, "source"),
+                MachineHelper.Panel(Localize("solvent"), solvent, "solvent"));
             var controls = MachineryStack.Vertical(
-                new MachineryText(Text("substance"), uppercase: false), selection,
-                new MachineryText(Text("target"), uppercase: false), amount, preview, warning, confirm);
+                new MachineryText(Localize("substance"), uppercase: false), selection,
+                new MachineryText(Localize("target"), uppercase: false), amount, preview, warning, confirm);
             window = MachineHelper.CreateMachineryWindow(true,
-                new MachineryPanel(Text("inputs"), inputs, "inputs"),
-                new MachineryPanel(Text("control"), controls, "control"),
-                MachineHelper.Panel(Text("output"), output, "output"));
+                new MachineryPanel(Localize("inputs"), inputs, "inputs"),
+                new MachineryPanel(Localize("control"), controls, "control"),
+                MachineHelper.Panel(Localize("output"), output, "output"));
             machine = ItemDirectory.CreateEmptyItem(ItemId)
                 .SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, ItemId)
                 .SetContentWindow(window);
-            machine.name = Text("name");
-            machine.shortDescription = Text("desc");
+            machine.name = Localize("name");
+            machine.shortDescription = Localize("desc");
             machine.unitValue = 300;
             machine.SetGameItemType("MACHINE");
             machine.EnableTag("CONTAINER_TAG");
@@ -103,7 +106,7 @@ namespace RefinedChemistry.Item
                 foreach (Liquid liquid in options)
                     captions.Add(liquid.displayName);
                 if (captions.Count == 0)
-                    captions.Add(Text("select"));
+                    captions.Add(Localize("select"));
                 selection.dropdown.ClearOptions();
                 selection.dropdown.AddOptions(captions);
             }
@@ -118,10 +121,10 @@ namespace RefinedChemistry.Item
 
             string error = Calculate(out var recipe);
             displayedRecipe = recipe;
-            string text = error == null ? Text("preview", recipe.SourceVolume / 1000.0,
+            string text = error == null ? Localize("preview", recipe.SourceVolume / 1000.0,
                 recipe.SolventVolume / 1000.0, recipe.TotalVolume / 1000.0) + "\n" +
-                Text(recipe.IsExact ? "actual" : "nearest",
-                    recipe.ActualConcentration.ToString("0.############")) : Text(error);
+                Localize(recipe.IsExact ? "actual" : "nearest",
+                    recipe.ActualConcentration.ToString("0.############")) : Localize(error);
             bool approximate = error == null && !recipe.IsExact;
             if (output.childItem != null && !WaterHelper.IsEmpty(output.childItem))
             {
@@ -132,17 +135,17 @@ namespace RefinedChemistry.Item
                     int volume = WaterHelper.GetTotalVolume(output.childItem);
                     int selectedVolume = output.childItem.GetTagReadonly(liquid.currentPart).GetInt();
                     decimal concentration = 1000m * selectedVolume / volume;
-                    text += "\n" + Text("actual", concentration.ToString("0.############"));
+                    text += "\n" + Localize("actual", concentration.ToString("0.############"));
                     if (int.TryParse(amount.input.text, out int target))
                         approximate = 1000L * selectedVolume != (long)target * volume;
                 }
             }
             if (preview.GetText() != text)
                 preview.SetText(text);
-            string warningText = approximate ? Text("approximate") : "";
+            string warningText = approximate ? Localize("approximate") : "";
             if (warning.GetText() != warningText)
                 warning.SetText(warningText);
-            string caption = Text(approximate ? "confirm_approximate" : "confirm");
+            string caption = Localize(approximate ? "confirm.approximate" : "confirm");
             if (confirm.text != caption)
                 confirm.SetText(caption);
             confirm.SetDisabled(error != null);
@@ -155,13 +158,13 @@ namespace RefinedChemistry.Item
             if (!int.TryParse(amount.input.text, out int target) || target < 1 || target > 1000)
                 return "range";
             if (source.childItem == null || WaterHelper.IsEmpty(source.childItem))
-                return "source_empty";
+                return "source.empty";
             if (output.childItem == null)
-                return "output_missing";
+                return "output.missing";
             if (!WaterHelper.IsEmpty(output.childItem))
-                return "output_not_empty";
+                return "output.not_empty";
             if (WaterHelper.GetFilterItem(output.childItem) != null)
-                return "output_filter";
+                return "output.filter";
             string selected = machine.GetTagReadonly(SelectedTag).GetString();
             int index = Liquid.Liquids.FindIndex(liquid => liquid.identifier == selected);
             int[] solventParts = solvent.childItem == null ? new int[Liquid.Liquids.Count] :
@@ -216,8 +219,5 @@ namespace RefinedChemistry.Item
             slot.SetBackgroundFadeSprite("Items/water_container4", "xl");
             return slot;
         }
-
-        private static string Text(string key, params object[] args) =>
-            LocalizationHelper.Format("diluter_" + key, args);
     }
 }

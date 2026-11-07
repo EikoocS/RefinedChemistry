@@ -1,3 +1,4 @@
+using RefinedChemistry.Attributes;
 using System;
 using System.Collections.Generic;
 using HarmonyLib;
@@ -7,7 +8,8 @@ using UnityEngine;
 namespace RefinedChemistry
 {
     [HarmonyPatch(typeof(ItemSelectHandler))]
-    internal static class LabelerFactoryUsePatch
+    [LocalizableAttributes("item", LabelerFactory.ItemId)]
+    internal static partial class LabelerFactoryUsePatch
     {
         private static readonly Action<ItemSelectHandler, GameItem> RefreshHighlights =
             AccessTools.MethodDelegate<Action<ItemSelectHandler, GameItem>>(
@@ -75,7 +77,7 @@ namespace RefinedChemistry
             if (___lastItem != null)
             {
                 if (LabelerFactory.HasSelectedLabel(source, ___lastItem))
-                    builder.AddLine(LocalizationHelper.Format("labeler_factory_same_label"),
+                    builder.AddLine(Localize("same_label"),
                         ignoreEmpty: true, RenderHandler.ColorPalette.LightGray);
                 else
                     builder.Add(___builder);

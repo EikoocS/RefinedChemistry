@@ -9,7 +9,7 @@ namespace RefinedChemistry
     {
         private static readonly string[] StarterItemIds =
         {
-            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, AutoCylinder.ItemId
+            Flask.ItemId, Flask.ItemId, ImitationPipette.ItemId, AdjustableCylinder.ItemId
         };
 
         private static bool Prefix(PlayerStore __instance, ref string identifier)
@@ -46,7 +46,7 @@ namespace RefinedChemistry
             if (__instance.currentClientInstance?.GetClientBlueprint().identifier == "retired_chemist" &&
                 identifier == ChemFactory.ItemId)
             {
-                __instance.AddDirectSellingItemToTable(AutoCylinder.ItemId);
+                __instance.AddDirectSellingItemToTable(AdjustableCylinder.ItemId);
                 __instance.AddDirectSellingItemToTable(LabelerFactory.ItemId);
             }
         }

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace RefinedChemistry.Item
+namespace RefinedChemistry.Machinery
 {
     internal sealed class MachineryControl : PixelElement
     {

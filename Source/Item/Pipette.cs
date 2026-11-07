@@ -1,3 +1,4 @@
+using RefinedChemistry.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,7 +6,8 @@ namespace RefinedChemistry.Item
 {
     [WaterContainer(ItemId)]
     [ScrollAble(ItemId, nameof(OnScroll), nameof(GetCapacityText))]
-    internal class Pipette
+    [LocalizableAttributes("item", ItemId)]
+    internal partial class Pipette
     {
         internal const string ItemId = "pipette";
         protected virtual string Id => ItemId;
@@ -33,7 +35,7 @@ namespace RefinedChemistry.Item
             string capacityUnit = capacity >= 1000 ? "ml" : "μl";
             float total = WaterHelper.GetTotalVolume(item);
             string totalUnit = total >= 1000 ? "ml" : "μl";
-            string text = LocalizationHelper.Format("pipette_capacity",
+            string text = Localize("capacity",
                 capacity>=1000?capacity/1000f:capacity,
                 capacityUnit,
                 total>=1000?total/1000f:total,

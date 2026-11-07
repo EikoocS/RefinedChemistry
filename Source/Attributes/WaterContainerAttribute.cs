@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace RefinedChemistry.Item
+namespace RefinedChemistry.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     internal sealed class WaterContainerAttribute : Attribute

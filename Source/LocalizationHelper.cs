@@ -10,5 +10,8 @@ namespace RefinedChemistry
         {
             return ModHelper.GetLocalized(RefinedChemistry.Instance.Manifest.ID, key, args);
         }
+
+        public static string Item(string itemId, string property, params object[] args) =>
+            Format("item." + itemId + "." + property, args);
     }
 }
