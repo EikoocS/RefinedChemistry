@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RefinedChemistry.Item
+namespace RefinedChemistry.Machinery
 {
     internal sealed class MachineryRefresh : MonoBehaviour
     {

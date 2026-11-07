@@ -12,7 +12,7 @@ namespace RefinedChemistry
         {
             foreach (var item in savedItems)
                 if (item.identifier == "beaker")
-                    item.identifier = AutoCylinder.ItemId;
+                    item.identifier = AdjustableCylinder.ItemId;
         }
     }
 }

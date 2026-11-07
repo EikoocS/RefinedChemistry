@@ -1,4 +1,5 @@
-﻿using System;
+using RefinedChemistry.Attributes;
+using System;
 
 namespace RefinedChemistry.Item
 {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RefinedChemistry
+namespace RefinedChemistry.Machinery
 {
     internal sealed class ChemFactoryPlan
     {

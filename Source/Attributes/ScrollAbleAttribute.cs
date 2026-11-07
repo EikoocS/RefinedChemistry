@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace RefinedChemistry.Item
+namespace RefinedChemistry.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     internal sealed class ScrollAbleAttribute : Attribute

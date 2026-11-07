@@ -1,3 +1,4 @@
+using RefinedChemistry.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,9 +6,10 @@ namespace RefinedChemistry.Item
 {
     [WaterContainer(ItemId)]
     [ScrollAble(ItemId, nameof(OnScroll), nameof(GetCapacityText))]
-    internal static class AutoCylinder
+    [LocalizableAttributes("item", ItemId)]
+    internal static partial class AdjustableCylinder
     {
-        internal const string ItemId = "auto_cylinder";
+        internal const string ItemId = "adjustable_cylinder";
 
         internal const int maxCapacity = 100 * 1000;
         internal const int minCapacity = 10 * 1000;
@@ -27,7 +29,7 @@ namespace RefinedChemistry.Item
             float capacityMl = WaterHelper.GetTotalCapacity(item) / 1000f;
             float totalMl = WaterHelper.GetTotalVolume(item) / 1000f;
             float freeMl = Mathf.Max(0, WaterHelper.GetFreeCapacity(item)) / 1000f;
-            string text = LocalizationHelper.Format("auto_cylinder_capacity", capacityMl, totalMl, freeMl);
+            string text = Localize("capacity", capacityMl, totalMl, freeMl);
             return text;
         }
 

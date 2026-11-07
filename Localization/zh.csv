@@ -1,67 +1,62 @@
-pipette_name,移液枪
-pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。
-pipette_flavor,上层区化学家偏爱的化学器械，好用，很贵。
-pipette_capacity,容量：{0} {1} · 液量：{2:0.###} {3}
-auto_cylinder_name,定量烧杯
-auto_cylinder_desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
-auto_cylinder_flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
-auto_cylinder_capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
-imitation_pipette_name,仿制移液枪
-imitation_pipette_desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。\n每次成功排液消耗 1 点耐久。
-imitation_pipette_flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。
-flask_name,烧瓶
-flask_desc,初始容量 750 ml，最高可扩容至 9000 ml。\n使用化学用品或空烧瓶扩容 750 ml；化学用品(管制)扩容 1500 ml。\n使用[切换]变更外观。
-flask_flavor,多样的形状和清晰的内容物使其适合承装化学品的容器。\n自动重命名自身为内容物。
-diluter_name,自动稀释机
-diluter_desc,未达到预期效果，将于若干版本后移除。\n将原液中的选定物质稀释至 1–1000 μL/mL。\n每次输出最少大于 1 ml。\n输出容器为空时才可运作
-diluter_inputs,输入
-diluter_source,溶质容器
-diluter_solvent,溶剂容器
-diluter_output,输出容器
-diluter_control,稀释设置
-diluter_substance,选择物质
-diluter_target,目标浓度（μL/mL）
-diluter_confirm,确认稀释
-diluter_preview,原液：{0:0.###} ml\n溶剂：{1:0.###} ml\n输出：{2:0.###} ml
-diluter_actual,实际输出浓度：{0} μL/mL
-diluter_nearest,实际输出浓度（最近可达）：{0} μL/mL
-diluter_approximate,警告：不是完美稀释
-diluter_confirm_approximate,确认近似稀释
-diluter_range,请输入 1–1000 的整数
-diluter_select,请选择溶质中的物质
-diluter_source_empty,请放入含液体的溶质容器
-diluter_output_missing,请放入空输出容器
-diluter_output_not_empty,输出容器必须为空
-diluter_output_filter,请先移除输出容器中的滤芯
-diluter_concentrate,目标浓度高于原液，无法稀释
-diluter_solvent_empty,请放入含液体的溶剂容器
-diluter_solvent_concentration,溶剂中该物质的浓度必须低于目标浓度
-diluter_precision,当前无法稀释到目标浓度
-diluter_minimum_volume,原料或输出容量不足
-chem_factory_name,化学制剂成型工厂
-chem_factory_desc,批量制作化学制剂。
-chem_factory_inputs,原料
-chem_factory_source,主料
-chem_factory_auxiliary,辅料
-chem_factory_purity,纯度
-chem_factory_quantity,数量
-chem_factory_consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
-labeler_factory_name,标签打印工厂
-labeler_factory_desc,使用[切换]选择化学品品质标签。\n使用时按住鼠标拖过化学品可连续贴标。
-labeler_factory_grade,打印标签：{0}
-labeler_factory_same_label,标签与打印目标一致
-experimental_chemical_name,化学用品（实验）
-experimental_chemical_desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。
-experimental_chemical_flavor,纯度更好的化学用品，在一般的渠道难以获取。
-box_medical_tech_name,未知医疗箱
-box_medical_tech_desc,
-box_medical_tech_flavor,
-box_medical_tech_u_name,未知医疗箱
-box_medical_tech_u_desc,
-box_medical_tech_u_flavor,
-uto_card_name,一次性钥匙卡（未知医疗）
-uto_card_desc,
-uto_card_flavor,
-uto_module_name,密码解序器芯片（未知医疗）
-uto_module_desc,
-uto_module_flavor,
+item.adjustable_cylinder.capacity,容量：{0} ml · 液量：{1:0.###} ml\n空余：{2:0.###} ml
+item.adjustable_cylinder.desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–100 ml）
+item.adjustable_cylinder.flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
+item.adjustable_cylinder.name,定量烧杯
+item.chem_factory.auxiliary,辅料
+item.chem_factory.consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
+item.chem_factory.desc,批量制作化学制剂。
+item.chem_factory.inputs,原料
+item.chem_factory.name,化学制剂成型工厂
+item.chem_factory.purity,纯度
+item.chem_factory.quantity,数量
+item.chem_factory.source,主料
+item.diluter.actual,实际输出浓度：{0} μL/mL
+item.diluter.approximate,警告：不是完美稀释
+item.diluter.concentrate,目标浓度高于原液，无法稀释
+item.diluter.confirm,确认稀释
+item.diluter.confirm.approximate,确认近似稀释
+item.diluter.control,稀释设置
+item.diluter.desc,未达到预期效果，将于若干版本后移除。\n将原液中的选定物质稀释至 1–1000 μL/mL。\n每次输出最少大于 1 ml。\n输出容器为空时才可运作
+item.diluter.inputs,输入
+item.diluter.minimum_volume,原料或输出容量不足
+item.diluter.name,自动稀释机
+item.diluter.nearest,实际输出浓度（最近可达）：{0} μL/mL
+item.diluter.output,输出容器
+item.diluter.output.filter,请先移除输出容器中的滤芯
+item.diluter.output.missing,请放入空输出容器
+item.diluter.output.not_empty,输出容器必须为空
+item.diluter.precision,当前无法稀释到目标浓度
+item.diluter.preview,原液：{0:0.###} ml\n溶剂：{1:0.###} ml\n输出：{2:0.###} ml
+item.diluter.range,请输入 1–1000 的整数
+item.diluter.select,请选择溶质中的物质
+item.diluter.solvent,溶剂容器
+item.diluter.solvent.concentration,溶剂中该物质的浓度必须低于目标浓度
+item.diluter.solvent.empty,请放入含液体的溶剂容器
+item.diluter.source,溶质容器
+item.diluter.source.empty,请放入含液体的溶质容器
+item.diluter.substance,选择物质
+item.diluter.target,目标浓度（μL/mL）
+item.experimental_chemical.desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。
+item.experimental_chemical.flavor,纯度更好的化学用品，在一般的渠道难以获取。
+item.experimental_chemical.name,化学用品（实验）
+item.flask.desc,初始容量 750 ml，最高可扩容至 9000 ml。\n使用化学用品或空烧瓶扩容 750 ml；化学用品(管制)扩容 1500 ml。\n使用[切换]变更外观。
+item.flask.flavor,多样的形状和清晰的内容物使其适合承装化学品的容器。\n自动重命名自身为内容物。
+item.flask.name,烧瓶
+item.imitation_pipette.desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。\n每次成功排液消耗 1 点耐久。
+item.imitation_pipette.flavor,中层区化学家制作的仿制品器械，能不混入杂质就已经拼尽全力，就是看着不怎么好看，也不太耐用。
+item.imitation_pipette.name,仿制移液枪
+item.labeler_factory.desc,使用[切换]选择化学品品质标签。\n使用时按住鼠标拖过化学品可连续贴标。
+item.labeler_factory.grade,打印标签：{0}
+item.labeler_factory.name,标签打印工厂
+item.labeler_factory.same_label,标签与打印目标一致
+item.pipette.capacity,容量：{0} {1} · 液量：{2:0.###} {3}
+item.pipette.desc,可以精确控制容量的滴管。\n鼠标滚轮调节容量（100 μL–10 ml）。\n连续滚动时会加速增大调整步长。
+item.pipette.flavor,上层区化学家偏爱的化学器械，好用，很贵。
+item.pipette.name,移液枪
+item.uto_medical_box.desc,一个上锁的板条箱，标签被刻意磨掉了。里面装满了物资。需要识别卡才能打开。
+item.uto_medical_box.flavor,真是奇怪，你从未在空间站看见过类似的箱子，这是哪里来的？
+item.uto_medical_box.name,未知医疗箱
+item.uto_medical_card.flavor,供未知主体使用的一次性钥匙卡。可开启未知医疗箱的锁。
+item.uto_medical_card.name,一次性钥匙卡（未知医疗）
+item.uto_medical_module.desc,一个能让密码解序器将未知医疗权限写入空白钥匙卡的模组。
+item.uto_medical_module.name,密码解序器芯片（未知医疗）

@@ -1,6 +1,6 @@
 using System;
 
-namespace RefinedChemistry
+namespace RefinedChemistry.Machinery
 {
     internal sealed class DilutionRecipe
     {
@@ -57,9 +57,9 @@ namespace RefinedChemistry
                     ? null : "precision";
             }
             if (solventVolume == 0)
-                return "solvent_empty";
+                return "solvent.empty";
             if (target * solventVolume <= 1000L * solvent[selected])
-                return "solvent_concentration";
+                return "solvent.concentration";
 
             long maxVolume = Math.Min(capacity, sourceVolume + solventVolume);
             long selectedVolume = (long)source[selected] + solvent[selected];

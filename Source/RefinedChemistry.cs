@@ -47,13 +47,16 @@ namespace RefinedChemistry
         {
             directory.Add(Pipette.ItemId, new Pipette().Create);
             directory.Add(ImitationPipette.ItemId, new ImitationPipette().Create);
-            directory.Add(AutoCylinder.ItemId, AutoCylinder.Create);
+            directory.Add(AdjustableCylinder.ItemId, AdjustableCylinder.Create);
             directory.Add(Flask.ItemId, Flask.Create);
             directory.Add(Diluter.ItemId, Diluter.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
             directory.Add(ExperimentalChemical.ItemId, ExperimentalChemical.Create);
-            MedicalTechItems.Register(directory);
+            directory.Add(UtoMedicalBox.ItemId, UtoMedicalBox.Create);
+            directory.Add(UtoMedicalBox.UnlockedItemId, UtoMedicalBox.CreateUnlocked);
+            directory.Add(UtoMedicalCard.ItemId, UtoMedicalCard.Create);
+            directory.Add(UtoMedicalModule.ItemId, UtoMedicalModule.Create);
             Flask.RegisterUpgradeMaterials(directory);
         }
     }
