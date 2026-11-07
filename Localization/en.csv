@@ -10,32 +10,6 @@ item.chem_factory.name,Chemical Forming Factory
 item.chem_factory.purity,Purity
 item.chem_factory.quantity,Quantity
 item.chem_factory.source,Primary
-item.diluter.actual,Actual output concentration: {0} μL/mL
-item.diluter.approximate,Warning: Dilution is not exact
-item.diluter.concentrate,Cannot dilute to a concentration higher than the stock solution
-item.diluter.confirm,Confirm dilution
-item.diluter.confirm.approximate,Confirm approximate dilution
-item.diluter.control,Dilution settings
-item.diluter.desc,Has not met expectations and will be removed in a few versions.\nDilutes a selected substance in the stock solution to 1–1000 μL/mL.\nEach batch must exceed 1 ml.\nRequires an empty output container.
-item.diluter.inputs,Inputs
-item.diluter.minimum_volume,Insufficient liquid or output capacity
-item.diluter.name,Automatic Diluter
-item.diluter.nearest,Actual output concentration (closest achievable): {0} μL/mL
-item.diluter.output,Output container
-item.diluter.output.filter,Remove the filter from the output container first
-item.diluter.output.missing,Insert an empty output container
-item.diluter.output.not_empty,The output container must be empty
-item.diluter.precision,Cannot dilute to the target concentration
-item.diluter.preview,Stock: {0:0.###} ml\nSolvent: {1:0.###} ml\nOutput: {2:0.###} ml
-item.diluter.range,Enter an integer from 1 to 1000
-item.diluter.select,Select a substance in the stock solution
-item.diluter.solvent,Solvent container
-item.diluter.solvent.concentration,The concentration of this substance in the solvent must be below the target
-item.diluter.solvent.empty,Insert a solvent container with liquid
-item.diluter.source,Stock container
-item.diluter.source.empty,Insert a stock container with liquid
-item.diluter.substance,Select substance
-item.diluter.target,Target concentration (μL/mL)
 item.experimental_chemical.desc,Unpack to obtain a batch of higher-quality basic chemical supplies.\nStandard chemical supplies commonly found in laboratories in the middle and upper districts.
 item.experimental_chemical.flavor,Higher-purity chemical supplies that are hard to obtain through ordinary channels.
 item.experimental_chemical.name,Chemical Supplies (Experimental)

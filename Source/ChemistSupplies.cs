@@ -20,10 +20,6 @@ namespace RefinedChemistry
             }
             switch (identifier)
             {
-                case "blender":
-                    if (RNG.Roll(25))
-                        identifier = Diluter.ItemId;
-                    break;
                 case "chem_finisher":
                     identifier = ChemFactory.ItemId;
                     break;
