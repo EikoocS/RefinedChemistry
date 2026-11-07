@@ -52,6 +52,8 @@ namespace RefinedChemistry
             directory.Add(Diluter.ItemId, Diluter.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
+            directory.Add(ExperimentalChemical.ItemId, ExperimentalChemical.Create);
+            MedicalTechItems.Register(directory);
             Flask.RegisterUpgradeMaterials(directory);
         }
     }
