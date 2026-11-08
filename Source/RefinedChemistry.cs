@@ -1,4 +1,5 @@
 using RefinedChemistry.Item;
+using RefinedChemistry.UI;
 using UnityEngine;
 
 namespace RefinedChemistry
@@ -23,6 +24,7 @@ namespace RefinedChemistry
             ModHook.OnNetworkUpgradeUnlocked += ChemistSupplies.OnUpgradeUnlocked;
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
+            ModHook.OnCreateTooltipLate += AdvancedChemScannerUI.CreateTooltip;
         }
 
         public void OnDisable()
@@ -31,6 +33,7 @@ namespace RefinedChemistry
             ModHook.OnNetworkUpgradeUnlocked -= ChemistSupplies.OnUpgradeUnlocked;
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
+            ModHook.OnCreateTooltipLate -= AdvancedChemScannerUI.CreateTooltip;
         }
 
         public static LoadedMod getLoadedMod()
@@ -51,6 +54,7 @@ namespace RefinedChemistry
             directory.Add(Flask.ItemId, Flask.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
+            directory.Add(AdvancedChemScanner.ItemId, AdvancedChemScanner.Create);
             directory.Add(ExperimentalChemical.ItemId, ExperimentalChemical.Create);
             directory.Add(UtoMedicalBox.ItemId, UtoMedicalBox.Create);
             directory.Add(UtoMedicalBox.UnlockedItemId, UtoMedicalBox.CreateUnlocked);
