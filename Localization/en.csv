@@ -2,6 +2,9 @@ item.adjustable_cylinder.capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpac
 item.adjustable_cylinder.desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–200 ml).
 item.adjustable_cylinder.flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
 item.adjustable_cylinder.name,Measuring Beaker
+item.advanced_chem_scanner.desc,
+item.advanced_chem_scanner.flavor,
+item.advanced_chem_scanner.name,Advanced Scanner
 item.chem_factory.auxiliary,Auxiliary
 item.chem_factory.consumption,Primary: {0:0.###} ml\nAuxiliary: {1:0.###} ml
 item.chem_factory.desc,Produces chemical formulations in batches.
@@ -34,3 +37,4 @@ item.uto_medical_card.flavor,A disposable keycard for an unidentified entity. Un
 item.uto_medical_card.name,Disposable Keycard (Unknown Medical)
 item.uto_medical_module.desc,A module that lets a Crypto Desequencer write Unknown Medical access permissions to a blank keycard.
 item.uto_medical_module.name,Crypto Desequencer Chip (Unknown Medical)
+ui.advanced_chem_scanner.active_ingredient,Active ingredient: {0}

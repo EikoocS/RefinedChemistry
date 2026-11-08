@@ -2,6 +2,9 @@ item.adjustable_cylinder.capacity,容量：{0} ml · 液量：{1:0.###} ml\n空�
 item.adjustable_cylinder.desc,可以精确控制容量的容器。\n鼠标滚轮调节容量（10–200 ml）
 item.adjustable_cylinder.flavor,上层区化学家偏爱的化学器械，适合稀释等工作。
 item.adjustable_cylinder.name,可变量筒
+item.advanced_chem_scanner.desc,
+item.advanced_chem_scanner.flavor,
+item.advanced_chem_scanner.name,高级扫描仪
 item.chem_factory.auxiliary,辅料
 item.chem_factory.consumption,主料 {0:0.###} ml\n辅料 {1:0.###} ml
 item.chem_factory.desc,批量制作化学制剂。
@@ -34,3 +37,4 @@ item.uto_medical_card.flavor,供未知主体使用的一次性钥匙卡。可开
 item.uto_medical_card.name,一次性钥匙卡（未知医疗）
 item.uto_medical_module.desc,一个能让密码解序器将未知医疗权限写入空白钥匙卡的模组。
 item.uto_medical_module.name,密码解序器芯片（未知医疗）
+ui.advanced_chem_scanner.active_ingredient,有效成分：{0}
