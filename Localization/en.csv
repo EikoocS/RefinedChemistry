@@ -13,6 +13,9 @@ item.chem_factory.name,Chemical Forming Factory
 item.chem_factory.purity,Purity
 item.chem_factory.quantity,Quantity
 item.chem_factory.source,Primary
+item.chemical_tank.desc,
+item.chemical_tank.flavor,
+item.chemical_tank.name,Chemical Tank
 item.experimental_chemical.desc,Unpack to obtain a batch of higher-quality basic chemical supplies.\nStandard chemical supplies commonly found in laboratories in the middle and upper districts.
 item.experimental_chemical.flavor,Higher-purity chemical supplies that are hard to obtain through ordinary channels.
 item.experimental_chemical.name,Chemical Supplies (Experimental)

@@ -13,6 +13,9 @@ item.chem_factory.name,化学制剂成型工厂
 item.chem_factory.purity,纯度
 item.chem_factory.quantity,数量
 item.chem_factory.source,主料
+item.chemical_tank.desc,
+item.chemical_tank.flavor,
+item.chemical_tank.name,化学品储罐
 item.experimental_chemical.desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。
 item.experimental_chemical.flavor,纯度更好的化学用品，在一般的渠道难以获取。
 item.experimental_chemical.name,化学用品（实验）

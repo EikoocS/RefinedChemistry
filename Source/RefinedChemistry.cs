@@ -52,6 +52,7 @@ namespace RefinedChemistry
             directory.Add(ImitationPipette.ItemId, new ImitationPipette().Create);
             directory.Add(AdjustableCylinder.ItemId, AdjustableCylinder.Create);
             directory.Add(Flask.ItemId, Flask.Create);
+            directory.Add(ChemicalTank.ItemId, ChemicalTank.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
             directory.Add(AdvancedChemScanner.ItemId, AdvancedChemScanner.Create);
