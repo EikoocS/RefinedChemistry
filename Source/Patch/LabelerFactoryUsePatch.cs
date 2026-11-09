@@ -1,5 +1,4 @@
 using RefinedChemistry.Attributes;
-using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using RefinedChemistry.Item;
@@ -11,9 +10,6 @@ namespace RefinedChemistry
     [LocalizableAttributes("item", LabelerFactory.ItemId)]
     internal static partial class LabelerFactoryUsePatch
     {
-        private static readonly Action<ItemSelectHandler, GameItem> RefreshHighlights =
-            AccessTools.MethodDelegate<Action<ItemSelectHandler, GameItem>>(
-                AccessTools.Method(typeof(ItemSelectHandler), "RefreshHighlights"));
         private static GameItem lastSource;
         private static string lastGrade;
 
@@ -63,7 +59,7 @@ namespace RefinedChemistry
             }
 
             if (refresh)
-                RefreshHighlights(__instance, source);
+                ModReflect.Call(__instance, "RefreshHighlights", source);
 
             if (___lastItem != null)
             {

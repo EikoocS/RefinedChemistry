@@ -306,7 +306,7 @@ namespace RefinedChemistry.Item
             source.LockInv();
             auxiliary.LockInv();
             modules.LockInv();
-            OverlayHandler.current.StartCoroutine(Produce(recipe.identifier, plan));
+            ModHelper.StartCoroutine(RefinedChemistry.Instance.Manifest.ID, Produce(recipe.identifier, plan));
         }
 
         private IEnumerator Produce(string recipeId, ChemFactoryPlan batch)
