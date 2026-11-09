@@ -34,7 +34,8 @@ namespace RefinedChemistry.Item
 
         private Func<GameItem, GameItem, bool> CanThisTargetItemFunc(Func<GameItem, GameItem, bool> superCanTarget)
         {
-            return (source, target) => superCanTarget(source, target) &&
+            return (source, target) =>
+                superCanTarget.InvokeAllReduce(source, target, InvokeFuncExtensions.BoolReduceOR) &&
                 (DurabilityHelper.GetRealDurability(source) > 0 ||
                     (!WaterHelper.IsEmpty(source) && !WaterHelper.IsFaucet(target)));
         }
