@@ -26,11 +26,12 @@ namespace RefinedChemistry.Item
             var canTarget = item.canThisTargetItemFunc;
             var use = item.onThisTargetItemFunc;
             item.mayThisTargetItemFunc = (source, target) =>
-                GetChemicalUpgrade(target) > 0 || mayTarget(source, target);
+                GetChemicalUpgrade(target) > 0 ||
+                mayTarget.InvokeAllReduce(source, target, InvokeFuncExtensions.BoolReduceOR);
             item.canThisTargetItemFunc = (source, target) =>
                 IsUpgradeInteraction(source, target)
                     ? CanUpgrade(source, target)
-                    : canTarget(source, target);
+                    : canTarget.InvokeAllReduce(source, target, InvokeFuncExtensions.BoolReduceOR);
             item.onThisTargetItemFunc = (source, target) =>
             {
                 if (IsUpgradeInteraction(source, target))
