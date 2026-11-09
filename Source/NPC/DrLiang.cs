@@ -134,7 +134,7 @@ namespace RefinedChemistry.NPC
             client.clientIntent = StoreClient.ClientIntent.DIALOGUE;
             client.dismissable = false;
             Dialogue introduction = DrLiangDialogue.SetLines(client.mainDialogue, "CLIENT",
-                "dialogue.trust20", Localize("name"));
+                "dialogue.trust20.introduction", Localize("name"));
             Dialogue gift = introduction.NextDialogue();
             gift.SetStartAction(() =>
             {

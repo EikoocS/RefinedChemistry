@@ -14,9 +14,9 @@ namespace RefinedChemistry.NPC
             dialogue.SetText(dialogue.title, Localize(key, args));
         }
 
-        internal static Dialogue SetLines(Dialogue dialogue, string title, string key, params object[] args)
+        internal static Dialogue SetLines(Dialogue dialogue, string title, string prefix, params object[] args)
         {
-            string[] lines = Localize(key, args).Split('\n');
+            var lines = LocalizeList(prefix + ".", args);
             Dialogue last = dialogue.SetText(title, lines[0]);
             foreach (string line in lines.Skip(1))
                 last = last.NextDialogue().SetText(title, line);

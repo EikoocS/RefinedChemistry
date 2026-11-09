@@ -34,8 +34,7 @@ namespace RefinedChemistry
 
                 GameItem slip = DirectoryMaster.Item("sec_slip");
                 string body = LocHelper.GetLocalizedMechanic("mech_report_wanted_body", Reward,
-                    Localize("report_name"));
-                body += "\n" + Localize("report_charge");
+                    Localize("name"));
                 body += "\n\n" + LocHelper.GetLocalizedMechanic("mech_report_rep_improved");
                 if (client.reportDegradesFaction)
                     body += LocHelper.GetLocalizedMechanic("mech_report_faction_degraded",
