@@ -21,8 +21,16 @@ namespace RefinedChemistry
             }
 
             var builder = CreateWindow(WindowId, "RefinedChemistry", CustomUIDebugPanel.WINDOW_ID);
-            builder.AddButton("Queue Liang First Visit", () =>
-                DrLiang.QueueTrust0(PlayerStore.Instance.storeClientManager));
+            builder.AddButton("Queue Liang Trust 0 Visit", () =>
+                DrLiangStory.QueueTrust0(PlayerStore.Instance.storeClientManager));
+            builder.AddButton("Queue Liang Trust 20 Visit", () =>
+                DrLiangStory.QueueTrust20(PlayerStore.Instance.storeClientManager));
+            builder.AddButton("Queue Liang Tool Supplier", () =>
+                PlayerStore.Instance.storeClientManager.AddNextClient(DrLiangToolSupplier.Create()));
+            builder.AddButton("Queue Liang Material Supplier", () =>
+                PlayerStore.Instance.storeClientManager.AddNextClient(DrLiangMaterialSupplier.Create()));
+            builder.AddButton("Queue Liang Buyer", () =>
+                PlayerStore.Instance.storeClientManager.AddNextClient(DrLiangBuyer.Create()));
             builder.AddButton("Save Data", SaveDataDebugMenu.Open);
             CustomUIDebugPanel.SetBackgroundAlpha(builder.Show(), 0.8f);
         }

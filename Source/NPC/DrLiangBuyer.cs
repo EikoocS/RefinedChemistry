@@ -31,8 +31,8 @@ namespace RefinedChemistry.NPC
         {
             if (StoreStation.GetDayCounter() % 7 != 3 || DrLiangData.TrustMax <= 0 ||
                 DrLiangData.State == DrLiangData.NpcState.REMOVED || StoreClientManager.IsClientOnCooldown(ClientId) ||
-                PlayerStore.Instance.futurStoreClientIdQueue.Contains(DrLiang.Trust20ClientId) ||
-                manager.clientStack.Any(client => client.identifier == DrLiang.Trust20ClientId))
+                PlayerStore.Instance.futurStoreClientIdQueue.Contains(DrLiangStory.Trust20ClientId) ||
+                manager.clientStack.Any(client => client.identifier == DrLiangStory.Trust20ClientId))
                 return;
 
             manager.TryAddClient(Create());

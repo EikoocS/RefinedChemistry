@@ -49,7 +49,7 @@ namespace RefinedChemistry
                 DrLiangData.State = DrLiangData.NpcState.REMOVED;
                 __instance.storeClientManager.clientStack.RemoveAll(
                     queued => queued.identifier == DrLiangBuyer.ClientId ||
-                        queued.identifier == DrLiang.Trust20ClientId);
+                        queued.identifier == DrLiangStory.Trust20ClientId);
             };
         }
     }

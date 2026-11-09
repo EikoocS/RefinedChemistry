@@ -77,7 +77,7 @@ npc.dr_liang.dialogue.trust0.02,Perhaps we could work together.
 npc.dr_liang.dialogue.trust0.03,Please accept this small gift.
 npc.dr_liang.dialogue.trust0.04,Call this number if you need chemical tools or raw materials.
 npc.dr_liang.dialogue.trust20.introduction.01,[Placeholder: introduces himself as {0}]
-npc.dr_liang.dialogue.trust20.gift.01,[Placeholder: gives a locked unknown medical crate and a disposable keycard before leaving]
+npc.dr_liang.dialogue.trust20.gift.01,[Placeholder: gives an unlocked unknown medical crate before leaving]
 npc.dr_liang.gunpoint_dialogue,...
 npc.dr_liang.gunpoint_followup_dialogue,...
 npc.dr_liang.name,Dr. Liang

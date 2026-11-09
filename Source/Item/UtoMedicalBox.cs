@@ -12,23 +12,27 @@ namespace RefinedChemistry.Item
         internal static GameItem Create()
         {
             var (window, inventory) = DirectoryUtils.CreateInventoryWindow(7, 5);
-            GameItem item = ItemDirectory.CreateEmptyItem(ItemId)
+            GameItem item = ItemDirectory.CreateEmptyItem(UnlockedItemId)
                 .SetContentWindow(window)
-                .SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, ItemId);
-            item.name = Localize("name") + " (" + LocHelper.GetLocalizedMechanic("mech_lock_sealed") + ")";
-            item.shortDescription = Localize("desc");
+                .SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, UnlockedItemId);
+            item.name = Localize("name");
             item.flavorText = Localize("flavor");
-            item.unitValue = 200;
-            LockHelper.InitLockedContainerItem(item, LockId, inventory);
-            LockHelper.LockUpContainer(item);
+            item.unitValue = 15;
+            ContainerHelper.InitContainerItem(inventory, item);
             return item;
         }
 
-        internal static GameItem CreateUnlocked()
+        internal static GameItem CreateLocked()
         {
             GameItem item = Create();
-            item.identifier = UnlockedItemId;
-            LockHelper.UnlockContainer(item, force: true);
+            item.identifier = ItemId;
+            item.SetSpriteAndShapeFromMod(RefinedChemistry.Instance.Manifest.ID, ItemId);
+            item.name += " (" + LocHelper.GetLocalizedMechanic("mech_lock_sealed") + ")";
+            item.shortDescription = Localize("desc");
+            item.unitValue = 200;
+            item.DisableTag(GeneralHelper.IMPORTANT_TAG);
+            LockHelper.InitLockedContainerItem(item, LockId, (GameInventory)item.contentWindow.child);
+            LockHelper.LockUpContainer(item);
             return item;
         }
     }

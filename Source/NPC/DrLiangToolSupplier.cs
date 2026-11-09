@@ -1,5 +1,6 @@
 using RefinedChemistry.Attributes;
 using RefinedChemistry.Item;
+using System.Collections.Generic;
 
 namespace RefinedChemistry.NPC
 {
@@ -7,11 +8,6 @@ namespace RefinedChemistry.NPC
     internal static partial class DrLiangToolSupplier
     {
         internal const string ClientId = "dr_liang_tool_supplier";
-        private static readonly string[] Stock =
-        {
-            ImitationPipette.ItemId, AdjustableCylinder.ItemId, Flask.ItemId, Flask.ItemId,
-            "chem_module", "chem_module", "evaporator"
-        };
 
         internal static StoreClient Create()
         {
@@ -21,7 +17,7 @@ namespace RefinedChemistry.NPC
             client.mainDialogue.SetText(client.displayName, Localize("sell_dialogue"))
                 .SetEndAction(() =>
                 {
-                    foreach (string itemId in Stock)
+                    foreach (string itemId in GetStock())
                         PlayerStore.Instance.AddDirectSellingItemToTable(itemId);
                 });
             client.onItemSold += (_, price) => DrLiangData.AddTradeTrust(price / 20f);
@@ -29,6 +25,28 @@ namespace RefinedChemistry.NPC
             DrLiangDialogue.ConfigureTrade(client);
             client.CompleteClientCreation();
             return client;
+        }
+
+        private static IEnumerable<string> GetStock()
+        {
+            float trust = DrLiangData.Trust;
+            var ownedItems = EmporiumEntry.Instance.GetAllOwnedItems();
+            bool hasPipette = ownedItems.Exists(item => item.identifier == Pipette.ItemId);
+            if (trust >= 20 && !hasPipette)
+                yield return Pipette.ItemId;
+
+            if (!hasPipette)
+                yield return ImitationPipette.ItemId;
+            yield return AdjustableCylinder.ItemId;
+            if (trust >= 20)
+            {
+                if (!ownedItems.Exists(item => item.identifier == LabelerFactory.ItemId))
+                    yield return LabelerFactory.ItemId;
+                if (!ownedItems.Exists(item => item.identifier == AdvancedChemScanner.ItemId))
+                    yield return AdvancedChemScanner.ItemId;
+            }
+            yield return Flask.ItemId;
+            yield return Flask.ItemId;
         }
 
         internal static void RequestVisit(StorePhoneClient contact)
