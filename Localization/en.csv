@@ -1,7 +1,10 @@
 item.adjustable_cylinder.capacity,Capacity: {0} ml · Liquid: {1:0.###} ml\nSpace remaining: {2:0.###} ml
-item.adjustable_cylinder.desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–100 ml).
+item.adjustable_cylinder.desc,A container with precisely adjustable capacity.\nUse the mouse wheel to adjust capacity (10–200 ml).
 item.adjustable_cylinder.flavor,A favorite tool of chemists in the upper district. Well suited for dilution and similar tasks.
 item.adjustable_cylinder.name,Measuring Beaker
+item.advanced_chem_scanner.desc,
+item.advanced_chem_scanner.flavor,
+item.advanced_chem_scanner.name,Advanced Scanner
 item.chem_factory.auxiliary,Auxiliary
 item.chem_factory.consumption,Primary: {0:0.###} ml\nAuxiliary: {1:0.###} ml
 item.chem_factory.desc,Produces chemical formulations in batches.
@@ -10,6 +13,9 @@ item.chem_factory.name,Chemical Forming Factory
 item.chem_factory.purity,Purity
 item.chem_factory.quantity,Quantity
 item.chem_factory.source,Primary
+item.chemical_tank.desc,
+item.chemical_tank.flavor,
+item.chemical_tank.name,Chemical Tank
 item.dr_liang_card.desc,2324
 item.dr_liang_card.flavor,This barely qualifies as a business card. It's just a torn scrap of white paper.
 item.dr_liang_card.name,Plain Paper Business Card
@@ -82,3 +88,4 @@ npc.dr_liang.sell_dialogue,I brought what you need.
 npc.dr_liang.shutter_down_dialogue,What are you doing?
 npc.dr_liang.shutter_down_followup_dialogue,Is that any way to see a guest out?
 npc.dr_liang.sincerity,“Goodwill”
+ui.advanced_chem_scanner.active_ingredient,Active ingredient: {0}

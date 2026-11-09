@@ -3,20 +3,15 @@
   <ID>refined_chemistry</ID>
   <Name>RefinedChemistry</Name>
   <Author>EikoocSun</Author>
-  <ModVersion>0.1.2</ModVersion>
+  <ModVersion>0.1.5</ModVersion>
   <Description>A chemical extension module adds features such as pipettes and high-purity chemicals to enhance quality of life.</Description>
   <GameVersions>
-    <Version>0.46</Version>
+    <Version>0.46D</Version>
   </GameVersions>
   <Prerequisites />
   <!-- Every DLL the game must load, relative to this folder. Nothing else in the folder is loaded. -->
   <Assemblies>
     <Assembly>RefinedChemistry.dll</Assembly>
   </Assemblies>
-  <!-- What your code does beyond the game's API: files, network, process, dynamic-code, native, reflection-external.
-       Most mods need none. The game scans your DLL when a player activates the mod; an undeclared capability
-       refuses the activation. Check with the console command: mod-scan refined_chemistry   (see ModdingGuide.md) -->
-  <Capabilities>
-    <Capability>reflection-external</Capability>
-  </Capabilities>
+  <Capabilities />
 </Manifest>

@@ -1,5 +1,6 @@
 using RefinedChemistry.NPC;
 using RefinedChemistry.Item;
+using RefinedChemistry.UI;
 using UnityEngine;
 
 namespace RefinedChemistry
@@ -30,6 +31,7 @@ namespace RefinedChemistry
             ModHook.OnGenerateCustomerVeryLate += DrLiangBuyer.QueueIfEligible;
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
+            ModHook.OnCreateTooltipLate += AdvancedChemScannerUI.CreateTooltip;
         }
 
         public void OnDisable()
@@ -45,6 +47,7 @@ namespace RefinedChemistry
             ModHook.OnGenerateCustomerVeryLate -= DrLiangBuyer.QueueIfEligible;
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
+            ModHook.OnCreateTooltipLate -= AdvancedChemScannerUI.CreateTooltip;
         }
 
         public static LoadedMod getLoadedMod()
@@ -63,9 +66,11 @@ namespace RefinedChemistry
             directory.Add(ImitationPipette.ItemId, new ImitationPipette().Create);
             directory.Add(AdjustableCylinder.ItemId, AdjustableCylinder.Create);
             directory.Add(Flask.ItemId, Flask.Create);
+            directory.Add(ChemicalTank.ItemId, ChemicalTank.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
             directory.Add(DrLiangCard.ItemId, DrLiangCard.Create);
+            directory.Add(AdvancedChemScanner.ItemId, AdvancedChemScanner.Create);
             directory.Add(ExperimentalChemical.ItemId, ExperimentalChemical.Create);
             directory.Add(UtoMedicalBox.ItemId, UtoMedicalBox.Create);
             directory.Add(UtoMedicalBox.UnlockedItemId, UtoMedicalBox.CreateUnlocked);
