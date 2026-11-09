@@ -13,7 +13,7 @@ namespace RefinedChemistry
 
         static ItemHelper()
         {
-            foreach (var type in typeof(ItemHelper).Assembly.GetTypes())
+            foreach (var type in ModReflect.Types(RefinedChemistry.Instance.Manifest.ID))
             {
                 var tag = type.GetCustomAttribute<WaterContainerAttribute>();
                 if (tag != null)
@@ -22,29 +22,13 @@ namespace RefinedChemistry
                 var scroll = type.GetCustomAttribute<ScrollAbleAttribute>();
                 if (scroll != null)
                 {
-                    var method = type.GetMethod(
-                        scroll.MethodName,
-                        BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy,
-                        binder: null,
-                        types: [ typeof(GameItem), typeof(int)],
-                        modifiers: null)
-                        ?? throw new MissingMethodException(type.FullName, scroll.MethodName);
-
                     scrollHandlers.Add(
                         scroll.ItemId,
-                        (Action<GameItem, int>)method.CreateDelegate(typeof(Action<GameItem, int>)));
-
-                    var tooltipMethod = type.GetMethod(
-                        scroll.TooltipMethodName,
-                        BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy,
-                        binder: null,
-                        types: [typeof(GameItem)],
-                        modifiers: null)
-                        ?? throw new MissingMethodException(type.FullName, scroll.TooltipMethodName);
+                        ModReflect.StaticMethod<Action<GameItem, int>>(type, scroll.MethodName));
 
                     scrollTooltips.Add(
                         scroll.ItemId,
-                        (Func<GameItem, string>)tooltipMethod.CreateDelegate(typeof(Func<GameItem, string>)));
+                        ModReflect.StaticMethod<Func<GameItem, string>>(type, scroll.TooltipMethodName));
                 }
             }
         }
