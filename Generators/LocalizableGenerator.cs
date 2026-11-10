@@ -36,6 +36,9 @@ namespace RefinedChemistry.Generators
                         {
                             private static string Localize(string property, params object[] args) =>
                                 global::RefinedChemistry.LocalizationHelper.Format({{type.Prefix}} + property, args);
+
+                            private static global::System.Collections.Generic.List<string> LocalizeList(string prefix, params object[] args) =>
+                                global::RefinedChemistry.LocalizationHelper.List({{type.Prefix}} + prefix + ".", args);
                         }
                     }
                     """;
