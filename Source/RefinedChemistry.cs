@@ -29,6 +29,7 @@ namespace RefinedChemistry
             ModHook.OnGenerateCustomerVeryLate += DrLiangStory.QueueTrust0IfEligible;
             ModHook.OnGenerateCustomerVeryLate += DrLiangStory.QueueTrust20IfEligible;
             ModHook.OnGenerateCustomerVeryLate += DrLiangBuyer.QueueIfEligible;
+            ModHook.OnPlaceInventorInventoryItemEarly += DrLiangToolSupplier.PlaceInventorStock;
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += AdvancedChemScannerUI.CreateTooltip;
@@ -45,6 +46,7 @@ namespace RefinedChemistry
             ModHook.OnGenerateCustomerVeryLate -= DrLiangStory.QueueTrust0IfEligible;
             ModHook.OnGenerateCustomerVeryLate -= DrLiangStory.QueueTrust20IfEligible;
             ModHook.OnGenerateCustomerVeryLate -= DrLiangBuyer.QueueIfEligible;
+            ModHook.OnPlaceInventorInventoryItemEarly -= DrLiangToolSupplier.PlaceInventorStock;
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= AdvancedChemScannerUI.CreateTooltip;

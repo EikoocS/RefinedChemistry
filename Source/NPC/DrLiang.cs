@@ -69,7 +69,8 @@ namespace RefinedChemistry.NPC
             {
                 identifier = identifier,
                 displayName = DisplayName,
-                spriteName = PortraitKey
+                spriteName = PortraitKey,
+                reportDegradesFaction = false
             };
             StoreClientFactionSetup.InitLowerLevelCitizen(client);
             DrLiangDialogue.Configure(client);

@@ -17,7 +17,7 @@ namespace RefinedChemistry.NPC
             client.mainDialogue.SetText(client.displayName, Localize("sell_dialogue"))
                 .SetEndAction(() =>
                 {
-                    foreach (string itemId in GetStock())
+                    foreach (string itemId in GetStock(EmporiumEntry.Instance.GetAllOwnedItems(), DrLiangData.Trust >= 20))
                         PlayerStore.Instance.AddDirectSellingItemToTable(itemId);
                 });
             client.onItemSold += (_, price) => DrLiangData.AddTradeTrust(price / 20f);
@@ -27,20 +27,29 @@ namespace RefinedChemistry.NPC
             return client;
         }
 
-        private static IEnumerable<string> GetStock()
+        internal static void PlaceInventorStock(List<GameItem> ownedItems)
+        {
+            if (DrLiangData.State != DrLiangData.NpcState.REMOVED)
+                return;
+
+            foreach (string itemId in GetStock(ownedItems, true))
+                PlayerStore.Instance.AddDirectSellingItemToTable(itemId);
+        }
+
+        private static IEnumerable<string> GetStock(List<GameItem> ownedItems, bool secondStage)
         {
             yield return UtoMedicalCard.ItemId;
-            float trust = DrLiangData.Trust;
-            var ownedItems = EmporiumEntry.Instance.GetAllOwnedItems();
             bool hasPipette = ownedItems.Exists(item => item.identifier == Pipette.ItemId);
-            if (trust >= 20 && !hasPipette)
+            if (secondStage && !hasPipette)
                 yield return Pipette.ItemId;
 
             if (!hasPipette)
                 yield return ImitationPipette.ItemId;
             yield return AdjustableCylinder.ItemId;
-            if (trust >= 20)
+            yield return "chem_module";
+            if (secondStage)
             {
+                yield return "chem_module";
                 if (!ownedItems.Exists(item => item.identifier == ChemFactory.ItemId))
                     yield return ChemFactory.ItemId;
                 yield return ChemicalTank.ItemId;
