@@ -21,6 +21,8 @@ namespace RefinedChemistry
         public void OnEnable()
         {
             ModHook.OnModItemDirectoryInit += RegisterItems;
+            ModHook.OnGameLoadedInit += EnderFlaskLinks.Clear;
+            ModHook.OnNewGameStarted += EnderFlaskLinks.Clear;
             ModHook.OnNetworkUpgradeUnlocked += ChemistSupplies.OnUpgradeUnlocked;
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
@@ -30,6 +32,9 @@ namespace RefinedChemistry
         public void OnDisable()
         {
             ModHook.OnModItemDirectoryInit -= RegisterItems;
+            ModHook.OnGameLoadedInit -= EnderFlaskLinks.Clear;
+            ModHook.OnNewGameStarted -= EnderFlaskLinks.Clear;
+            EnderFlaskLinks.Clear();
             ModHook.OnNetworkUpgradeUnlocked -= ChemistSupplies.OnUpgradeUnlocked;
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
@@ -52,6 +57,7 @@ namespace RefinedChemistry
             directory.Add(ImitationPipette.ItemId, new ImitationPipette().Create);
             directory.Add(AdjustableCylinder.ItemId, AdjustableCylinder.Create);
             directory.Add(Flask.ItemId, Flask.Create);
+            directory.Add(EnderFlask.ItemId, EnderFlask.Create);
             directory.Add(ChemicalTank.ItemId, ChemicalTank.Create);
             directory.Add(ChemFactory.ItemId, ChemFactory.Create);
             directory.Add(LabelerFactory.ItemId, LabelerFactory.Create);
