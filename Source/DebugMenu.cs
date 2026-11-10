@@ -1,4 +1,5 @@
 using RefinedChemistry.NPC;
+using RefinedChemistry.Item;
 using UnityEngine.UI;
 
 namespace RefinedChemistry
@@ -31,6 +32,8 @@ namespace RefinedChemistry
                 PlayerStore.Instance.storeClientManager.AddNextClient(DrLiangMaterialSupplier.Create()));
             builder.AddButton("Queue Liang Buyer", () =>
                 PlayerStore.Instance.storeClientManager.AddNextClient(DrLiangBuyer.Create()));
+            builder.AddButton("Spawn Filled Locked Medical Crate", () =>
+                PlayerStore.Instance.AddDirectSellingItemToTable(UtoMedicalBoxLoot.Create(), isOwend: true));
             builder.AddButton("Save Data", SaveDataDebugMenu.Open);
             CustomUIDebugPanel.SetBackgroundAlpha(builder.Show(), 0.8f);
         }

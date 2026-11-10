@@ -29,6 +29,7 @@ namespace RefinedChemistry.NPC
 
         private static IEnumerable<string> GetStock()
         {
+            yield return UtoMedicalCard.ItemId;
             float trust = DrLiangData.Trust;
             var ownedItems = EmporiumEntry.Instance.GetAllOwnedItems();
             bool hasPipette = ownedItems.Exists(item => item.identifier == Pipette.ItemId);
@@ -40,6 +41,9 @@ namespace RefinedChemistry.NPC
             yield return AdjustableCylinder.ItemId;
             if (trust >= 20)
             {
+                if (!ownedItems.Exists(item => item.identifier == ChemFactory.ItemId))
+                    yield return ChemFactory.ItemId;
+                yield return ChemicalTank.ItemId;
                 if (!ownedItems.Exists(item => item.identifier == LabelerFactory.ItemId))
                     yield return LabelerFactory.ItemId;
                 if (!ownedItems.Exists(item => item.identifier == AdvancedChemScanner.ItemId))

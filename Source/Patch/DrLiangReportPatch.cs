@@ -47,9 +47,15 @@ namespace RefinedChemistry
                 __instance.AddDirectSellingItemToTable(slip, isOwend: true);
                 AchievementTracker.Instance.CheckModelCitizen();
                 DrLiangData.State = DrLiangData.NpcState.REMOVED;
-                __instance.storeClientManager.clientStack.RemoveAll(
-                    queued => queued.identifier == DrLiangBuyer.ClientId ||
-                        queued.identifier == DrLiangStory.Trust20ClientId);
+                __instance.storeClientManager.clientStack.RemoveAll(DrLiang.IsLiang);
+                for (int i = __instance.futurStoreClientIdQueue.Count - 1; i >= 0; i--)
+                {
+                    if (!DrLiang.IsLiang(__instance.futurStoreClientIdQueue[i]))
+                        continue;
+
+                    __instance.futurStoreClientIdQueue.RemoveAt(i);
+                    __instance.futurStoreClientDayQueue.RemoveAt(i);
+                }
             };
         }
     }

@@ -39,10 +39,12 @@ namespace RefinedChemistry.NPC
 
         internal static bool IsLiang(StoreClient client)
         {
-            return client != null && (client.identifier == DrLiangStory.Trust0ClientId ||
-                client.identifier == DrLiangToolSupplier.ClientId || client.identifier == DrLiangMaterialSupplier.ClientId ||
-                client.identifier == DrLiangBuyer.ClientId || client.identifier == DrLiangStory.Trust20ClientId);
+            return client != null && IsLiang(client.identifier);
         }
+
+        internal static bool IsLiang(string identifier) => identifier == DrLiangStory.Trust0ClientId ||
+            identifier == DrLiangToolSupplier.ClientId || identifier == DrLiangMaterialSupplier.ClientId ||
+            identifier == DrLiangBuyer.ClientId || identifier == DrLiangStory.Trust20ClientId;
 
         private static void RegisterPortrait()
         {

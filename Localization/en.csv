@@ -76,8 +76,13 @@ npc.dr_liang.dialogue.trust0.01,I hear you have experience making chemicals.
 npc.dr_liang.dialogue.trust0.02,Perhaps we could work together.
 npc.dr_liang.dialogue.trust0.03,Please accept this small gift.
 npc.dr_liang.dialogue.trust0.04,Call this number if you need chemical tools or raw materials.
-npc.dr_liang.dialogue.trust20.introduction.01,[Placeholder: introduces himself as {0}]
-npc.dr_liang.dialogue.trust20.gift.01,[Placeholder: gives an unlocked unknown medical crate before leaving]
+npc.dr_liang.dialogue.trust20.introduction.01,I've been keeping an eye on you for a while.
+npc.dr_liang.dialogue.trust20.introduction.02,You're more capable than I expected.
+npc.dr_liang.dialogue.trust20.introduction.03,Perhaps it's time we got to know each other properly.
+npc.dr_liang.dialogue.trust20.introduction.04,I'm an "ordinary" doctor from the lower district. For now.
+npc.dr_liang.dialogue.trust20.introduction.05,You can call me {0}.
+npc.dr_liang.dialogue.trust20.introduction.06,Perhaps we'll have more opportunities to work together.
+npc.dr_liang.dialogue.trust20.gift.01,Take this. A small token of thanks, but a gesture of goodwill all the same.
 npc.dr_liang.gunpoint_dialogue,...
 npc.dr_liang.gunpoint_followup_dialogue,...
 npc.dr_liang.name,Dr. Liang

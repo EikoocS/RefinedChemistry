@@ -80,7 +80,7 @@ namespace RefinedChemistry.NPC
             DrLiangDialogue.SetLines(gift, "CLIENT", "dialogue.trust20.gift")
                 .SetEndAction(() =>
                 {
-                    GameItem box = UtoMedicalBox.Create();
+                    GameItem box = DirectoryMaster.Item(UtoMedicalBox.UnlockedItemId);
                     FileTrust20FillGift(box);
                     PlayerStore.Instance.AddDirectSellingItemToTable(box, isOwend: true);
                     PlayerStore.Instance.DismissCurrentClient(callNextWhenPossible: false);
@@ -110,7 +110,7 @@ namespace RefinedChemistry.NPC
 
             while (true)
             {
-                GameItem supplies = ExperimentalChemical.Create();
+                GameItem supplies = DirectoryMaster.Item(ExperimentalChemical.ItemId);
                 if (GraphUtils.TryAcceptAll(box, supplies) == 0)
                     continue;
 

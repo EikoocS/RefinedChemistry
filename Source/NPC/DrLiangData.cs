@@ -56,7 +56,9 @@ namespace RefinedChemistry.NPC
 
         internal static void AddTradeTrust(float amount)
         {
-            float limit = Mathf.Min(20, TrustMax);
+            float limit = Mathf.Min(40, TrustMax);
+            if (Trust >= 20)
+                amount /= 4;
             if (TrustRaw < limit)
                 TrustRaw = Mathf.Min(limit, TrustRaw + amount);
         }

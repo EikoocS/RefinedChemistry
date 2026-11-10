@@ -1,5 +1,6 @@
 using RefinedChemistry.Attributes;
 using RefinedChemistry.Item;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RefinedChemistry.NPC
@@ -9,10 +10,6 @@ namespace RefinedChemistry.NPC
     {
         internal const string ClientId = "dr_liang_material_supplier";
         private const string ChannelMarkupId = "refined_chemistry__channel_markup";
-        private static readonly string[] Stock =
-        {
-            "common_chemical", ExperimentalChemical.ItemId
-        };
 
         internal static StoreClient Create()
         {
@@ -23,7 +20,7 @@ namespace RefinedChemistry.NPC
             client.mainDialogue.SetText(client.displayName, Localize("sell_dialogue"))
                 .SetEndAction(() =>
                 {
-                    foreach (string itemId in Stock)
+                    foreach (string itemId in GetStock())
                         PlayerStore.Instance.AddDirectSellingItemToTable(itemId);
                 });
             client.onItemSold += (_, price) => DrLiangData.AddTradeTrust(price / 20f);
@@ -31,6 +28,21 @@ namespace RefinedChemistry.NPC
             DrLiangDialogue.ConfigureTrade(client);
             client.CompleteClientCreation();
             return client;
+        }
+
+        private static IEnumerable<string> GetStock()
+        {
+            yield return UtoMedicalCard.ItemId;
+            if (DrLiangData.Trust < 20)
+                yield return "common_chemical";
+            yield return ExperimentalChemical.ItemId;
+            if (DrLiangData.Trust >= 20)
+            {
+                yield return ExperimentalChemical.ItemId;
+                yield return "restricted_chemical";
+                if (RNG.Roll(50))
+                    yield return "restricted_chemical";
+            }
         }
 
         internal static void RequestVisit(StorePhoneClient contact)

@@ -1,5 +1,6 @@
 using RefinedChemistry.Attributes;
 using System.Linq;
+using UnityEngine;
 
 namespace RefinedChemistry.NPC
 {
@@ -51,8 +52,30 @@ namespace RefinedChemistry.NPC
 
         private static void OnItemBought(GameItem item, int price)
         {
-            if (item.IsTag("MEDICAL"))
-                DrLiangData.AddTradeTrust(price / (ContrabandHelper.IsContraband(item) ? 40f : 10f));
+            if (!item.IsTag("MEDICAL"))
+                return;
+
+            float trustValue = price + 2f * GetVoluntaryDiscount(item);
+            DrLiangData.AddTradeTrust(trustValue / (ContrabandHelper.IsContraband(item) ? 40f : 10f));
+        }
+
+        private static float GetVoluntaryDiscount(GameItem item)
+        {
+            ItemFeature discount = item.FindItemFeatureByID("bargainDiscount");
+            if (discount == null || discount.isDisabled)
+                return 0;
+
+            int quotedPrice = (int)item.GetNegociatedValue();
+            discount.isDisabled = true;
+            try
+            {
+                int normalPrice = BargainUIManager.GetPreBargainValue(item, (int)item.GetNegociatedValue());
+                return Mathf.Max(0, normalPrice - quotedPrice);
+            }
+            finally
+            {
+                discount.isDisabled = false;
+            }
         }
 
         private static void ApplyDiscount(GameItem item)
