@@ -44,6 +44,8 @@ namespace RefinedChemistry
             {
                 __instance.AddDirectSellingItemToTable(AdjustableCylinder.ItemId);
                 __instance.AddDirectSellingItemToTable(LabelerFactory.ItemId);
+                __instance.AddDirectSellingItemToTable(Flask.ItemId);
+                __instance.AddDirectSellingItemToTable(Flask.ItemId);
             }
         }
 
