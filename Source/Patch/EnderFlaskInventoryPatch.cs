@@ -1,5 +1,5 @@
 using HarmonyLib;
-using RefinedChemistry.Item;
+using RefinedChemistry.Machinery;
 using System.Collections.Generic;
 
 namespace RefinedChemistry

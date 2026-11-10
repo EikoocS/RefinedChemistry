@@ -1,4 +1,6 @@
 using RefinedChemistry.Attributes;
+using RefinedChemistry.Machinery;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +11,31 @@ namespace RefinedChemistry.Item
     {
         internal const string ItemId = "ender_flask";
 
+        internal static void CreateTooltip(RichTextBuilder builder, GameItem item)
+        {
+            string id = EnderFlaskLinks.GetLinkId(item);
+            if (id == null)
+                return;
+            builder.NextLine();
+            builder.Add("<mspace=0.5em>");
+            for (int i = 0; i < 8; i++)
+            {
+                if (i == 4)
+                    builder.Add(" ");
+                int r = Convert.ToInt32(id[i + 8].ToString(), 16) * 17;
+                int g = Convert.ToInt32(id[i + 16].ToString(), 16) * 17;
+                int b = Convert.ToInt32(id[i + 24].ToString(), 16) * 17;
+                var color = (RenderHandler.ColorPalette)((r << 16) | (g << 8) | b);
+                builder.Add(char.ToUpperInvariant(id[i]).ToString(), color);
+            }
+            builder.Add("</mspace>");
+            builder.AddLine();
+        }
+
         internal static GameItem Create()
         {
             var item = ItemHelper.Create(ItemId);
-            WaterHelper.InitLiquidContainerItem(item, 1000, 50, isGraduated: true);
+            WaterHelper.InitLiquidContainerItem(item, 750, 50, isGraduated: true);
             AudioHelper.InitGlass(item);
             item.getItemSpriteModifierForItemFunc = GetLiquidSprites;
             item.mayInventoryAddItemFunc = (source, inventory) => EnderFlaskLinks.CanPlace(source, inventory);
@@ -22,15 +45,17 @@ namespace RefinedChemistry.Item
             var canTarget = item.canThisTargetItemFunc;
             var use = item.onThisTargetItemFunc;
             var tick = item.onOneSecondItemFunc;
-            item.mayThisTargetItemFunc = (source, target) => IsFlask(target)
+            item.mayThisTargetItemFunc = (source, target) => IsEnderFlask(target)
                 ? source != target && WaterHelper.CanUseWaterContainer(source) && WaterHelper.CanUseWaterContainer(target)
                 : mayTarget.InvokeAllReduce(source, target, InvokeFuncExtensions.BoolReduceOR);
-            item.canThisTargetItemFunc = (source, target) => IsFlask(target)
-                ? CanBind(source, target)
-                : canTarget.InvokeAllReduce(source, target, InvokeFuncExtensions.BoolReduceOR);
+            item.canThisTargetItemFunc = (source, target) => source != target &&
+                !EnderFlaskLinks.ShareContents(source, target) &&
+                (IsBindingInteraction(source, target)
+                    ? CanBind(source, target)
+                    : canTarget.InvokeAllReduce(source, target, InvokeFuncExtensions.BoolReduceOR));
             item.onThisTargetItemFunc = (source, target) =>
             {
-                if (IsFlask(target))
+                if (IsBindingInteraction(source, target))
                 {
                     if (CanBind(source, target))
                         EnderFlaskLinks.Bind(source, target);
@@ -45,12 +70,15 @@ namespace RefinedChemistry.Item
             return item;
         }
 
-        internal static bool IsFlask(GameItem item) => item?.identifier == ItemId;
+        internal static bool IsEnderFlask(GameItem item) => item?.identifier == ItemId;
+
+        private static bool IsBindingInteraction(GameItem source, GameItem target) =>
+            IsEnderFlask(target) && WaterHelper.GetTotalVolume(source) == 0 && WaterHelper.GetTotalVolume(target) == 0;
 
         private static bool CanBind(GameItem source, GameItem target) =>
             source != target && WaterHelper.CanUseWaterContainer(source) && WaterHelper.CanUseWaterContainer(target) &&
             !EnderFlaskLinks.ShareContents(source, target) &&
-            (WaterHelper.GetTotalVolume(source) == 0 || WaterHelper.GetTotalVolume(target) == 0);
+            IsBindingInteraction(source, target);
 
         private static List<ItemSpriteModifier> GetLiquidSprites(GameItem item)
         {

@@ -16,7 +16,7 @@ item.chem_factory.source,主料
 item.chemical_tank.desc,
 item.chemical_tank.flavor,
 item.chemical_tank.name,化学品储罐
-item.ender_flask.desc,容量固定为 1 L。\n与另一末影烧瓶交互时，至少一方为空则绑定，共享内容物、温度和自定义名称。绑定后不可出售，同一机械内只能放入一个同组烧瓶。
+item.ender_flask.desc,空末影烧瓶相互使用时绑定，共享内容物、温度和自定义名称。
 item.ender_flask.flavor,
 item.ender_flask.name,末影烧瓶
 item.experimental_chemical.desc,拆开后可获得一批质量更好的基础化学物品。\n一批你极有可能在中上层实验室里找到的标准化学用品。

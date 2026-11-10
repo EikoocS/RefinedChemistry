@@ -1,4 +1,5 @@
 using RefinedChemistry.Item;
+using RefinedChemistry.Machinery;
 using RefinedChemistry.UI;
 using UnityEngine;
 
@@ -27,6 +28,7 @@ namespace RefinedChemistry
             ModHook.OnCreateTooltipLate += ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += LabelerFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate += AdvancedChemScannerUI.CreateTooltip;
+            ModHook.OnCreateTooltipLate += EnderFlask.CreateTooltip;
         }
 
         public void OnDisable()
@@ -39,6 +41,7 @@ namespace RefinedChemistry
             ModHook.OnCreateTooltipLate -= ChemFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= LabelerFactory.CreateTooltip;
             ModHook.OnCreateTooltipLate -= AdvancedChemScannerUI.CreateTooltip;
+            ModHook.OnCreateTooltipLate -= EnderFlask.CreateTooltip;
         }
 
         public static LoadedMod getLoadedMod()

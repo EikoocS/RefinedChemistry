@@ -1,13 +1,16 @@
+using RefinedChemistry.Item;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RefinedChemistry.Item
+namespace RefinedChemistry.Machinery
 {
     internal static class EnderFlaskLinks
     {
         private const string LinkTag = "ENDER_FLASK_LINK_UUID";
         private static readonly Dictionary<string, Group> groups = new();
+        private static readonly HashSet<GameItem> deferredRefresh = new();
+        private static readonly HashSet<GameItemElement> deferredValidation = new();
         private static bool refreshing;
 
         [Serializable]
@@ -57,7 +60,7 @@ namespace RefinedChemistry.Item
 
         private static Group Find(GameItem item)
         {
-            if (!EnderFlask.IsFlask(item) || !item.state.dict.TryGetValue(LinkTag, out var tag))
+            if (!EnderFlask.IsEnderFlask(item) || !item.state.dict.TryGetValue(LinkTag, out var tag))
                 return null;
             groups.TryGetValue(tag.GetString(), out var group);
             return group;
@@ -68,6 +71,8 @@ namespace RefinedChemistry.Item
             var group = Find(first);
             return group != null && group == Find(second);
         }
+
+        internal static string GetLinkId(GameItem item) => Find(item)?.Tags[LinkTag].GetString();
 
         internal static bool CanPlace(GameItem item, GameInventory inventory, List<GameItem> incoming = null)
         {
@@ -91,21 +96,19 @@ namespace RefinedChemistry.Item
 
         internal static void Bind(GameItem first, GameItem second)
         {
-            var filled = WaterHelper.GetTotalVolume(first) > 0 ? first : second;
-            var empty = filled == first ? second : first;
-            var destination = Find(filled);
+            var destination = Find(second);
             if (destination == null)
             {
                 string id = Guid.NewGuid().ToString("N");
-                destination = new Group(filled, id);
+                destination = new Group(second, id);
                 groups.Add(id, destination);
-                destination.Add(filled);
+                destination.Add(second);
             }
 
-            var previous = Find(empty);
+            var previous = Find(first);
             if (previous == null)
             {
-                destination.Add(empty);
+                destination.Add(first);
             }
             else
             {
@@ -119,18 +122,16 @@ namespace RefinedChemistry.Item
             }
             foreach (var member in destination.Members)
                 member.ValidateShapeState();
-            Refresh(filled);
+            Refresh(second);
         }
 
         internal static void Register(GameItem item)
         {
-            if (!EnderFlask.IsFlask(item) || !item.state.dict.TryGetValue(LinkTag, out var tag))
+            if (!EnderFlask.IsEnderFlask(item) || !item.state.dict.TryGetValue(LinkTag, out var tag))
                 return;
             var group = Load(item, tag.GetString());
             group.Add(item);
-            WaterHelper.UpdateContainerGoodType(item);
-            WaterFeatureHelper.UpdateWaterFeature(item, WaterFeatureHelper.GetWaterFeature(item).IsExposed());
-            SpriteHelper.UpdateWaterContainerSprite(item);
+            RefreshMember(item);
         }
 
         private static Group Load(GameItem item, string id)
@@ -165,6 +166,9 @@ namespace RefinedChemistry.Item
 
         internal static void Remove(GameItem item)
         {
+            deferredRefresh.Remove(item);
+            if (item is GameItemElement element)
+                deferredValidation.Remove(element);
             var group = Find(item);
             if (group == null)
                 return;
@@ -203,9 +207,7 @@ namespace RefinedChemistry.Item
                 {
                     if (member == source)
                         continue;
-                    WaterHelper.UpdateContainerGoodType(member);
-                    WaterFeatureHelper.UpdateWaterFeature(member, WaterFeatureHelper.GetWaterFeature(member).IsExposed());
-                    SpriteHelper.UpdateWaterContainerSprite(member);
+                    RefreshMember(member);
                 }
             }
             finally
@@ -214,7 +216,63 @@ namespace RefinedChemistry.Item
             }
         }
 
-        internal static void Clear() => groups.Clear();
+        private static void RefreshMember(GameItem item)
+        {
+            if (IsDragging(item))
+            {
+                deferredRefresh.Add(item);
+                return;
+            }
+            WaterHelper.UpdateContainerGoodType(item);
+            WaterFeatureHelper.UpdateWaterFeature(item, WaterFeatureHelper.GetWaterFeature(item).IsExposed());
+            SpriteHelper.UpdateWaterContainerSprite(item);
+        }
+
+        private static bool IsDragging(GameItem item) =>
+            ItemMouseDragHandler.current?.GetCurrentItem() == item ||
+            ItemMultiSelectHandler.current?.IsGroupDraggingItem(item) == true;
+
+        internal static bool DeferDraggedValidation(GameItemElement item)
+        {
+            if (!refreshing || !IsDragging(item))
+                return false;
+            deferredValidation.Add(item);
+            return true;
+        }
+
+        internal static void FlushDeferredRefresh()
+        {
+            if (refreshing || (deferredRefresh.Count == 0 && deferredValidation.Count == 0))
+                return;
+            var items = new List<GameItem>(deferredRefresh);
+            deferredRefresh.Clear();
+            refreshing = true;
+            try
+            {
+                foreach (var item in items)
+                    RefreshMember(item);
+                var elements = new List<GameItemElement>(deferredValidation);
+                deferredValidation.Clear();
+                foreach (var element in elements)
+                {
+                    if (IsDragging(element))
+                        deferredValidation.Add(element);
+                    else
+                        element.Validate();
+                }
+            }
+            finally
+            {
+                refreshing = false;
+            }
+        }
+
+        internal static void Clear()
+        {
+            groups.Clear();
+            deferredRefresh.Clear();
+            deferredValidation.Clear();
+        }
 
         internal static void Clear(string _) => Clear();
     }
