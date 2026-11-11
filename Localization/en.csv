@@ -16,6 +16,9 @@ item.chem_factory.source,Primary
 item.chemical_tank.desc,
 item.chemical_tank.flavor,
 item.chemical_tank.name,Chemical Tank
+item.dr_liang_card.desc,2324
+item.dr_liang_card.flavor,This barely qualifies as a business card. It's just a torn scrap of white paper.
+item.dr_liang_card.name,Plain Paper Business Card
 item.ender_flask.desc,Use one empty Ender Flask on another to link them. Linked flasks share their contents and temperature as well as their custom name.
 item.ender_flask.flavor,
 item.ender_flask.name,Ender Flask
@@ -43,4 +46,58 @@ item.uto_medical_card.flavor,A disposable keycard for an unidentified entity. Un
 item.uto_medical_card.name,Disposable Keycard (Unknown Medical)
 item.uto_medical_module.desc,A module that lets a Crypto Desequencer write Unknown Medical access permissions to a blank keycard.
 item.uto_medical_module.name,Crypto Desequencer Chip (Unknown Medical)
+npc.dr_liang.after_buying_dialogue,Anything else catch your eye?
+npc.dr_liang.after_selling_dialogue,Have you got any more ready?
+npc.dr_liang.alarm_reaction_dialogue,...
+npc.dr_liang.all_done_dialogue,All right.
+npc.dr_liang.all_done_followup_dialogue,A pleasure doing business.
+npc.dr_liang.arrest_dialogue,...
+npc.dr_liang.bargain_accept_grateful_dialogue,You're a good person. Thank you.
+npc.dr_liang.bargain_accept_reluctant_dialogue,Fine.
+npc.dr_liang.bargain_accept_very_grateful_dialogue,Are you serious? This is practically charity!
+npc.dr_liang.bargain_accept_very_reluctant_dialogue,All right. But just this once.
+npc.dr_liang.bargain_budget_decrease_dialogue,Then I'll have to prepare a little less.
+npc.dr_liang.bargain_budget_increase_dialogue,Then I can arrange for a little more.
+npc.dr_liang.bargain_false_threaten_dialogue,Do I look like one?
+npc.dr_liang.bargain_hard_reject_dialogue,Absolutely not.
+npc.dr_liang.bargain_innocent_blackmail_dialogue,I won't accept that.
+npc.dr_liang.bargain_leave_dialogue,I don't think we can do business right now.
+npc.dr_liang.bargain_reject_dialogue,No.
+npc.dr_liang.bargain_talk_bad_dialogue,Nothing good comes of greed.
+npc.dr_liang.buy_deal_accepted_dialogue,All right. We have a deal.
+npc.dr_liang.buy_dialogue.01,I need medical supplies.
+npc.dr_liang.buy_dialogue.02,Including the ones you have "trouble selling".
+npc.dr_liang.buy_dialogue.03,But you'll need to show some "goodwill" too.
+npc.dr_liang.buy_dialogue.04,It's better for both of us.
+npc.dr_liang.buy_done_dialogue,A pleasure doing business.
+npc.dr_liang.buy_expose_chemical_dialogue,Don't try any tricks. I know this game better than you do.
+npc.dr_liang.buy_right_item_dialogue,Yes.
+npc.dr_liang.buy_wrong_item_dialogue,No.
+npc.dr_liang.channel_markup,Channel Markup
+npc.dr_liang.deal_accepted_dialogue,All right.
+npc.dr_liang.dialogue.trust0.01,I hear you have experience making chemicals.
+npc.dr_liang.dialogue.trust0.02,Perhaps we could work together.
+npc.dr_liang.dialogue.trust0.03,Please accept this small gift.
+npc.dr_liang.dialogue.trust0.04,Call this number if you need chemical tools or raw materials.
+npc.dr_liang.dialogue.trust20.introduction.01,I've been keeping an eye on you for a while.
+npc.dr_liang.dialogue.trust20.introduction.02,You're more capable than I expected.
+npc.dr_liang.dialogue.trust20.introduction.03,Perhaps it's time we got to know each other properly.
+npc.dr_liang.dialogue.trust20.introduction.04,I'm an "ordinary" doctor from the lower district. For now.
+npc.dr_liang.dialogue.trust20.introduction.05,You can call me {0}.
+npc.dr_liang.dialogue.trust20.introduction.06,Perhaps we'll have more opportunities to work together.
+npc.dr_liang.dialogue.trust20.gift.01,Take this. A small token of thanks, but a gesture of goodwill all the same.
+npc.dr_liang.gunpoint_dialogue,...
+npc.dr_liang.gunpoint_followup_dialogue,...
+npc.dr_liang.name,Dr. Liang
+npc.dr_liang.name_unknown,Lower District Doctor?
+npc.dr_liang.no_contraband_dialogue,No. I don't want that.
+npc.dr_liang.out_of_budget_dialogue,I can only buy another {0} credits' worth this time.
+npc.dr_liang.phone_greeting,Hello?
+npc.dr_liang.phone_materials,I need chemical raw materials.
+npc.dr_liang.phone_tools,I need chemical tools.
+npc.dr_liang.phone_visit_reply,I'll visit tomorrow.
+npc.dr_liang.sell_dialogue,I brought what you need.
+npc.dr_liang.shutter_down_dialogue,What are you doing?
+npc.dr_liang.shutter_down_followup_dialogue,Is that any way to see a guest out?
+npc.dr_liang.sincerity,“Goodwill”
 ui.advanced_chem_scanner.active_ingredient,Active ingredient: {0}

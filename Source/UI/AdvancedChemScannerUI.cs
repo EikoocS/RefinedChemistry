@@ -83,8 +83,11 @@ namespace RefinedChemistry.UI
                 .Center();
             Object.Destroy(prefab);
             var window = builder.Handle;
+            string modId = RefinedChemistry.Instance.Manifest.ID;
+            Coroutine refreshRoutine = null;
             builder.OnClose(() =>
             {
+                ModHelper.StopCoroutine(modId, refreshRoutine);
                 Object.Destroy(background);
                 EmporiumAudioPlayer.Instance.audioButton4.Play();
             });
@@ -112,7 +115,7 @@ namespace RefinedChemistry.UI
             builder.AddCloseButton(window.Close);
             Place(builder.Last.Rect, 175, 8, 16, 16);
             window.Show();
-            view.StartCoroutine(view.RefreshWhileOpen());
+            refreshRoutine = ModHelper.StartCoroutine(modId, view.RefreshWhileOpen());
         }
 
         private IEnumerator RefreshWhileOpen()
