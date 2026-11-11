@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
@@ -20,10 +19,8 @@ namespace RefinedChemistry
             AccessTools.Method(typeof(PreBuiltItemHelper), nameof(PreBuiltItemHelper.LootCrateService))
         };
 
-        private static IEnumerable<MethodBase> TargetMethods() => typeof(StoreClientList)
-            .GetNestedTypes(BindingFlags.Public | BindingFlags.NonPublic)
-            .SelectMany(AccessTools.GetDeclaredMethods)
-            .Where(method => method.Name.StartsWith("<CreateThief>", StringComparison.Ordinal));
+        private static MethodBase TargetMethod() =>
+            ModReflect.Target("StoreClientList+<>c", "<CreateThief>b__56_0");
 
         private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
