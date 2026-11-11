@@ -3,7 +3,7 @@
   <ID>refined_chemistry</ID>
   <Name>RefinedChemistry</Name>
   <Author>EikoocSun</Author>
-  <ModVersion>0.1.7</ModVersion>
+  <ModVersion>0.1.8</ModVersion>
   <Description>A chemical extension module adds features such as pipettes and high-purity chemicals to enhance quality of life.</Description>
   <GameVersions>
     <Version>0.46D</Version>
